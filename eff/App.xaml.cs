@@ -14,7 +14,7 @@ namespace eff
             InitializeComponent();
 
             DependencyService.Register<MockDataStore>();
-            MainPage = new MainPage();
+            MainPage = new WelcomePage();
         }
 
         protected override void OnStart()

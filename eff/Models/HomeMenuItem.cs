@@ -7,7 +7,8 @@ namespace eff.Models
     public enum MenuItemType
     {
         Browse,
-        About
+        About,
+        Datbase
     }
     public class HomeMenuItem
     {

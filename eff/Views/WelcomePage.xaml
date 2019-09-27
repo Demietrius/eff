@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="eff.Views.WelcomePage">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Color x:Key="Primary">#242426</Color>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <RelativeLayout Padding="0">
+
+            <Image
+            Aspect="AspectFill"
+            Source="welcomeBackground.jpg"
+            RelativeLayout.WidthConstraint= "{ConstraintExpression Type=RelativeToParent, Property=Width}"
+            RelativeLayout.HeightConstraint= "{ConstraintExpression Type=RelativeToParent, Property=Height}"/>
+
+
+
+                    <Label Text="eff" FontSize="70" TextColor="Orange"
+            RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent,
+                Property=Width,
+                Factor=.80,
+                Constant=-50}"
+            RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent,
+                Property=Height,
+                Factor=0.15,
+                Constant=-50}"
+                />
+
+        <Button Text="login" FontSize="27" TextColor="Orange"
+            RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent,
+                Property=Width,
+                Factor=0.83,
+                Constant=-50}"
+            RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent,
+                Property=Height,
+                Factor=.9,
+                Constant=-50}"/>
+        <!--Clicked="OnLoginClicked"-->
+
+            <Button Text="sign up" FontSize="27" TextColor="Orange" 
+            RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent,
+                Property=Width,
+                Factor=0.27,
+                Constant=-50}"
+            RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent,
+                Property=Height,
+                Factor=.9,
+                Constant=-50}"
+                BorderColor="White"/>
+            <!--Clicked="OnSignUpClicked"-->
+
+    </RelativeLayout>
+
+</ContentPage>
