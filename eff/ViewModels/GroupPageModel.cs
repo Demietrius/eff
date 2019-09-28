@@ -7,24 +7,24 @@ using Xamarin.Forms;
 using eff.Services;
 namespace eff.ViewModels
 {
-    public class GroupPageModel : BaseViewModel
-    {
-        public GroupPageModel()
-        {
-            Title = "DataBase";
+    //public class GroupPageModel : BaseViewModel
+    //{
+    //    public GroupPageModel()
+    //    {
+    //        Title = "DataBase";
             
            
-        }
-        Database_connection Connection;
+    //    }
+    //    Database_connection Connection;
 
         
-        public string Connect()
-        {
-            Connection = new Database_connection();
-            string message = Connection.TestDatabaseConnection();
+    //    public string Connect()
+    //    {
+    //        Connection = new Database_connection();
+    //        string message = Connection.TestDatabaseConnection();
 
-            return message;
+    //        return message;
             
-        }
-    }
+    //    }
+    //}
 }

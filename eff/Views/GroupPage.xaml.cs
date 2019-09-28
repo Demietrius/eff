@@ -12,21 +12,21 @@ using eff.ViewModels;
 
 namespace eff.Views
 {
-    [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class GroupPage : ContentPage
-    {
-        GroupPageModel viewModel;
-        public GroupPage()
-        {
-            InitializeComponent();
+    //[XamlCompilation(XamlCompilationOptions.Compile)]
+    //public partial class GroupPage : ContentPage
+    //{
+    //    GroupPageModel viewModel;
+    //    public GroupPage()
+    //    {
+    //        InitializeComponent();
 
-            BindingContext = viewModel = new GroupPageModel();
-        }
+    //        BindingContext = viewModel = new GroupPageModel();
+    //    }
 
-        private void Button_Clicked(object sender, EventArgs e)
-        {
-            string message = viewModel.Connect();
+    //    private void Button_Clicked(object sender, EventArgs e)
+    //    {
+    //        string message = viewModel.Connect();
 
-        }
-    }
+    //    }
+    //}
 }

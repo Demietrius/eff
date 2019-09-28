@@ -14,7 +14,7 @@
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
 
-            <Button Text="database" Clicked="Button_Clicked"></Button>
+            <!--<Button Text="database" Clicked="Button_Clicked"></Button>-->
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

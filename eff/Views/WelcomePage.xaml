@@ -15,6 +15,7 @@
     <RelativeLayout Padding="0">
 
             <Image
+            x:Name="Img_Welcome"
             Aspect="AspectFill"
             Source="welcomeBackground.jpg"
             RelativeLayout.WidthConstraint= "{ConstraintExpression Type=RelativeToParent, Property=Width}"
@@ -22,7 +23,7 @@
 
 
 
-                    <Label Text="eff" FontSize="70" TextColor="Orange"
+                    <Label x:Name="Lbl_effTitle" Text="eff" FontSize="70" TextColor="Orange" 
             RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent,
                 Property=Width,
                 Factor=.80,
@@ -33,7 +34,7 @@
                 Constant=-50}"
                 />
 
-        <Button Text="login" FontSize="27" TextColor="Orange"
+        <Button x:Name="Lbl_Login" Text="login" FontSize="27" TextColor="Orange"
             RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent,
                 Property=Width,
                 Factor=0.83,
@@ -41,10 +42,11 @@
             RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent,
                 Property=Height,
                 Factor=.9,
-                Constant=-50}"/>
-        <!--Clicked="OnLoginClicked"-->
+                Constant=-50}"
+             Clicked="OnLoginClicked"
+                />
 
-            <Button Text="sign up" FontSize="27" TextColor="Orange" 
+            <Button x:Name="Btn_SignUp" Text="sign up" FontSize="27" TextColor="Orange" 
             RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent,
                 Property=Width,
                 Factor=0.27,
