@@ -11,10 +11,10 @@
         <Label x:Name="Lbl_Username" Text="username"/>
         <Entry x:Name="Entry_Username" Placeholder="username"/>
         <Label x:Name="Lbl_Password" Text="password"/>
-        <Entry x:Name="Entry_Password" Placeholder="password"/>
+        <Entry IsPassword="True" x:Name="Entry_Password" Placeholder="password"/>
         <Label Text=""/>
         <!--TODO add Clicked to attach to login function-->
-        <Button x:Name="Btn_Login" Text="login" FontSize="Large" />
+        <Button x:Name="Btn_Login" Text="login" FontSize="Large" Clicked="Login"/>
 
     </StackLayout>
 </ContentPage>
