@@ -55,8 +55,9 @@
                 Property=Height,
                 Factor=.9,
                 Constant=-50}"
-                BorderColor="White"/>
-            <!--Clicked="OnSignUpClicked"-->
+                BorderColor="White"
+                Clicked="OnSignUpClicked"
+                    />
 
     </RelativeLayout>
 
