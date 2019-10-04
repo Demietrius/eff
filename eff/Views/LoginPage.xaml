@@ -3,18 +3,34 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="eff.Views.LoginPage">
 
-    <StackLayout HorizontalOptions="Center"
-                 VerticalOptions="Center"
-                 WidthRequest="250"
-                 >
+      <RelativeLayout Padding="0" HorizontalOptions="Center" VerticalOptions="Center">
+         <Image
+            x:Name="Img_Welcome"
+            Aspect="AspectFill"
+            Source="loginBackground.jpg"
+            RelativeLayout.WidthConstraint= "{ConstraintExpression Type=RelativeToParent, Property=Width}"
+            RelativeLayout.HeightConstraint= "{ConstraintExpression Type=RelativeToParent, Property=Height}"/>
 
-        <Label x:Name="Lbl_Username" Text="username"/>
-        <Entry x:Name="Entry_Username" Placeholder="username"/>
-        <Label x:Name="Lbl_Password" Text="password"/>
-        <Entry IsPassword="True" x:Name="Entry_Password" Placeholder="password"/>
-        <Label Text=""/>
-        <!--TODO add Clicked to attach to login function-->
-        <Button x:Name="Btn_Login" Text="login" FontSize="Large" Clicked="Login"/>
+        <StackLayout Orientation="Vertical" VerticalOptions="Center" HorizontalOptions="Center"  Spacing="15"
+                     WidthRequest="192"
+                     RelativeLayout.WidthConstraint=
+                 "{ConstraintExpression Type=RelativeToParent,
+                                        Property=Width,
+                                        Factor=1}"
+             RelativeLayout.HeightConstraint=
+                 "{ConstraintExpression Type=RelativeToParent,
+                                        Property=Height,
+                                        Factor=1}"
+            >
+            <Label x:Name="Lbl_Username" Text="username" TextColor="Orange" FontSize="20"/>
+            <Entry x:Name="Entry_Username" Placeholder="username" PlaceholderColor="Gray"/>
+            <Label x:Name="Lbl_Password" Text="password" TextColor="Orange" FontSize="20"/>
+            <Entry IsPassword="True" x:Name="Entry_Password" Placeholder="password" PlaceholderColor="Gray"/>
+            <Label Text=""/>
+            <!--TODO add Clicked to attach to login function-->
+            <Button x:Name="Btn_Login" Text="login" TextColor="Black" Clicked="Login" FontSize="25" BackgroundColor="Orange"/>
 
-    </StackLayout>
+        </StackLayout>
+      </RelativeLayout>
+
 </ContentPage>
