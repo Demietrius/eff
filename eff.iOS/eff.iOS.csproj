@@ -125,6 +125,7 @@
     <BundleResource Include="Resources\welcomeBackground.jpg" />
     <BundleResource Include="Resources\createUser.jpg" />
     <BundleResource Include="Resources\loginBackground.jpg" />
+    <BundleResource Include="Resources\guestBackground.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -135,7 +136,7 @@
     <Reference Include="System.Numerics.Vectors" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Xamarin.Forms" Version="4.2.0.815419" />
+    <PackageReference Include="Xamarin.Forms" Version="4.2.0.848062" />
     <PackageReference Include="Xamarin.Essentials" Version="1.3.1" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />

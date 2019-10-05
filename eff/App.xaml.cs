@@ -15,7 +15,7 @@ namespace eff
 
             //DependencyService.Register<MockDataStore>();
             MainPage = new NavigationPage(new WelcomePage());
-        }
+         }
 
         protected override void OnStart()
         {

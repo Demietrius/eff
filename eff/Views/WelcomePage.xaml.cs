@@ -20,9 +20,9 @@ namespace eff.Views
         {
             await Navigation.PushAsync(new LoginPage());
         }
-        private async void OnSignUpClicked(object sender, EventArgs e)
+        private async void OnGuestClicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new CreateUser());
+            await Navigation.PushAsync(new GuestPage());
         }
     }
 }

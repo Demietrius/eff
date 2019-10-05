@@ -4,7 +4,8 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="eff.Views.WelcomePage">
+             x:Class="eff.Views.WelcomePage"
+             NavigationPage.HasNavigationBar="False">
 
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -46,17 +47,17 @@
              Clicked="OnLoginClicked"
                 />
 
-            <Button x:Name="Btn_SignUp" Text="sign up" FontSize="27" TextColor="Orange" 
+            <Button x:Name="Btn_SignUp" Text="guest" FontSize="27" TextColor="Orange" 
             RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent,
                 Property=Width,
-                Factor=0.27,
+                Factor=0.29,
                 Constant=-50}"
             RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent,
                 Property=Height,
                 Factor=.9,
                 Constant=-50}"
                 BorderColor="White"
-                Clicked="OnSignUpClicked"
+                Clicked="OnGuestClicked"
                     />
 
     </RelativeLayout>

@@ -1,9 +1,17 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="eff.Views.LoginPage">
+             x:Class="eff.Views.LoginPage"
+             NavigationPage.HasNavigationBar="True"
+             NavigationPage.HasBackButton="True"
+             >
+  
+     <NavigationPage.TitleView>
+         <Label Text="eff  " TextColor="Orange" FontSize="28" HorizontalOptions="End"/>
+    </NavigationPage.TitleView>
 
       <RelativeLayout Padding="0" HorizontalOptions="Center" VerticalOptions="Center">
+         
          <Image
             x:Name="Img_Welcome"
             Aspect="AspectFill"
@@ -27,10 +35,31 @@
             <Label x:Name="Lbl_Password" Text="password" TextColor="Orange" FontSize="20"/>
             <Entry IsPassword="True" x:Name="Entry_Password" Placeholder="password" PlaceholderColor="Gray"/>
             <Label Text=""/>
-            <!--TODO add Clicked to attach to login function-->
-            <Button x:Name="Btn_Login" Text="login" TextColor="Black" Clicked="Login" FontSize="25" BackgroundColor="Orange"/>
+             <Button x:Name="Btn_Login" Text="login" TextColor="Black" Clicked="Login" FontSize="25" BackgroundColor="Orange"/>
 
         </StackLayout>
-      </RelativeLayout>
+
+          <Label Text="or" TextColor="Orange" FontSize="23"
+              RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent,
+                    Property=Width,
+                    Factor=.61,
+                    Constant=-50}"
+                RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent,
+                    Property=Height,
+                    Factor=0.86,
+                    Constant=-50}"
+                 />
+              
+        <Button Text="sign up" BackgroundColor="Orange" TextColor="Black"
+                WidthRequest="120" FontSize="20" Clicked="OnSignUpClicked"
+              RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent,
+                    Property=Width,
+                    Factor=.49,
+                    Constant=-50}"
+                RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent,
+                    Property=Height,
+                    Factor=0.93,
+                    Constant=-50}"/>
+    </RelativeLayout>
 
 </ContentPage>

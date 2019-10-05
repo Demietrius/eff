@@ -8,12 +8,12 @@
 
     <Application.Resources>
         <ResourceDictionary>
-            <!--Global Styles-->
-            <Color x:Key="NavigationPrimary"></Color>
+           <!-- Global Styles -->
+            <Color x:Key="NavigationPrimary">#383636</Color>
             <Style TargetType="NavigationPage">
                 <Setter Property="BarBackgroundColor" Value="{StaticResource NavigationPrimary}" />
-                <Setter Property="BarTextColor" Value="White" />
-            </Style>
+                <Setter Property="BarTextColor" Value="Orange" />
+             </Style>
         </ResourceDictionary>
     </Application.Resources>
     
