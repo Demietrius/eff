@@ -50,7 +50,8 @@
                     Constant=-50}"
                    />
 
-            <Entry  x:Name="Entry_Lobby" Placeholder="lobby number" PlaceholderColor="Gray"
+            <Entry  x:Name="Entry_Lobby" Placeholder="lobby number"
+                    PlaceholderColor="Gray" 
                 RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent,
                     Property=Width,
                     Factor=.495,

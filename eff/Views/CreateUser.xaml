@@ -18,7 +18,8 @@
             RelativeLayout.WidthConstraint= "{ConstraintExpression Type=RelativeToParent, Property=Width}"
             RelativeLayout.HeightConstraint= "{ConstraintExpression Type=RelativeToParent, Property=Height}"/>
 
-        <StackLayout Orientation="Vertical" VerticalOptions="Center" HorizontalOptions="Center"  Spacing="15"
+        <StackLayout Orientation="Vertical" VerticalOptions="Center"
+                     HorizontalOptions="Center"  Spacing="15" WidthRequest="270"
                      
                      RelativeLayout.WidthConstraint=
                  "{ConstraintExpression Type=RelativeToParent,
@@ -41,10 +42,19 @@
             <Entry x:Name="Entry_Password" Placeholder="password" PlaceholderColor="Gray" IsPassword="True"/>
             <Label x:Name="Lbl_ConfirmPassword" Text="confirm password" TextColor="Orange" FontSize="20"/>
             <Entry x:Name="Entry2_Password" Placeholder="confirm password" PlaceholderColor="Gray" IsPassword="True"/>
-            <Label Text=""/>
-            <!--TODO add Clicked to attach to login function-->
-            <Button x:Name="Btn_Login" Text="sign up" FontSize="25" BackgroundColor="Orange" TextColor="Black"/>
-
+            <Label Text="" HeightRequest="120" MinimumHeightRequest="120"/>
+            
         </StackLayout>
+
+        <Button x:Name="Btn_Login" Text="sign up" BackgroundColor="Orange" TextColor="Black"
+                WidthRequest="120" FontSize="20" 
+              RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent,
+                    Property=Width,
+                    Factor=.49,
+                    Constant=-50}"
+                RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent,
+                    Property=Height,
+                    Factor=0.65,
+                    Constant=-50}"/>
 </RelativeLayout>
 </ContentPage>
