@@ -6454,10 +6454,13 @@ namespace eff.Droid
 			public const int tooltip_frame_light = 2131165501;
 			
 			// aapt resource value: 0x7F07013E
-			public const int welcomeBackground = 2131165502;
+			public const int UserHomeBackground = 2131165502;
 			
 			// aapt resource value: 0x7F07013F
-			public const int xamarin_logo = 2131165503;
+			public const int welcomeBackground = 2131165503;
+			
+			// aapt resource value: 0x7F070140
+			public const int xamarin_logo = 2131165504;
 			
 			static Drawable()
 			{

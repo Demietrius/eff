@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="eff.Views.UserHome"
+             >
+
+    <RelativeLayout Padding="0" HorizontalOptions="Center" VerticalOptions="Center">
+
+        <Image
+            x:Name="Img_Home"
+            Aspect="AspectFill"
+            Source="UserHomeBackground.jpg"
+            RelativeLayout.WidthConstraint= "{ConstraintExpression Type=RelativeToParent, Property=Width}"
+            RelativeLayout.HeightConstraint= "{ConstraintExpression Type=RelativeToParent, Property=Height}"
+            />
+
+        <Label Text="eff" TextColor="Orange" FontSize="65" FontAttributes="Bold"
+                RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent,
+                    Property=Width,
+                    Factor=.52,
+                    Constant=-50}"
+                RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent,
+                    Property=Height,
+                    Factor=0.23,
+                    Constant=-50}"
+               />
+
+        <StackLayout Orientation="Vertical" VerticalOptions="End" HorizontalOptions="Center"  Spacing="20"
+                     WidthRequest="174"
+                     RelativeLayout.WidthConstraint=
+                 "{ConstraintExpression Type=RelativeToParent,
+                                        Property=Width,
+                                        Factor=1}"
+             RelativeLayout.HeightConstraint=
+                 "{ConstraintExpression Type=RelativeToParent,
+                                        Property=Height,
+                                        Factor=1}"
+            >
+            
+            <Button x:Name="Btn_JoingLobby" Text="join lobby" TextColor="Black" FontSize="20" BackgroundColor="Orange" CornerRadius="13"/>
+            <Button x:Name="Btn_CreateLobby" Text="create lobby" TextColor="Black" FontSize="20" BackgroundColor="Orange" CornerRadius="13"/>
+            <Button x:Name="Btn_ManageGroups" Text="manage groups" TextColor="Black" FontSize="20" BackgroundColor="Orange" CornerRadius="13"/>
+            <Button x:Name="Btn_Preferences" Text="preferences" TextColor="Black" FontSize="20" BackgroundColor="Orange" CornerRadius="13"/>
+            <Label Text="" HeightRequest="65"/>
+        </StackLayout>
+
+    </RelativeLayout>    
+
+</ContentPage>
