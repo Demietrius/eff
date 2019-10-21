@@ -1,6 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
+using Newtonsoft.Json;
 
 namespace eff.Models
 {
@@ -17,15 +16,15 @@ namespace eff.Models
         public String Password { get; set; }
 
         [JsonProperty(PropertyName = "filter")]
-        public int Filters { get; set; }
+        public string Filters { get; set; }
 
         [JsonProperty(PropertyName = "date")]
-        public DateTime Date { get; set; }
+        public string Date { get; set; }
 
         [JsonProperty(PropertyName = "number of games played")]
-        public int GamesPlayed { get; set; }
+        public string GamesPlayed { get; set; }
 
         [JsonProperty(PropertyName = "groupId")]
-        public int GroupId { get; set; }
+        public string GroupId { get; set; }
     }
 }

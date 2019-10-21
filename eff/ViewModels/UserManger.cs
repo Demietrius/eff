@@ -1,6 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Collections.ObjectModel;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.Azure.Documents.Client;
+using Microsoft.Azure.Documents.Linq;
+using eff.Models;
 
 namespace eff.ViewModels
 {
@@ -59,7 +64,7 @@ namespace eff.ViewModels
             return users;
         }
 
-        private bool IsExsitingUser(User NewUser)
+       /* private bool IsExsitingUser(User NewUser)
         {
             try
             {
@@ -78,15 +83,15 @@ namespace eff.ViewModels
             }
 
             return true;
-        }
+        }*/
 
 
         public async Task<User> InsertUser(User user)
         {
-            if (!IsExsitingUser(user))
+          /*  if (!IsExsitingUser(user))
             {
                 return null;
-            }
+            }*/
 
             try
             {
@@ -104,6 +109,7 @@ namespace eff.ViewModels
             return user;
         }
 
+         
         /*public async Task CompleteItemAsync(User user)
         {
             try
