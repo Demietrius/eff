@@ -10,6 +10,11 @@ namespace eff.Views
         public GuestPage()
         {
             InitializeComponent();
+            if ((bool)(Application.Current.Properties["IsLoggedIn"] = true)) {
+                Lbl_GuestID.IsVisible = false;
+                Lbl_GuestIDdisplay.IsVisible = false;
+            }
         }
-    }
+
+       }
 }

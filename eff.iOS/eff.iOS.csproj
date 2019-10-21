@@ -127,6 +127,7 @@
     <BundleResource Include="Resources\loginBackground.jpg" />
     <BundleResource Include="Resources\guestBackground.jpg" />
     <BundleResource Include="Resources\UserHomeBackground.jpg" />
+    <BundleResource Include="Resources\preferencesBackground.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />

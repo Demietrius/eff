@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="eff.Views.CreateLobby">
+
+    <RelativeLayout Padding="0" HorizontalOptions="Center" VerticalOptions="Center">
+
+        <Image
+            x:Name="Img_Home"
+            Aspect="AspectFill"
+            Source="preferencesBackground.jpg"
+            RelativeLayout.WidthConstraint= "{ConstraintExpression Type=RelativeToParent, Property=Width}"
+            RelativeLayout.HeightConstraint= "{ConstraintExpression Type=RelativeToParent, Property=Height}"
+            />
+
+        <StackLayout Orientation="Vertical" HorizontalOptions="Center" VerticalOptions="Center" Padding="20" WidthRequest="170"
+                     RelativeLayout.WidthConstraint=
+                 "{ConstraintExpression Type=RelativeToParent,
+                                        Property=Width,
+                                        Factor=1}"
+             RelativeLayout.HeightConstraint=
+                 "{ConstraintExpression Type=RelativeToParent,
+                                        Property=Height,
+                                        Factor=1}">
+
+            <StackLayout HorizontalOptions="Center" VerticalOptions="Center" Orientation="Horizontal">
+                <CheckBox x:Name="CB_ExpressGame" Color="Orange" />
+                <Label x:Name="Lbl_Checkbox" Text="express game settings" TextColor="Orange"/>
+            </StackLayout>
+
+            <Label x:Name="Spacer" HeightRequest="70"></Label>
+            <Label x:Name="Lbl_GroupName" Text="group name" TextColor="Orange"/>
+            <Entry x:Name="Entry_GroupName" Placeholder="group name" />
+            <Label x:Name="Lbl_Zipcode" Text="zip code" TextColor="Orange"/>
+            <Entry x:Name="Entry_ZipCode" Placeholder="zip code"/>
+            <Label x:Name="Lbl_NumPlaces" Text="max restaurants" TextColor="Orange"/>
+            <Picker x:Name="Pkr_NumPlaces" Title="select a maxium number of restaurants in area" >
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>less than 5</x:String>
+                        <x:String>less than 10</x:String>
+                        <x:String>less than 15</x:String>
+                        <x:String>maxium amount</x:String>
+                    </x:Array>
+                 </Picker.ItemsSource>
+            </Picker>
+        </StackLayout>
+</RelativeLayout>
+
+</ContentPage>
