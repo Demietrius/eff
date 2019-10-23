@@ -30,12 +30,7 @@
                                         Property=Height,
                                         Factor=1}"
             >
-            
-
-          
                     
-                     
-
             <Label x:Name="Lbl_email" Text="email" TextColor="Orange" FontSize="20"/>
             <Entry x:Name="Entry_Username" Placeholder="username" PlaceholderColor="Gray" />
             <Label x:Name="Lbl_Password" Text="password" TextColor="Orange" FontSize="20"/>
@@ -46,7 +41,7 @@
             
         </StackLayout>
 
-        <Button x:Name="Btn_Login" Text="sign up" BackgroundColor="Orange" TextColor="Black"
+        <Button x:Name="Btn_Login" Text="sign up" BackgroundColor="Orange" TextColor="Black" Clicked="InsertUser"
                 WidthRequest="120" FontSize="20" 
               RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent,
                     Property=Width,

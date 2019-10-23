@@ -11,7 +11,6 @@ namespace eff.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class LoginPage : ContentPage
     {
-       // Database_connection database_Connection = new Database_connection();
 
         public LoginPage()
         {
@@ -19,7 +18,6 @@ namespace eff.Views
         }
         private async void Login(object sender, EventArgs e)
         {
-        //    string message = database_Connection.TestDatabaseConnection();
 
         }
 
