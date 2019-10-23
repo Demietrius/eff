@@ -11,11 +11,11 @@ namespace eff.Views
     public partial class CreateUser : ContentPage
     {
 
-        UserManger userManger;
+        UserManager userManger;
         public CreateUser()
         {
             InitializeComponent();
-            userManger = UserManger.DefaultManager;
+            userManger = UserManager.DefaultManager;
         }
 
         public async void InsertUser(object sender, EventArgs e)

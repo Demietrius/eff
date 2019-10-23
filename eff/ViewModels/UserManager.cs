@@ -9,9 +9,9 @@ using eff.Models;
 
 namespace eff.ViewModels
 {
-    class UserManger
+    class UserManager
     {
-        static UserManger defaultInstance = new UserManger();
+        static UserManager defaultInstance = new UserManager();
 
         const string accountURL = @"https://effdatabase.documents.azure.com:443/";
         const string accountKey = @"0LhL8FvWxysH8SLdx0GUlD2OLlghxX1jJcYAPVceYBgi32ocmNwvbQJHJlthaSy5eBKEH6uXIwTyrEEFChDWJA==";
@@ -22,12 +22,12 @@ namespace eff.ViewModels
 
         private DocumentClient client;
 
-        private UserManger()
+        private UserManager()
         {
             client = new DocumentClient(new System.Uri(accountURL), accountKey);
         }
 
-        public static UserManger DefaultManager
+        public static UserManager DefaultManager
         {
             get
             {
