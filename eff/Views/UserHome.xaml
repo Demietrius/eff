@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="eff.Views.UserHome"
+             NavigationPage.HasNavigationBar="False"
              >
 
     <RelativeLayout Padding="0" HorizontalOptions="Center" VerticalOptions="Center">
@@ -39,8 +40,8 @@
             
             <Button x:Name="Btn_JoingLobby" Text="join lobby" TextColor="Black"
                     FontSize="20" BackgroundColor="Orange" CornerRadius="13" Clicked="OnJoinClicked"/>
-            <Button x:Name="Btn_CreateLobby" Text="create lobby" TextColor="Black"
-                    FontSize="20" BackgroundColor="Orange" CornerRadius="13"/>
+            <Button x:Name="Btn_CreateLobby" Text="create lobby" TextColor="Black" 
+                    FontSize="20" BackgroundColor="Orange" CornerRadius="13" Clicked="OnCreateLobbyClicked"/>
             <Button x:Name="Btn_ManageGroups" Text="manage groups" TextColor="Black"
                     FontSize="20" BackgroundColor="Orange" CornerRadius="13"/>
             <Button x:Name="Btn_Preferences" Text="preferences" TextColor="Black"

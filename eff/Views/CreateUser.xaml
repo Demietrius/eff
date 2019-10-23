@@ -30,12 +30,7 @@
                                         Property=Height,
                                         Factor=1}"
             >
-            
-
-          
                     
-                     
-
             <Label x:Name="Lbl_email" Text="email" TextColor="Orange" FontSize="20"/>
             <Entry x:Name="Entry_Username" Placeholder="username" PlaceholderColor="Gray" />
             <Label x:Name="Lbl_Password" Text="password" TextColor="Orange" FontSize="20"/>

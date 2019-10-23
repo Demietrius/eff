@@ -23,6 +23,8 @@ namespace eff.Views
             var user = new User { Username = Entry_Username.Text, Password = Entry_Password.Text};
 
             await AddItem(user);
+
+            await Navigation.PushAsync(new UserHome());
         }
 
         async Task AddItem(User user)

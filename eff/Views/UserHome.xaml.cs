@@ -15,5 +15,10 @@ namespace eff.Views
         {
             await Navigation.PushAsync(new GuestPage());
         }
+
+        private async void OnCreateLobbyClicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new CreateLobby());
+        }
     }
 }

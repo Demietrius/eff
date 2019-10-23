@@ -11,7 +11,23 @@
             RelativeLayout.HeightConstraint= "{ConstraintExpression Type=RelativeToParent, Property=Height}"
             />
 
-        <StackLayout Orientation="Vertical" HorizontalOptions="Center" VerticalOptions="Center" Padding="20" WidthRequest="170"
+        <StackLayout HorizontalOptions="Center" VerticalOptions="Center" Orientation="Horizontal"
+                     RelativeLayout.WidthConstraint=
+                 "{ConstraintExpression Type=RelativeToParent,
+                                        Property=Width,
+                                        Factor=1}"
+             RelativeLayout.HeightConstraint=
+                 "{ConstraintExpression Type=RelativeToParent,
+                                        Property=Height,
+                                        Factor=.40}">
+
+                <CheckBox x:Name="CB_ExpressGame" Color="Orange" IsChecked="True" />
+                <Label HeightRequest="0" Text=" "/>
+                <Label x:Name="Lbl_Checkbox" Text="express game settings" TextColor="Orange" FontAttributes="Bold" FontSize="20" />
+            </StackLayout>
+
+
+        <StackLayout Orientation="Vertical" HorizontalOptions="Center" VerticalOptions="Center" Padding="20" WidthRequest="190"
                      RelativeLayout.WidthConstraint=
                  "{ConstraintExpression Type=RelativeToParent,
                                         Property=Width,
@@ -21,17 +37,13 @@
                                         Property=Height,
                                         Factor=1}">
 
-            <StackLayout HorizontalOptions="Center" VerticalOptions="Center" Orientation="Horizontal">
-                <CheckBox x:Name="CB_ExpressGame" Color="Orange" />
-                <Label x:Name="Lbl_Checkbox" Text="express game settings" TextColor="Orange"/>
-            </StackLayout>
-
-            <Label x:Name="Spacer" HeightRequest="70"></Label>
-            <Label x:Name="Lbl_GroupName" Text="group name" TextColor="Orange"/>
+            <Label x:Name="Spacer" HeightRequest="100"></Label>
+            <Label x:Name="Lbl_GroupName" Text="group name" TextColor="Orange" FontAttributes="Bold" FontSize="20"/>
             <Entry x:Name="Entry_GroupName" Placeholder="group name" />
-            <Label x:Name="Lbl_Zipcode" Text="zip code" TextColor="Orange"/>
+            <Label x:Name="Lbl_Zipcode" Text="zip code" TextColor="Orange" FontAttributes="Bold" FontSize="20"/>
             <Entry x:Name="Entry_ZipCode" Placeholder="zip code"/>
-            <Label x:Name="Lbl_NumPlaces" Text="max restaurants" TextColor="Orange"/>
+
+            <Label x:Name="Lbl_NumPlaces" Text="max restaurants" TextColor="Orange" FontAttributes="Bold" FontSize="20"/>
             <Picker x:Name="Pkr_NumPlaces" Title="select a maxium number of restaurants in area" >
                 <Picker.ItemsSource>
                     <x:Array Type="{x:Type x:String}">
@@ -42,7 +54,36 @@
                     </x:Array>
                  </Picker.ItemsSource>
             </Picker>
-        </StackLayout>
-</RelativeLayout>
 
+            <Label x:Name="Lbl_Price" Text="price range" TextColor="Orange" FontAttributes="Bold" FontSize="20"/>
+            <Picker x:Name="Pkr_Price" Title="set a max price range">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                         <!--<x:String></x:String>-->
+                        <x:String>less than $$</x:String>
+                        <x:String>less than $$$</x:String>
+                        <x:String>less than $$$$</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+
+            <Label x:Name="Lbl_Distance" Text="distance" TextColor="Orange" FontAttributes="Bold" FontSize="20"/>
+            <Picker x:Name="Pkr_Distance" Title="set a max distance">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>less than 1 mile</x:String>
+                        <x:String>less than 3 miles</x:String>
+                        <x:String>less than 5 miles</x:String>
+                        <x:String>less than 10 miles</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+
+            <Label Text="" HeightRequest="30"/>
+            <Button Text="submit" TextColor="Black" BackgroundColor="Orange"
+                    FontAttributes="Bold" CornerRadius="13" />
+        </StackLayout>
+        
+</RelativeLayout>
+    
 </ContentPage>
