@@ -7,9 +7,11 @@
              x:Class="eff.Views.NearbyRestaurants">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <Button x:Name="RequestPlaces" 
+                    Text="Call Api" FontSize="27" TextColor="Orange" 
+                    BorderColor="White"
+                    Clicked="RequestPlaces_Clicked"
+                    />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
