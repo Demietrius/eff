@@ -6,11 +6,15 @@ using System.Threading.Tasks;
 using Microsoft.Azure.Documents.Client;
 using Microsoft.Azure.Documents.Linq;
 using eff.Models;
+using Microsoft.Azure.Documents;
+using User = eff.Models.User;
 
 namespace eff.ViewModels
 {
     class UserManager
     {
+
+
         static UserManager defaultInstance = new UserManager();
 
         const string accountURL = @"https://effdatabase.documents.azure.com:443/";
@@ -21,6 +25,13 @@ namespace eff.ViewModels
         private Uri collectionLink = UriFactory.CreateDocumentCollectionUri(databaseId, collectionId);
 
         private DocumentClient client;
+
+        public List<User> list
+        {
+            get;
+            private set;
+        }
+
 
         private UserManager()
         {
@@ -64,17 +75,34 @@ namespace eff.ViewModels
             return users;
         }
 
-       /* private bool IsExsitingUser(User NewUser)
+        public async Task<List<User>> IsExsitingUser(User NewUser)
         {
+            list = new List<User>();
             try
             {
+
+                /*               string QueryString = $"SELECT * FROM{this.collectionLink} C WHERE c.Username = @newName";
+                               SqlParameterCollection parameters = new SqlParameterCollection()
+                               {
+                               new SqlParameter("@newName", NewUser.Username)
+                               };
+
+                               SqlQuerySpec querySpec = new SqlQuerySpec()
+                               {
+                                   QueryText = QueryString,
+                                   Parameters = parameters
+                               };*/
+
                 var query = client.CreateDocumentQuery<User>(collectionLink, new FeedOptions { MaxItemCount = -1 })
-                       .Where(user => user.Username.Equals(NewUser.Username))
+                       .Where(user => user.Username.Equals("pp"))
                        .AsDocumentQuery();
-                if (query.HasMoreResults)
-                    return false;
-                else
-                    return true;
+
+
+                while (query.HasMoreResults)
+                {
+                    list.AddRange(await query.ExecuteNextAsync<User>());
+                
+                }
 
             }
             catch (Exception e)
@@ -82,16 +110,13 @@ namespace eff.ViewModels
                 Console.Error.WriteLine(@"Error{0}", e.Message);
             }
 
-            return true;
-        }*/
+            return list;
+        }
 
 
         public async Task<User> InsertUser(User user)
         {
-          /*  if (!IsExsitingUser(user))
-            {
-                return null;
-            }*/
+            var List = IsExsitingUser(user);
 
             try
             {
