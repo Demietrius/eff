@@ -4,7 +4,8 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="eff.Views.NearbyRestaurants">
+             x:Class="eff.Views.NearbyRestaurants"
+             Title="Places List">
     <ContentPage.Content>
         <StackLayout>
             <Button x:Name="RequestPlaces" 
@@ -12,6 +13,14 @@
                     BorderColor="White"
                     Clicked="RequestPlaces_Clicked"
                     />
+            <ListView x:Name="PlacesView"
+            ItemsSource="{Binding Places}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextCell Text="{Binding name}" />
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
