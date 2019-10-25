@@ -4,9 +4,10 @@ using System.Text;
 using System.Net.Http.Headers;
 using System.Threading;
 using System.Threading.Tasks;
-using Yelp;
 using eff.Models;
 using Yelp.Api;
+using Yelp.Api.Models;
+
 namespace eff.ViewModels
 {
     class YelpManager
@@ -19,14 +20,15 @@ namespace eff.ViewModels
 
         Client client = new Client(client_key, null);
 
-    }
-    public async Task<YelpObject> SearchBusinessesAllAsync(string term, double latitude, double longitude, CancellationToken ct = default(CancellationToken))
-    {
-        SearchRequest search = new SearchRequest();
-        if (!string.IsNullOrEmpty(term))
-            search.Term = term;
-        search.Latitude = latitude;
-        search.Longitude = longitude;
-        return this.SearchBusinessesAllAsync(search, ct);
+
+        public async Task<YelpObject> SearchBusinessesAllAsync(string term, double latitude, double longitude, CancellationToken ct = default(CancellationToken))
+        {
+            SearchRequest search = new SearchRequest();
+            if (!string.IsNullOrEmpty(term))
+                search.Term = term;
+            search.Latitude = latitude;
+            search.Longitude = longitude;
+            return this.SearchBusinessesAllAsync(search, ct);
+        }
     }
 }
