@@ -11,7 +11,7 @@
             RelativeLayout.HeightConstraint= "{ConstraintExpression Type=RelativeToParent, Property=Height}"
             />
 
-        <StackLayout HorizontalOptions="Center" VerticalOptions="Center" Orientation="Horizontal"
+        <Label  HorizontalOptions="Center" VerticalOptions="Center" Text="create lobby" FontSize="32" TextColor="Orange" 
                      RelativeLayout.WidthConstraint=
                  "{ConstraintExpression Type=RelativeToParent,
                                         Property=Width,
@@ -19,13 +19,7 @@
              RelativeLayout.HeightConstraint=
                  "{ConstraintExpression Type=RelativeToParent,
                                         Property=Height,
-                                        Factor=.40}">
-
-                <CheckBox x:Name="CB_ExpressGame" Color="Orange" IsChecked="True" />
-                <Label HeightRequest="0" Text=" "/>
-                <Label x:Name="Lbl_Checkbox" Text="express game settings" TextColor="Orange" FontAttributes="Bold" FontSize="20" />
-            </StackLayout>
-
+                                        Factor=.28}"/>
 
         <StackLayout Orientation="Vertical" HorizontalOptions="Center" VerticalOptions="Center" Padding="20" WidthRequest="190"
                      RelativeLayout.WidthConstraint=
@@ -37,22 +31,23 @@
                                         Property=Height,
                                         Factor=1}">
 
-            <Label x:Name="Spacer" HeightRequest="100"></Label>
+            <Label x:Name="Spacer" HeightRequest="65"></Label>
             <Label x:Name="Lbl_GroupName" Text="group name" TextColor="Orange" FontAttributes="Bold" FontSize="20"/>
-            <Entry x:Name="Entry_GroupName" Placeholder="group name" />
-            <Label x:Name="Lbl_Zipcode" Text="zip code" TextColor="Orange" FontAttributes="Bold" FontSize="20"/>
-            <Entry x:Name="Entry_ZipCode" Placeholder="zip code"/>
+            <Entry x:Name="Entry_GroupName" Placeholder="group" />
+            <Label x:Name="Lbl_City" Text="city name" TextColor="Orange" FontAttributes="Bold" FontSize="20"/>
+            <Entry x:Name="Entry_City" Placeholder="city"/>
 
             <Label x:Name="Lbl_NumPlaces" Text="max restaurants" TextColor="Orange" FontAttributes="Bold" FontSize="20"/>
-            <Picker x:Name="Pkr_NumPlaces" Title="select a maxium number of restaurants in area" >
+            <Picker x:Name="Pkr_NumPlaces" Title="select a maxium number of restaurants in area">
                 <Picker.ItemsSource>
                     <x:Array Type="{x:Type x:String}">
-                        <x:String>less than 5</x:String>
-                        <x:String>less than 10</x:String>
-                        <x:String>less than 15</x:String>
+                        <x:String>5</x:String>
+                        <x:String>10</x:String>
+                        <x:String>15</x:String>
                         <x:String>maxium amount</x:String>
                     </x:Array>
                  </Picker.ItemsSource>
+                <Picker.SelectedIndex>2</Picker.SelectedIndex>
             </Picker>
 
             <Label x:Name="Lbl_Price" Text="price range" TextColor="Orange" FontAttributes="Bold" FontSize="20"/>
@@ -60,27 +55,29 @@
                 <Picker.ItemsSource>
                     <x:Array Type="{x:Type x:String}">
                          <!--<x:String></x:String>-->
-                        <x:String>less than $$</x:String>
-                        <x:String>less than $$$</x:String>
-                        <x:String>less than $$$$</x:String>
+                        <x:String>low</x:String>
+                        <x:String>medium</x:String>
+                        <x:String>high</x:String>
                     </x:Array>
                 </Picker.ItemsSource>
+                <Picker.SelectedIndex>1</Picker.SelectedIndex>
             </Picker>
 
             <Label x:Name="Lbl_Distance" Text="distance" TextColor="Orange" FontAttributes="Bold" FontSize="20"/>
             <Picker x:Name="Pkr_Distance" Title="set a max distance">
                 <Picker.ItemsSource>
                     <x:Array Type="{x:Type x:String}">
-                        <x:String>less than 1 mile</x:String>
-                        <x:String>less than 3 miles</x:String>
-                        <x:String>less than 5 miles</x:String>
-                        <x:String>less than 10 miles</x:String>
-                    </x:Array>
+                        <x:String>1 mile</x:String>
+                        <x:String>3 miles</x:String>
+                        <x:String>5 miles</x:String>
+                        <x:String>10 miles</x:String>
+                     </x:Array>
                 </Picker.ItemsSource>
+                <Picker.SelectedIndex>1</Picker.SelectedIndex>
             </Picker>
 
             <Label Text="" HeightRequest="30"/>
-            <Button Text="submit" TextColor="Black" BackgroundColor="Orange"
+            <Button Text="submit" TextColor="Black" FontSize="20" BackgroundColor="Orange"
                     FontAttributes="Bold" CornerRadius="13" />
         </StackLayout>
         

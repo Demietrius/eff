@@ -15,15 +15,23 @@
             RelativeLayout.HeightConstraint= "{ConstraintExpression Type=RelativeToParent, Property=Height}"
             />
 
-        <Label Text="eff" TextColor="Orange" FontSize="65" FontAttributes="Bold"
-                RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent,
+        <Label Text="Hello, Mark" TextColor="Orange" FontSize="25" FontAttributes="Italic" HorizontalOptions="Center" VerticalOptions="Center"
+                RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,
                     Property=Width,
-                    Factor=.52,
-                    Constant=-50}"
-                RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent,
+                    Factor=1}"
+                RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent,
                     Property=Height,
-                    Factor=0.23,
-                    Constant=-50}"
+                    Factor=0.18}"
+               />
+
+        <Label Text="eff" TextColor="Orange" FontSize="65" FontAttributes="Bold" HorizontalOptions="Center"
+               VerticalOptions="Center"
+               RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,
+                    Property=Width,
+                    Factor=1}"
+                RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent,
+                    Property=Height,
+                    Factor=.5}"
                />
 
         <StackLayout Orientation="Vertical" VerticalOptions="End" HorizontalOptions="Center"  Spacing="20"
