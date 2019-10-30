@@ -63,6 +63,7 @@ namespace eff.Views
             }
             if (pass1.Equals(pass2))
             {
+                Lbl_passwordError.IsVisible = false;
                 return true;
             }
             else
@@ -77,6 +78,7 @@ namespace eff.Views
             Match match = pattern.Match(email);
             if(match.Success)
             {
+                Lbl_emailError.IsVisible = false;
                 return true;
             }
             else
