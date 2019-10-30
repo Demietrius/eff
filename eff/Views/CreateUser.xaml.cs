@@ -53,6 +53,7 @@ namespace eff.Views
             /*   user.ItemsSource = await userManger.GetTodoItemsAsync();*/
         }
 
+
         private Boolean CheckPassword(String pass1, String pass2)
         {
             if(pass2.Length < 6 && pass2.Length < 6)

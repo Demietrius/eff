@@ -19,6 +19,8 @@ namespace eff.Views
         private async void Login(object sender, EventArgs e)
         {
 
+            //TODO: check login
+            await Navigation.PushAsync(new UserHome());
         }
 
         private async void OnSignUpClicked(object sender, EventArgs e)
