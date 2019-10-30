@@ -10,27 +10,19 @@ using Xamarin.Forms.Xaml;
 using Plugin.Geolocator;
 using System.Collections.ObjectModel;
 using eff.Models;
+using Newtonsoft.Json.Linq;
 
 namespace eff.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class NearbyRestaurants : ContentPage
     {
+        public ObservableCollection<Place> Places { get; } = new ObservableCollection<Place>();
         public NearbyRestaurants()
         {
             InitializeComponent();
-            PlacesView.ItemsSource = places;
-
-            // ObservableCollection allows items to be added after ItemsSource
-            // is set and the UI will react to changes
-            places.Add(new Place { name = "Rob Finnerty" });
-            places.Add(new Place { name = "Bill Wrestler" });
-            places.Add(new Place { name = "Dr. Geri-Beth Hooper" });
-            places.Add(new Place { name = "Dr. Keith Joyce-Purdy" });
-            places.Add(new Place { name = "Sheri Spruce" });
-            places.Add(new Place { name = "Burt Indybrick" });
+            PlacesView.ItemsSource = Places;
         }
-
 
         protected async void RequestPlaces_Clicked(object sender, EventArgs e)
         {
@@ -63,27 +55,19 @@ namespace eff.Views
 
             var stream = new StreamReader(webResponse.GetResponseStream(), Encoding.UTF8);
             var content = stream.ReadToEnd();
-            Console.Write(content);
-            System.Diagnostics.Debug.WriteLine(content);
-            System.Diagnostics.Debug.WriteLine("FINDME");
+
+            JObject joResponse = JObject.Parse(content);
+            JArray array = (JArray)joResponse["businesses"];
+            string businesses = array[0].ToString();
+
+            foreach (JToken bus in joResponse.SelectToken("businesses"))
+            {
+                string b = (string)bus.SelectToken("name");
+                Places.Add(new Place { name = b });
+            }
         }
 
-        ObservableCollection<Place> places = new ObservableCollection<Place>();
-        public ObservableCollection<Place> Places { get { return places; } }
 
-/*        public NearbyRestaurants()
-        {
-            PlacesView.ItemsSource = places;
-
-            // ObservableCollection allows items to be added after ItemsSource
-            // is set and the UI will react to changes
-            places.Add(new Place { name = "Rob Finnerty" });
-            places.Add(new Place { name = "Bill Wrestler" });
-            places.Add(new Place { name = "Dr. Geri-Beth Hooper" });
-            places.Add(new Place { name = "Dr. Keith Joyce-Purdy" });
-            places.Add(new Place { name = "Sheri Spruce" });
-            places.Add(new Place { name = "Burt Indybrick" });
-        }*/
     }
 
 }
