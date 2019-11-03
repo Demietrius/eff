@@ -17,7 +17,6 @@ namespace eff.Views
         {
             ResturantView resturantView = new ResturantView();
             InitializeComponent();
-            BindingContext = new ResturantViewTest();
         }
     }
 }
