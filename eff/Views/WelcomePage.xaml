@@ -47,18 +47,31 @@
              Clicked="OnLoginClicked"
                 />
 
-            <Button x:Name="Btn_SignUp" Text="guest" FontSize="27" TextColor="Orange" 
-            RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent,
-                Property=Width,
-                Factor=0.29,
+        <Button x:Name="Btn_SignUp" Text="guest" FontSize="27" TextColor="Orange" 
+        RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent,
+            Property=Width,
+            Factor=0.29,
+            Constant=-50}"
+        RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent,
+            Property=Height,
+            Factor=.9,
+            Constant=-50}"
+            BorderColor="White"
+            Clicked="OnGuestClicked"
+                />
+        
+        <Button x:Name="Btn_NearbyRestaurants" Text="Nearby" FontSize="27" TextColor="Orange" 
+                RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent,
+            Property=Width,
+                Factor=0.5,
                 Constant=-50}"
             RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent,
                 Property=Height,
                 Factor=.9,
-                Constant=-50}"
+                Constant=10}"
                 BorderColor="White"
-                Clicked="OnGuestClicked"
-                    />
+                Clicked="OnNearbyRestaurantsClicked"
+                />
 
     </RelativeLayout>
 
