@@ -52,6 +52,8 @@ namespace eff.ViewModels
 
         public List<User> users { get; private set; }
 
+
+
         public async Task<List<User>> GetUserById(int UserId)
         {
             try
@@ -75,48 +77,39 @@ namespace eff.ViewModels
             return users;
         }
 
+
+        public List<User> Clients { get; private set; }
+
         public async Task<List<User>> IsExsitingUser(User NewUser)
         {
-            list = new List<User>();
             try
             {
 
-                /*               string QueryString = $"SELECT * FROM{this.collectionLink} C WHERE c.Username = @newName";
-                               SqlParameterCollection parameters = new SqlParameterCollection()
-                               {
-                               new SqlParameter("@newName", NewUser.Username)
-                               };
-
-                               SqlQuerySpec querySpec = new SqlQuerySpec()
-                               {
-                                   QueryText = QueryString,
-                                   Parameters = parameters
-                               };*/
-
                 var query = client.CreateDocumentQuery<User>(collectionLink, new FeedOptions { MaxItemCount = -1 })
-                       .Where(user => user.Username.Equals("pp"))
+                       .Where(user => user.Username =="asdf@aol.com")
                        .AsDocumentQuery();
 
-
+                Clients = new List<User>();
                 while (query.HasMoreResults)
                 {
-                    list.AddRange(await query.ExecuteNextAsync<User>());
+                    Clients.AddRange(await query.ExecuteNextAsync<User>());
                 
                 }
 
             }
-            catch (Exception e)
+catch (Exception e)
             {
                 Console.Error.WriteLine(@"Error{0}", e.Message);
+                return null;
             }
 
-            return list;
+            return Clients;
         }
 
 
         public async Task<User> InsertUser(User user)
         {
-            var List = IsExsitingUser(user);
+            var List = await IsExsitingUser(user);
 
             try
             {
