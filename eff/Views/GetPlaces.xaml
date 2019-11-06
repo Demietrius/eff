@@ -4,15 +4,21 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="eff.Views.ResturantView"
-             Title="Grid header and footer (View)">
-    <StackLayout Margin="20">
-        <CollectionView ItemsSource="{Binding YelpObject}">
+             x:Class="eff.Views.GetPlaces"
+             Title="Places Grid">
+
+    <StackLayout Margin="5" BackgroundColor="Gray">
+        <Button x:Name="RequestPlaces" 
+                    Text="Call Api" FontSize="27" TextColor="Orange" 
+                    BorderColor="White"
+                    Clicked="RequestPlaces_Clicked"
+                    />
+        <CollectionView x:Name="PlacesView" ItemsSource="{Binding Places}">
             <CollectionView.ItemsLayout>
-                <GridItemsLayout Orientation="Horizontal"
-                                 Span="2" />
+                <GridItemsLayout Orientation="Vertical"
+                                 Span="1" />
             </CollectionView.ItemsLayout>
-            <CollectionView.Header>
+            <!--<CollectionView.Header>
                 <StackLayout BackgroundColor="LightGray">
                     <Label Margin="10,0,0,0"
                            Text="YelpObject"
@@ -27,31 +33,32 @@
                            FontSize="Small"
                            FontAttributes="Bold" />
                 </StackLayout>
-            </CollectionView.Footer>
+            </CollectionView.Footer>-->
             <CollectionView.ItemTemplate>
                 <DataTemplate>
-                    <Grid Padding="10">
+                    <Grid Padding="8">
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="100" />
+                            <RowDefinition Height="100" />
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto" />
-                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
                         <Image Grid.RowSpan="2"
-                               Source="{Binding ImageUrl}"
-                               Aspect="AspectFill"
-                               HeightRequest="60"
-                               WidthRequest="60" />
+                               Source="{Binding image_url}"
+                               Aspect="Fill"
+                               HeightRequest="100"
+                               WidthRequest="100" />
                         <Label Grid.Column="1"
-                               Text="{Binding Name}"
+                               Text="{Binding name}"
                                FontAttributes="Bold" />
                         <Label Grid.Row="1"
                                Grid.Column="1"
-                               Text="{Binding Id}"
+                               Text="{Binding rating}"
                                FontAttributes="Italic"
-                               VerticalOptions="End" />
+                               VerticalTextAlignment="End"
+                               />
                     </Grid>
                 </DataTemplate>
             </CollectionView.ItemTemplate>

@@ -22,6 +22,8 @@
 
   <ItemGroup>
     <EmbeddedResource Remove="Views\GroupPage.xaml" />
+    <EmbeddedResource Remove="Views\ResturantView.xaml" />
+    <EmbeddedResource Remove="Views\ResturantView.xaml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Update="Views\WelcomePage.xaml">

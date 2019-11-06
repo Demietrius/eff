@@ -13,7 +13,7 @@ namespace eff.Views
         }
         private async void OnJoinClicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new ResturantView());
+            await Navigation.PushAsync(new GetPlaces());
          //   await Navigation.PushAsync(new GuestPage());
         }
 
