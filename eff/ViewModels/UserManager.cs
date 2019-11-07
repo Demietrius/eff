@@ -24,18 +24,12 @@ namespace eff.ViewModels
 
         private Uri collectionLink = UriFactory.CreateDocumentCollectionUri(databaseId, collectionId);
 
-        private DocumentClient client;
-
-        public List<User> list
-        {
-            get;
-            private set;
-        }
+        private DocumentClient user;
 
 
         private UserManager()
         {
-            client = new DocumentClient(new System.Uri(accountURL), accountKey);
+            user = new DocumentClient(new System.Uri(accountURL), accountKey);
         }
 
         public static UserManager DefaultManager
@@ -59,7 +53,7 @@ namespace eff.ViewModels
             try
             {
                 // The query excludes completed TodoItems
-                var query = client.CreateDocumentQuery<User>(collectionLink, new FeedOptions { MaxItemCount = -1 })
+                var query = user.CreateDocumentQuery<User>(collectionLink, new FeedOptions { MaxItemCount = -1 })
                       .Where(user => user.Id.Equals(UserId))
                       .AsDocumentQuery();
 
@@ -80,20 +74,20 @@ namespace eff.ViewModels
 
         public List<User> Clients { get; private set; }
 
-        public async Task<List<User>> IsExsitingUser(User NewUser)
+        public async Task<List<User>> GetUserByEmail(string Email)
         {
             try
             {
 
-                var query = client.CreateDocumentQuery<User>(collectionLink, new FeedOptions { MaxItemCount = -1 })
-                       .Where(user => user.Username =="asdf@aol.com")
+                var query = user.CreateDocumentQuery<User>(collectionLink, new FeedOptions { EnableCrossPartitionQuery = true, MaxItemCount = -1 })
+                       .Where(user => user.Username == Email)
                        .AsDocumentQuery();
 
                 Clients = new List<User>();
                 while (query.HasMoreResults)
                 {
                     Clients.AddRange(await query.ExecuteNextAsync<User>());
-                
+                    
                 }
 
             }
@@ -107,16 +101,18 @@ catch (Exception e)
         }
 
 
-        public async Task<User> InsertUser(User user)
+        public async Task<User> InsertUser(User NewUser)
         {
-            var List = await IsExsitingUser(user);
 
-            try
+     
+
+                try
             {
+              
 
-                var result = await client.CreateDocumentAsync(collectionLink, user);
-                user.Id = result.Resource.Id;
-                users.Add(user);
+                var result = await user.CreateDocumentAsync(collectionLink, NewUser);
+                NewUser.Id = result.Resource.Id;
+                users.Add(NewUser);
 
 
             }
@@ -124,7 +120,7 @@ catch (Exception e)
             {
                 Console.Error.WriteLine(@"ERROR {0}", e.Message);
             }
-            return user;
+            return NewUser;
         }
 
          

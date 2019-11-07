@@ -19,31 +19,59 @@ namespace eff.Views
             userManger = UserManager.DefaultManager;
         }
 
+      
+
         public async void InsertUser(object sender, EventArgs e)
         {
+
+           
             var user = new User { Username = Entry_Username.Text, Password = Entry_Password.Text};
 
-            if (CheckEmail(Entry_Username.Text) == true)
-            {
-                if (CheckPassword(Entry_Password.Text, Entry2_Password.Text) == true)
-                {
 
-                    await AddItem(user);
-
-                    await Navigation.PushAsync(new UserHome());
-                }
-                else
-                {
-                    //make a warning appear on view showing that passwords do not match
-                    Entry_Password.Text = "";
-                    Entry2_Password.Text = "";
-                    Lbl_passwordError.IsVisible = true;
-                }
-            }
-            else
+            var Userlist = await userManger.GetUserByEmail(user.Username);
+            if (Userlist.Count == 0)
             {
-                Lbl_emailError.IsVisible = true;
-                Entry_Username.Text = "";
+
+
+
+
+                if (CheckEmail(Entry_Username.Text) == true)
+                {
+                    if (CheckPassword(Entry_Password.Text, Entry2_Password.Text) == true)
+                    {
+
+                        await AddItem(user);
+
+                        await Navigation.PushAsync(new UserHome());
+                    }
+                    else
+                    {
+                        //make a warning appear on view showing that passwords do not match
+                        warrning("password");
+                    }
+                }else
+                {
+                    warrning("user");
+                }
+            }else
+                warrning("user");
+
+        }
+
+
+        private void warrning(string type) {
+            //make a warning appear on view showing that passwords do not match
+            if (type.Equals("password"))
+            {
+                Entry_Password.Text = "";
+                Entry2_Password.Text = "";
+                Lbl_passwordError.IsVisible = true;
+            } else if (type.Equals("user"))
+            {
+                Entry_Username.Text="";
+                Entry_Password.Text = "";
+                Entry2_Password.Text = "";
+                Lbl_passwordError.IsVisible = true;
             }
         }
          
@@ -75,6 +103,7 @@ namespace eff.Views
 
         private Boolean CheckEmail(String email)
         {
+
             Regex pattern =  new Regex(@"[a-zA-Z0-9]{1,30}@[a-zA-Z]{1,20}.[a-zA-Z]{1,10}");
             Match match = pattern.Match(email);
             if(match.Success)
@@ -88,6 +117,7 @@ namespace eff.Views
             }
         }
 
+  
     }
 }
 

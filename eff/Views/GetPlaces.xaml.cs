@@ -33,7 +33,7 @@ namespace eff.Views
             //String longitude = position.Longitude.ToString();
             String latitude = "39.032329";
             String longitude = "-94.348950";
-            String categories = "food";
+            String categories = "Restaurants";
             int radius = 1610;
 
             //documentation https://www.yelp.com/developers/documentation/v3/business_search
