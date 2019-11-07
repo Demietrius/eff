@@ -123,7 +123,36 @@ catch (Exception e)
             return NewUser;
         }
 
-         
+
+        public async Task<User> Login(User tempUser)
+        {
+            try
+            {
+
+                var query = user.CreateDocumentQuery<User>(collectionLink, new FeedOptions { EnableCrossPartitionQuery = true, MaxItemCount = -1 })
+                       .Where(user => user.Username == tempUser.Username && user.Password == tempUser.Password)
+                       .AsDocumentQuery();
+
+                Clients = new List<User>();
+                while (query.HasMoreResults)
+                {
+                    Clients.AddRange(await query.ExecuteNextAsync<User>());
+
+                }
+
+                if (Clients.Count > 1)
+                    return null;
+
+            }
+            catch (Exception e)
+            {
+                Console.Error.WriteLine(@"Error{0}", e.Message);
+                return null;
+            }
+
+            return Clients[0];
+        }
+
         /*public async Task CompleteItemAsync(User user)
         {
             try
