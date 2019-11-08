@@ -32,25 +32,25 @@
                                         Factor=1}">
 
             <Label x:Name="Spacer" HeightRequest="65"></Label>
-            <Label x:Name="Lbl_GroupName" Text="group name" TextColor="Orange" FontAttributes="Bold" FontSize="20"/>
-            <Entry x:Name="Entry_GroupName" Placeholder="group" />
-            <Label x:Name="Lbl_City" Text="city name" TextColor="Orange" FontAttributes="Bold" FontSize="20"/>
+            <Label x:Name="Lbl_RoomName" Text="room  name" TextColor="Orange" FontAttributes="Bold" FontSize="22"/>
+            <Entry x:Name="Entry_RoomName" Placeholder="room" />
+            <Label x:Name="Lbl_City" Text="city name" TextColor="Orange" FontAttributes="Bold" FontSize="22"/>
             <Entry x:Name="Entry_City" Placeholder="city"/>
 
-            <Label x:Name="Lbl_NumPlaces" Text="max restaurants" TextColor="Orange" FontAttributes="Bold" FontSize="20"/>
+            <Label x:Name="Lbl_NumPlaces" Text="max restaurants" TextColor="Orange" FontAttributes="Bold" FontSize="22"/>
             <Picker x:Name="Pkr_NumPlaces" Title="select a maxium number of restaurants in area">
                 <Picker.ItemsSource>
                     <x:Array Type="{x:Type x:String}">
                         <x:String>5</x:String>
                         <x:String>10</x:String>
                         <x:String>15</x:String>
-                        <x:String>maxium amount</x:String>
+                        <x:String>max</x:String>
                     </x:Array>
                  </Picker.ItemsSource>
                 <Picker.SelectedIndex>2</Picker.SelectedIndex>
             </Picker>
 
-            <Label x:Name="Lbl_Price" Text="price range" TextColor="Orange" FontAttributes="Bold" FontSize="20"/>
+            <Label x:Name="Lbl_Price" Text="price range" TextColor="Orange" FontAttributes="Bold" FontSize="22"/>
             <Picker x:Name="Pkr_Price" Title="set a max price range">
                 <Picker.ItemsSource>
                     <x:Array Type="{x:Type x:String}">
@@ -63,7 +63,7 @@
                 <Picker.SelectedIndex>1</Picker.SelectedIndex>
             </Picker>
 
-            <Label x:Name="Lbl_Distance" Text="distance" TextColor="Orange" FontAttributes="Bold" FontSize="20"/>
+            <Label x:Name="Lbl_Distance" Text="distance" TextColor="Orange" FontAttributes="Bold" FontSize="22"/>
             <Picker x:Name="Pkr_Distance" Title="set a max distance">
                 <Picker.ItemsSource>
                     <x:Array Type="{x:Type x:String}">

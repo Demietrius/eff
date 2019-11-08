@@ -7,7 +7,7 @@
              x:Class="eff.Views.GetPlaces"
              Title="Places Grid">
 
-    <StackLayout Margin="5" BackgroundColor="Gray">
+    <StackLayout Margin="0" BackgroundColor="Gray">
         <Button x:Name="RequestPlaces" 
                     Text="Call Api" FontSize="27" TextColor="Orange" 
                     BorderColor="White"

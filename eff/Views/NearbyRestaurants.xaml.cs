@@ -11,30 +11,37 @@ using Plugin.Geolocator;
 using System.Collections.ObjectModel;
 using eff.Models;
 using Newtonsoft.Json.Linq;
+using eff.ViewModels;
 
 namespace eff.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class GetPlaces : ContentPage
+    public partial class NearbyRestaurants : ContentPage
     {
+        YelpManager yelpManager;
         public ObservableCollection<Place> Places { get; } = new ObservableCollection<Place>();
-        public GetPlaces()
+        public NearbyRestaurants()
         {
             InitializeComponent();
             PlacesView.ItemsSource = Places;
+            yelpManager = new YelpManager();
         }
 
-        protected void RequestPlaces_Clicked(object sender, EventArgs e)
+        protected async void RequestPlaces_Clicked(object sender, EventArgs e)
         {
-           // var locator = CrossGeolocator.Current;
-            //locator.DesiredAccuracy = 50;
-            //var position = await locator.GetPositionAsync(TimeSpan.FromSeconds(1000), null, true);
+<<<<<<< Updated upstream
+            yelpManager.RequestPlaces_Clicked();
+            
+   
+=======
+            var locator = CrossGeolocator.Current;
+            locator.DesiredAccuracy = 50;
+            var position = await locator.GetPositionAsync(TimeSpan.FromSeconds(1000), null, true);
             //String latitude =  position.Latitude.ToString();
             //String longitude = position.Longitude.ToString();
             String latitude = "39.032329";
             String longitude = "-94.348950";
-            String categories = "Restaurant";
-
+            String categories = "food";
             int radius = 1610;
 
             //documentation https://www.yelp.com/developers/documentation/v3/business_search
@@ -42,7 +49,7 @@ namespace eff.Views
             //1610 meters = 1 mile
             //Yelp api key : FxutAF1Xi3y_LjzpSKaV9aijfwKwcLLOs8APnHCcPu8FhZyKHvxPvS9_Fe_hx5jmcuPWr1nvBg6LJGiaiBp4YFi-uWVBAo-mqgNKD22bP0EdhsCdmOrveY6XX1myXXYx
             string placesSearchString = "https://api.yelp.com/v3/businesses/search" +
-                "?latitude=" + latitude +
+                "&latitude=" + latitude +
                 "&longitude=" + longitude +
                 "&categories=" + categories +
                 "&radius=" + radius;
@@ -64,10 +71,9 @@ namespace eff.Views
             foreach (JToken bus in joResponse.SelectToken("businesses"))
             {
                 string b = (string)bus.SelectToken("name");
-                string c = (string)bus.SelectToken("image_url");
-                string d = (string)bus.SelectToken("rating");
-                Places.Add(new Place { name = b, image_url = c, rating = d });
+                Places.Add(new Place { name = b });
             }
+>>>>>>> Stashed changes
         }
 
 
