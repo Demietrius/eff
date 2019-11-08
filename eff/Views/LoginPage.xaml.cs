@@ -22,7 +22,7 @@ namespace eff.Views
         private async void Login(object sender, EventArgs e)
         {
 
-            var tempUser = new User { Username = Entry_Username.Text, Password = Entry_Password.Text };
+            var tempUser = new User { Username = Entry_Username.Text.ToLower(), Password = Entry_Password.Text};
             // hashing password
             using (MD5 md5Hash = MD5.Create())
             {
