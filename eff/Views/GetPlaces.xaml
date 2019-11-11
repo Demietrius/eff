@@ -36,10 +36,10 @@
             </CollectionView.Footer>-->
             <CollectionView.ItemTemplate>
                 <DataTemplate>
-                    <Grid Padding="8">
+                    <Grid Padding="10">
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="100" />
-                            <RowDefinition Height="100" />
+                            <RowDefinition Height="35" />
+                            <RowDefinition Height="35" />
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*" />
@@ -47,18 +47,23 @@
                         </Grid.ColumnDefinitions>
                         <Image Grid.RowSpan="2"
                                Source="{Binding image_url}"
-                               Aspect="Fill"
+                               Aspect="AspectFill"
                                HeightRequest="100"
                                WidthRequest="100" />
                         <Label Grid.Column="1"
                                Text="{Binding name}"
-                               FontAttributes="Bold" />
+                               FontAttributes="Bold" 
+                               LineBreakMode="TailTruncation" />
                         <Label Grid.Row="1"
                                Grid.Column="1"
-                               Text="{Binding rating}"
+                               Text="{Binding rating, StringFormat='{0:N} Stars'}"
+                               LineBreakMode="TailTruncation"
                                FontAttributes="Italic"
                                VerticalTextAlignment="End"
                                />
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding GridButtonPressed}" CommandParameter="1"/>
+                        </Grid.GestureRecognizers>
                     </Grid>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
