@@ -69,7 +69,23 @@ namespace eff.Views
             }
         }
 
+        private void LabelClickedLike(object sender, EventArgs e)
+        {
+            var entity = ((Image)sender);
+            if (entity.BackgroundColor != Color.Green)
+                entity.BackgroundColor = Color.Green;
+            else
+                entity.BackgroundColor = Color.Gray;
+        }
 
+        private void LabelClickedSuperLike(object sender, EventArgs e)
+        {
+            var entity = ((Image)sender);
+            if (entity.BackgroundColor != Color.HotPink)
+            entity.BackgroundColor = Color.HotPink;
+            else
+                entity.BackgroundColor = Color.Gray;
+        }
     }
 
 }
