@@ -25,6 +25,7 @@
     <EmbeddedResource Remove="Views\ResturantView.xaml" />
     <EmbeddedResource Remove="Views\ResturantView.xaml" />
     <EmbeddedResource Remove="Views\NearbyRestaurants.xaml" />
+    <EmbeddedResource Remove="Views\MyPage.xaml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Update="Views\WelcomePage.xaml">
@@ -35,6 +36,7 @@
     <Compile Remove="Views\GroupPage.xaml.cs" />
     <Compile Remove="Views\NearbyRestaurants.xaml.cs" />
     <Compile Remove="Views\NearbyRestaurants.xaml.cs" />
+    <Compile Remove="Views\MyPage.xaml.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Update="Views\InviteUsers.xaml.cs">

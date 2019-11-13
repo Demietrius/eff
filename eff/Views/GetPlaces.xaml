@@ -38,52 +38,59 @@
                 <DataTemplate>
                     <Grid Padding="10">
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="35" />
-                            <RowDefinition Height="35" />
+                            
+                            <RowDefinition Height="60" />
+                            <RowDefinition Height="60" />
+                            
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*" />
                             <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
-                        <Image Grid.RowSpan="2"
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="LabelClicked" />
+                        </Grid.GestureRecognizers>
+                        <Image x:Name="name" Grid.RowSpan="2"
                                Source="{Binding image_url}"
                                Aspect="AspectFill"
                                HeightRequest="100"
                                WidthRequest="100" />
                         <Label Grid.Column="1"
-                               Grid.ColumnSpan="2"
+                               Grid.ColumnSpan="1"
                                Text="{Binding name}"
-                               FontAttributes="Bold" 
-                               LineBreakMode="TailTruncation" />
+                               FontAttributes="Bold" />
+                               <!--LineBreakMode="TailTruncation" />-->
                         <Label Grid.Row="1"
                                Grid.Column="1"
-                               Text="{Binding rating, StringFormat='{0:N} Stars'}"
-                               LineBreakMode="TailTruncation"
+                               Text="{Binding rating, StringFormat='{0:N} Stars'}"                               
                                FontAttributes="Italic"
                                VerticalTextAlignment="End"
                                />
-                        <Image Grid.RowSpan="1"
+                        <!--<Image x:Name="Unfavorite" Grid.RowSpan="1"
                                Grid.Row="1"
-                               Grid.Column="2"
-                               Source="Like.jpg"
+                               Grid.Column="1"
+                               Source="unfavorite.png"
+                               HorizontalOptions="Center"
                                Aspect="AspectFit"
-                               HeightRequest="20"
-                               WidthRequest="20">
+                               MinimumHeightRequest="20"
+                               MinimumWidthRequest="20">
                             <Image.GestureRecognizers>
-                                <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="LabelClickedLike" />
+                                <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="LabelClicked" />
                             </Image.GestureRecognizers>
                         </Image>
-                        <Image Grid.RowSpan="1"
+                        <Image x:Name="Favorite" Grid.RowSpan="1"
                                Grid.Row="1"
-                               Grid.Column="3"
-                               Source="Superlike.jpg"
+                               Grid.Column="1"
+                               Source="favorite.png"
+                               HorizontalOptions="Center"
                                Aspect="AspectFit"
                                HeightRequest="20"
-                               WidthRequest="20">
+                               WidthRequest="20"
+                               IsVisible="false">
                             <Image.GestureRecognizers>
-                                <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="LabelClickedSuperLike" />
+                                <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="LabelClicked" />
                             </Image.GestureRecognizers>
-                        </Image>
+                        </Image>-->
                     </Grid>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
