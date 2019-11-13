@@ -35,7 +35,6 @@ namespace eff.Views
             if (user != null)
             {
                 var userHome = new UserHome();
-                AppSettings.AddOrUpdateValue(usernamekey, tempUser);
                 await Navigation.PushAsync(new UserHome());
             }
             else
