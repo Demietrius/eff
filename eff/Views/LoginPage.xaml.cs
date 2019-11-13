@@ -33,10 +33,7 @@ namespace eff.Views
             // query the database to check if logged in
             var user = await userManger.Login(tempUser);
             if (user != null)
-            {
-                var userHome = new UserHome();
                 await Navigation.PushAsync(new UserHome());
-            }
             else
                 Error(user);
         }

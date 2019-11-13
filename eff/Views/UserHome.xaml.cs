@@ -13,8 +13,11 @@ namespace eff.Views
         }
         private async void OnJoinClicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new GuestPage());
+            await Navigation.PushAsync(new GetPlaces());
+         //   await Navigation.PushAsync(new GuestPage());
         }
+
+       
 
         private async void OnCreateLobbyClicked(object sender, EventArgs e)
         {

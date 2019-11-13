@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -11,29 +11,19 @@ using Plugin.Geolocator;
 using System.Collections.ObjectModel;
 using eff.Models;
 using Newtonsoft.Json.Linq;
-using eff.ViewModels;
 
-namespace eff.Views
+namespace eff.ViewModels
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class NearbyRestaurants : ContentPage
-    {
-        YelpManager yelpManager;
-        public ObservableCollection<Place> Places { get; } = new ObservableCollection<Place>();
-        public NearbyRestaurants()
-        {
-            InitializeComponent();
-            PlacesView.ItemsSource = Places;
-            yelpManager = new YelpManager();
-        }
 
-        protected async void RequestPlaces_Clicked(object sender, EventArgs e)
+    class YelpManager
+    {
+
+        public ObservableCollection<Place> Places { get; } = new ObservableCollection<Place>();
+  
+
+        public async void RequestPlaces_Clicked()
         {
-<<<<<<< Updated upstream
-            yelpManager.RequestPlaces_Clicked();
-            
-   
-=======
             var locator = CrossGeolocator.Current;
             locator.DesiredAccuracy = 50;
             var position = await locator.GetPositionAsync(TimeSpan.FromSeconds(1000), null, true);
@@ -49,7 +39,7 @@ namespace eff.Views
             //1610 meters = 1 mile
             //Yelp api key : FxutAF1Xi3y_LjzpSKaV9aijfwKwcLLOs8APnHCcPu8FhZyKHvxPvS9_Fe_hx5jmcuPWr1nvBg6LJGiaiBp4YFi-uWVBAo-mqgNKD22bP0EdhsCdmOrveY6XX1myXXYx
             string placesSearchString = "https://api.yelp.com/v3/businesses/search" +
-                "&latitude=" + latitude +
+                "?latitude=" + latitude +
                 "&longitude=" + longitude +
                 "&categories=" + categories +
                 "&radius=" + radius;
@@ -73,9 +63,7 @@ namespace eff.Views
                 string b = (string)bus.SelectToken("name");
                 Places.Add(new Place { name = b });
             }
->>>>>>> Stashed changes
         }
-
 
     }
 

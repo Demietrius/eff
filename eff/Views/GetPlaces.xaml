@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="eff.Views.GetPlaces"
+             Title="Places Grid">
+
+    <StackLayout Margin="0" BackgroundColor="Gray">
+        <Button x:Name="RequestPlaces" 
+                    Text="Call Api" FontSize="27" TextColor="Orange" 
+                    BorderColor="White"
+                    Clicked="RequestPlaces_Clicked"
+                    />
+        <CollectionView x:Name="PlacesView" ItemsSource="{Binding Places}">
+            <CollectionView.ItemsLayout>
+                <GridItemsLayout Orientation="Vertical"
+                                 Span="1" />
+            </CollectionView.ItemsLayout>
+            <!--<CollectionView.Header>
+                <StackLayout BackgroundColor="LightGray">
+                    <Label Margin="10,0,0,0"
+                           Text="YelpObject"
+                           FontSize="Small"
+                           FontAttributes="Bold" />
+                </StackLayout>
+            </CollectionView.Header>
+            <CollectionView.Footer>
+                <StackLayout BackgroundColor="LightGray">
+                    <Label Margin="10,0,0,0"
+                           Text="Friends of Xamarin YelpObject"
+                           FontSize="Small"
+                           FontAttributes="Bold" />
+                </StackLayout>
+            </CollectionView.Footer>-->
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid Padding="10">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="35" />
+                            <RowDefinition Height="35" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Image Grid.RowSpan="2"
+                               Source="{Binding image_url}"
+                               Aspect="AspectFill"
+                               HeightRequest="100"
+                               WidthRequest="100" />
+                        <Label Grid.Column="1"
+                               Grid.ColumnSpan="2"
+                               Text="{Binding name}"
+                               FontAttributes="Bold" 
+                               LineBreakMode="TailTruncation" />
+                        <Label Grid.Row="1"
+                               Grid.Column="1"
+                               Text="{Binding rating, StringFormat='{0:N} Stars'}"
+                               LineBreakMode="TailTruncation"
+                               FontAttributes="Italic"
+                               VerticalTextAlignment="End"
+                               />
+                        <Image Grid.RowSpan="1"
+                               Grid.Row="1"
+                               Grid.Column="2"
+                               Source="Like.jpg"
+                               Aspect="AspectFit"
+                               HeightRequest="20"
+                               WidthRequest="20">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="LabelClickedLike" />
+                            </Image.GestureRecognizers>
+                        </Image>
+                        <Image Grid.RowSpan="1"
+                               Grid.Row="1"
+                               Grid.Column="3"
+                               Source="Superlike.jpg"
+                               Aspect="AspectFit"
+                               HeightRequest="20"
+                               WidthRequest="20">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="LabelClickedSuperLike" />
+                            </Image.GestureRecognizers>
+                        </Image>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </StackLayout>
+</ContentPage>

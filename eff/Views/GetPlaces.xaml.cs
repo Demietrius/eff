@@ -11,37 +11,27 @@ using Plugin.Geolocator;
 using System.Collections.ObjectModel;
 using eff.Models;
 using Newtonsoft.Json.Linq;
-using eff.ViewModels;
+using Xamarin.Essentials;
 
 namespace eff.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class NearbyRestaurants : ContentPage
+    public partial class GetPlaces : ContentPage
     {
-        YelpManager yelpManager;
         public ObservableCollection<Place> Places { get; } = new ObservableCollection<Place>();
-        public NearbyRestaurants()
+        public GetPlaces()
         {
             InitializeComponent();
             PlacesView.ItemsSource = Places;
-            yelpManager = new YelpManager();
         }
 
         protected async void RequestPlaces_Clicked(object sender, EventArgs e)
         {
-<<<<<<< Updated upstream
-            yelpManager.RequestPlaces_Clicked();
-            
-   
-=======
-            var locator = CrossGeolocator.Current;
-            locator.DesiredAccuracy = 50;
-            var position = await locator.GetPositionAsync(TimeSpan.FromSeconds(1000), null, true);
-            //String latitude =  position.Latitude.ToString();
-            //String longitude = position.Longitude.ToString();
-            String latitude = "39.032329";
-            String longitude = "-94.348950";
-            String categories = "food";
+            var location = await Geolocation.GetLastKnownLocationAsync();
+            String latitude = location.Latitude.ToString();
+            String longitude = location.Longitude.ToString();
+            String categories = "Restaurant";
+
             int radius = 1610;
 
             //documentation https://www.yelp.com/developers/documentation/v3/business_search
@@ -49,10 +39,12 @@ namespace eff.Views
             //1610 meters = 1 mile
             //Yelp api key : FxutAF1Xi3y_LjzpSKaV9aijfwKwcLLOs8APnHCcPu8FhZyKHvxPvS9_Fe_hx5jmcuPWr1nvBg6LJGiaiBp4YFi-uWVBAo-mqgNKD22bP0EdhsCdmOrveY6XX1myXXYx
             string placesSearchString = "https://api.yelp.com/v3/businesses/search" +
-                "&latitude=" + latitude +
+                "?latitude=" + latitude +
                 "&longitude=" + longitude +
                 "&categories=" + categories +
                 "&radius=" + radius;
+
+            Console.WriteLine(placesSearchString + "  FINDME");
 
             HttpWebRequest webRequest = WebRequest.Create(placesSearchString) as HttpWebRequest;
             webRequest.Timeout = 20000;
@@ -71,12 +63,29 @@ namespace eff.Views
             foreach (JToken bus in joResponse.SelectToken("businesses"))
             {
                 string b = (string)bus.SelectToken("name");
-                Places.Add(new Place { name = b });
+                string c = (string)bus.SelectToken("image_url");
+                string d = (string)bus.SelectToken("rating");
+                Places.Add(new Place { name = b, image_url = c, rating = d });
             }
->>>>>>> Stashed changes
         }
 
+        private void LabelClickedLike(object sender, EventArgs e)
+        {
+            var entity = ((Image)sender);
+            if (entity.BackgroundColor != Color.Green)
+                entity.BackgroundColor = Color.Green;
+            else
+                entity.BackgroundColor = Color.Gray;
+        }
 
+        private void LabelClickedSuperLike(object sender, EventArgs e)
+        {
+            var entity = ((Image)sender);
+            if (entity.BackgroundColor != Color.HotPink)
+            entity.BackgroundColor = Color.HotPink;
+            else
+                entity.BackgroundColor = Color.Gray;
+        }
     }
 
 }

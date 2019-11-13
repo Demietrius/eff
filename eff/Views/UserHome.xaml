@@ -15,15 +15,23 @@
             RelativeLayout.HeightConstraint= "{ConstraintExpression Type=RelativeToParent, Property=Height}"
             />
 
-        <Label Text="eff" TextColor="Orange" FontSize="65" FontAttributes="Bold"
-                RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent,
+        <!--<Label Text="Hello" TextColor="Orange" FontSize="25" FontAttributes="Italic" HorizontalOptions="Center" VerticalOptions="Center"
+                RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,
                     Property=Width,
-                    Factor=.52,
-                    Constant=-50}"
-                RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent,
+                    Factor=1}"
+                RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent,
                     Property=Height,
-                    Factor=0.23,
-                    Constant=-50}"
+                    Factor=0.18}"
+               />-->
+
+        <Label Text="eff" TextColor="Orange" FontSize="65" FontAttributes="Bold" HorizontalOptions="Center"
+               VerticalOptions="Center"
+               RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,
+                    Property=Width,
+                    Factor=1}"
+                RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent,
+                    Property=Height,
+                    Factor=.5}"
                />
 
         <StackLayout Orientation="Vertical" VerticalOptions="End" HorizontalOptions="Center"  Spacing="20"
@@ -38,7 +46,7 @@
                                         Factor=1}"
             >
             
-            <Button x:Name="Btn_JoingLobby" Text="join lobby" TextColor="Black"
+            <Button x:Name="Btn_JoingLobby" Text="join lobby"  TextColor="Black"
                     FontSize="20" BackgroundColor="Orange" CornerRadius="13" Clicked="OnJoinClicked"/>
             <Button x:Name="Btn_CreateLobby" Text="create lobby" TextColor="Black" 
                     FontSize="20" BackgroundColor="Orange" CornerRadius="13" Clicked="OnCreateLobbyClicked"/>
