@@ -78,7 +78,7 @@
 
             <Label Text="" HeightRequest="30"/>
             <Button Text="submit" TextColor="Black" FontSize="20" BackgroundColor="Orange"
-                    FontAttributes="Bold" CornerRadius="13" />
+                   Clicked="Submit" FontAttributes="Bold" CornerRadius="13" />
         </StackLayout>
         
 </RelativeLayout>

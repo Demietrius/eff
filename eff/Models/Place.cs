@@ -39,5 +39,11 @@ namespace eff.Models
 
         [JsonProperty(PropertyName = "distance")]
         public string distance {get; set;}
+
+
+
+        // app added infromation 
+        public bool Isliked { get; set; }
+
     }
 }

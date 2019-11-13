@@ -50,7 +50,8 @@ namespace eff.Views
                         }
 
                         await AddItem(user);
-
+                        var userHome = new UserHome();
+                        userHome.BindingContext = user;
                         await Navigation.PushAsync(new UserHome());
                     }
                     else
