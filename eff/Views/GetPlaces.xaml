@@ -7,49 +7,35 @@
              x:Class="eff.Views.GetPlaces"
              Title="Places Grid">
 
-    <StackLayout Margin="0" BackgroundColor="Gray">
+    <StackLayout Margin="0" BackgroundColor="Black">
         <Button x:Name="RequestPlaces" 
                     Text="Call Api" FontSize="27" TextColor="Orange" 
                     BorderColor="White"
                     Clicked="RequestPlaces_Clicked"
                     />
-        <CollectionView x:Name="PlacesView" ItemsSource="{Binding Places}">
+        <CollectionView x:Name="PlacesView"  ItemsSource="{Binding Places} ">
             <CollectionView.ItemsLayout>
-                <GridItemsLayout Orientation="Vertical"
+                <GridItemsLayout Orientation="Vertical" 
                                  Span="1" />
             </CollectionView.ItemsLayout>
-            <!--<CollectionView.Header>
-                <StackLayout BackgroundColor="LightGray">
-                    <Label Margin="10,0,0,0"
-                           Text="YelpObject"
-                           FontSize="Small"
-                           FontAttributes="Bold" />
-                </StackLayout>
-            </CollectionView.Header>
-            <CollectionView.Footer>
-                <StackLayout BackgroundColor="LightGray">
-                    <Label Margin="10,0,0,0"
-                           Text="Friends of Xamarin YelpObject"
-                           FontSize="Small"
-                           FontAttributes="Bold" />
-                </StackLayout>
-            </CollectionView.Footer>-->
             <CollectionView.ItemTemplate>
                 <DataTemplate>
-                    <Grid Padding="10">
-                        <Grid.RowDefinitions>
-                            
+                    <Frame BackgroundColor="#383636" BorderColor="#383636" CornerRadius="13" >
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="LabelClicked"/>
+                        </Frame.GestureRecognizers>
+                    <Grid >
+                        <Grid.RowDefinitions>                           
                             <RowDefinition Height="60" />
                             <RowDefinition Height="60" />
-                            
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*" />
                             <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
-                        <Grid.GestureRecognizers>
+                        <!--<Grid.GestureRecognizers>
                             <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="LabelClicked" />
-                        </Grid.GestureRecognizers>
+                        </Grid.GestureRecognizers>-->
                         <Image x:Name="name" Grid.RowSpan="2"
                                Source="{Binding image_url}"
                                Aspect="AspectFill"
@@ -92,6 +78,7 @@
                             </Image.GestureRecognizers>
                         </Image>-->
                     </Grid>
+                        </Frame>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>

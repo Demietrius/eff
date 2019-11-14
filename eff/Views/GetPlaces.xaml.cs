@@ -18,13 +18,14 @@ namespace eff.Views
    
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class GetPlaces : ContentPage
-	{
-		public ObservableCollection<Place> Places { get; } = new ObservableCollection<Place>();
+	{        
+        
+        public ObservableCollection<Place> Places { get; } = new ObservableCollection<Place>();
 		public GetPlaces()
 		{
 			InitializeComponent();
-			PlacesView.ItemsSource = Places;
-		}
+			PlacesView.ItemsSource = Places;           
+        }
 		protected async void RequestPlaces_Clicked(object sender, EventArgs e)
 		{
 			var request = new GeolocationRequest(GeolocationAccuracy.High);
@@ -60,38 +61,23 @@ namespace eff.Views
 				string d = (string)bus.SelectToken("rating");
 				Places.Add(new Place { name = b, image_url = c, rating = d });
 			}
+           
 		}
+
 		protected void LabelClicked(object sender, EventArgs e)
 		{
-			var entity = ((Grid)sender);
-            //if(entity.FindByName<Image>("Favorite").IsVisible == true) {
-            //    entity.FindByName<Image>("Unfavorite").IsVisible = true;
-            //    entity.FindByName<Image>("Favorite").IsVisible = false;
-            //} else
-            //{
-            //    entity.FindByName<Image>("Unfavorite").IsVisible = false;
-            //    entity.FindByName<Image>("Favorite").IsVisible = true;
-            //}
+			var entity = ((Frame)sender);
 
-
-            //Favorite.isVisible(true);
-            //Unfavorite.isVisble(false);
             if (entity.BackgroundColor != Color.Orange)
-            entity.BackgroundColor = Color.Orange;
+            {
+                entity.BackgroundColor = Color.Orange;   
+            }
 
             else
-                entity.BackgroundColor = Color.Gray;
+            {
+                    entity.BackgroundColor = Color.FromHex("383636");
+            }
         }
 
-		//protected void LabelClickedSuperLike(object sender, EventArgs e)
-		//{
-		//	var entity = ((Image)sender);
-		//	//Favorite.isVisible(false);
-		//	//Unfavorite.isVisible(true);
-		//	//if (entity.BackgroundColor != Color.HotPink)
-		//	//	entity.BackgroundColor = Color.HotPink;
-		//	//else
-		//	//	entity.BackgroundColor = Color.Gray;
-		//}
 	}
 }
