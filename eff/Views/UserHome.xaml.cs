@@ -12,6 +12,7 @@ namespace eff.Views
         public UserHome()
         {
             InitializeComponent();
+            Application.Current.Properties["IsLoggedIn"] = Boolean.TrueString;
             ////////////////////////////////testing
             var user = new User() { Username = "testing" };
 
@@ -33,6 +34,12 @@ namespace eff.Views
         {
             await Navigation.PushAsync(new CreateLobby());
            
+        }
+
+        private async void Logout(object sender, EventArgs e)
+        {
+            Application.Current.Properties["IsLoggedIn"] = Boolean.FalseString;
+            await Navigation.PushAsync(new WelcomePage());
         }
     }
 }

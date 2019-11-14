@@ -75,7 +75,7 @@ namespace eff.Views
 
             else
             {
-                    entity.BackgroundColor = Color.FromHex("383636");
+                    entity.BackgroundColor = Color.FromHex("#6e6e6c");
             }
         }
 
