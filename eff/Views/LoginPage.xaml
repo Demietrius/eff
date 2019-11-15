@@ -31,7 +31,7 @@
                                         Factor=1}"
             >
             <Label x:Name="Lbl_Username" Text="username" TextColor="Orange" FontSize="20"/>
-            <Entry x:Name="Entry_Username" Placeholder="username" PlaceholderColor="Gray"/>
+            <Entry x:Name="Entry_Username" Placeholder="username" PlaceholderColor="Gray" Keyboard="Email" ReturnType="Next" IsTextPredictionEnabled="True"/>
             <Label x:Name="Lbl_Password" Text="password" TextColor="Orange" FontSize="20"/>
             <Entry IsPassword="True" x:Name="Entry_Password" Placeholder="password" PlaceholderColor="Gray"/>
             <Label Text="" HeightRequest="155"/>

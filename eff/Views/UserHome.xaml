@@ -19,10 +19,10 @@
                 BackgroundColor="Black" HorizontalOptions="Center" VerticalOptions="Center" CornerRadius="13" BorderColor="Orange"
                RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,
                     Property=Width,
-                    Factor=.15}"
+                    Factor=.25}"
                 RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent,
                     Property=Height,
-                    Factor=1.95}"
+                    Factor=.18}"
                /> 
 
 
@@ -63,7 +63,7 @@
                     FontSize="20" BackgroundColor="Orange" CornerRadius="13" Clicked="OnCreateLobbyClicked"/>
             <Button x:Name="Btn_ManageGroups" Text="manage groups" TextColor="Black"
                     FontSize="20" BackgroundColor="Orange" CornerRadius="13"/>
-            <Button x:Name="Btn_NearMe" Text="near me" TextColor="Black"
+            <Button x:Name="Btn_NearMe" Text="near me" TextColor="Black" Clicked="OnNearbyClicked"
                     FontSize="20" BackgroundColor="Orange" CornerRadius="13"/>
             <Label Text="" HeightRequest="65"/>
         </StackLayout>
