@@ -73,7 +73,6 @@ namespace eff.Views
 
 		protected void LabelClicked(object sender, EventArgs e)
 		{
-            var myListView = (ListView)sender; var myItem = myListView.SelectedItem;
 
             if (!CheckLikes())
 				error();
@@ -92,8 +91,6 @@ namespace eff.Views
 			{
 					entity.BackgroundColor = Color.FromHex("#6e6e6c");
 			}
-            var place = ((Place)sender);
-            Console.WriteLine(place.name);
 		} 
 
 		private void error() { }
