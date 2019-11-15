@@ -7,6 +7,8 @@ using eff.Models;
 using System.Security.Cryptography;
 using eff.ViewModels;
 using System.Text;
+using Plugin.Settings.Abstractions;
+using Plugin.Settings;
 
 namespace eff.Views
 {
@@ -35,12 +37,23 @@ namespace eff.Views
             if (user != null)
             {
                 var userHome = new UserHome();
-                userHome.BindingContext = user;
+                /*AppSettings.AddOrUpdateValue("userid", tempUser.Id);
+                AppSettings.GetValueOrDefault("userid", tempUser.Id);*/
                 await Navigation.PushAsync(new UserHome());
             }
             else
                 Error(user);
         }
+
+
+     /*   private static ISettings AppSettings =>CrossSettings.Current;
+
+        public static string UserName
+        {
+            get => AppSettings.GetValueOrDefault(nameof(UserName), string.Empty);
+            set => AppSettings.AddOrUpdateValue(nameof(UserName), value);
+        }*/
+
 
         private async void OnSignUpClicked(object sender, EventArgs e)
         {

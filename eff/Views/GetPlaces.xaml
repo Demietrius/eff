@@ -22,7 +22,7 @@
                 <DataTemplate>
                     <Frame BackgroundColor="#6e6e6c" BorderColor="#6e6e6c" CornerRadius="13" >
                         <Frame.GestureRecognizers>
-                            <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="LabelClicked"/>
+                            <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="LabelClicked" />
                         </Frame.GestureRecognizers>
                     <Grid >
                         <Grid.RowDefinitions>                           

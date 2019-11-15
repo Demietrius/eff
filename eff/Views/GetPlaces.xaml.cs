@@ -19,13 +19,17 @@ namespace eff.Views
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class GetPlaces : ContentPage
 	{        
-        
-        public ObservableCollection<Place> Places { get; } = new ObservableCollection<Place>();
+		
+		public ObservableCollection<Place> Places { get; } = new ObservableCollection<Place>();
+		public int LikeCount { get; set; }
+		public int NumberOfPlaces { get; set; }
 		public GetPlaces()
 		{
 			InitializeComponent();
-			PlacesView.ItemsSource = Places;           
-        }
+			PlacesView.ItemsSource = Places;
+			LikeCount = 0;
+			NumberOfPlaces = 0;
+		}
 		protected async void RequestPlaces_Clicked(object sender, EventArgs e)
 		{
 			var request = new GeolocationRequest(GeolocationAccuracy.High);
@@ -54,30 +58,53 @@ namespace eff.Views
 			JObject joResponse = JObject.Parse(content);
 			JArray array = (JArray)joResponse["businesses"];
 			string businesses = array[0].ToString();
+			  
+			
 			foreach (JToken bus in joResponse.SelectToken("businesses"))
 			{
 				string b = (string)bus.SelectToken("name");
 				string c = (string)bus.SelectToken("image_url");
 				string d = (string)bus.SelectToken("rating");
-				Places.Add(new Place { name = b, image_url = c, rating = d });
+				Places.Add(new Place { name = b, image_url = c, rating = d, Isliked = false});
+				NumberOfPlaces++;
 			}
-           
+		   
 		}
 
 		protected void LabelClicked(object sender, EventArgs e)
 		{
+            var myListView = (ListView)sender; var myItem = myListView.SelectedItem;
+
+            if (!CheckLikes())
+				error();
+
 			var entity = ((Frame)sender);
 
-            if (entity.BackgroundColor != Color.Orange)
-            {
-                entity.BackgroundColor = Color.Orange;   
-            }
+			if (entity.BackgroundColor != Color.Orange)
+			{
+				entity.BackgroundColor = Color.Orange;
+				LikeCount++;
+                entity.Parent.GetType();
+               
+			}
 
-            else
-            {
-                    entity.BackgroundColor = Color.FromHex("#6e6e6c");
-            }
-        }
+			else
+			{
+					entity.BackgroundColor = Color.FromHex("#6e6e6c");
+			}
+            var place = ((Place)sender);
+            Console.WriteLine(place.name);
+		} 
+
+		private void error() { }
+
+		private bool CheckLikes()
+		{
+			if (LikeCount < (int)(0.30 * NumberOfPlaces))
+				return true;
+			else
+				return false;
+		}
 
 	}
 }
