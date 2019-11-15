@@ -13,7 +13,9 @@
                     BorderColor="White"
                     Clicked="RequestPlaces_Clicked"
                     />
-        <CollectionView x:Name="PlacesView"  ItemsSource="{Binding Places} ">
+        <CollectionView x:Name="PlacesView"  ItemsSource="{Binding Places} "
+                        SelectionMode="Multiple"
+                        SelectionChanged="LabelClicked">
             <CollectionView.ItemsLayout>
                 <GridItemsLayout Orientation="Vertical" 
                                  Span="1" />
@@ -21,9 +23,9 @@
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <Frame BackgroundColor="#6e6e6c" BorderColor="#6e6e6c" CornerRadius="13" >
-                        <Frame.GestureRecognizers>
+                        <!--<Frame.GestureRecognizers>
                             <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="LabelClicked" />
-                        </Frame.GestureRecognizers>
+                        </Frame.GestureRecognizers>-->
                     <Grid >
                         <Grid.RowDefinitions>                           
                             <RowDefinition Height="60" />

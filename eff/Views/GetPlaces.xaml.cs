@@ -71,26 +71,14 @@ namespace eff.Views
 		   
 		}
 
-		protected void LabelClicked(object sender, EventArgs e)
+		protected void LabelClicked(object sender, SelectionChangedEventArgs e)
 		{
-
+            var test = e.CurrentSelection;
             if (!CheckLikes())
 				error();
 
-			var entity = ((Frame)sender);
-
-			if (entity.BackgroundColor != Color.Orange)
-			{
-				entity.BackgroundColor = Color.Orange;
-				LikeCount++;
-                entity.Parent.GetType();
-               
-			}
-
-			else
-			{
-					entity.BackgroundColor = Color.FromHex("#6e6e6c");
-			}
+			LikeCount++;
+			
 		} 
 
 		private void error() { }
