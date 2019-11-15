@@ -15,7 +15,7 @@ namespace eff.Views
     {
         public WelcomePage()
         {
-            InitializeComponent();
+            InitializeComponent();           
         }
         private async void OnLoginClicked(object sender, EventArgs e)
         {

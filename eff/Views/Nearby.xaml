@@ -13,7 +13,7 @@
             </CollectionView.ItemsLayout>
             <CollectionView.ItemTemplate>
                 <DataTemplate>
-                    <Frame BackgroundColor="#6e6e6c" BorderColor="#6e6e6c" CornerRadius="13" >
+                    <Frame BackgroundColor="#6e6e6c" BorderColor="Black" CornerRadius="13" >
                     <Grid >
                         <Grid.RowDefinitions>                           
                             <RowDefinition Height="60" />

@@ -14,8 +14,24 @@ namespace eff.Views
         public CreateLobby()
         {
             InitializeComponent();
+            SetAndroid();
             RoomManager = RoomManager.DefaultManager;
             userManager = UserManager.DefaultManager;
+        }
+
+        private void SetAndroid()
+        {
+            if (Device.RuntimePlatform == Device.Android)
+            {
+                Entry_RoomName.PlaceholderColor = Color.NavajoWhite;
+                Entry_RoomName.TextColor = Color.NavajoWhite;
+                Entry_City.PlaceholderColor = Color.NavajoWhite;
+                Entry_City.TextColor = Color.NavajoWhite;
+                Pkr_Distance.TextColor = Color.NavajoWhite;
+                Pkr_NumPlaces.TextColor = Color.NavajoWhite;
+                Pkr_Price.TextColor = Color.NavajoWhite;
+                Pkr_RoundTime.TextColor = Color.NavajoWhite;
+            }
         }
 
         private async void Submit(object sender, EventArgs e)
