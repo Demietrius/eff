@@ -66,15 +66,16 @@ namespace eff.Views
 				string c = (string)bus.SelectToken("image_url");
 				string d = (string)bus.SelectToken("rating");
 				Places.Add(new Place { name = b, image_url = c, rating = d, Isliked = false});
-				NumberOfPlaces++;
 			}
+            NumberOfPlaces = Places.Count;
 		   
 		}
 
 		protected void LabelClicked(object sender, SelectionChangedEventArgs e)
 		{
-            var test = e.CurrentSelection;
-            if (!CheckLikes())
+			var test = e.CurrentSelection;
+			
+			if (!CheckLikes())
 				error();
 
 			LikeCount++;

@@ -6,10 +6,28 @@
              mc:Ignorable="d"
              x:Class="eff.Views.GetPlaces"
              Title="Places Grid">
-
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Frame">
+                <Setter Property="VisualStateManager.VisualStateGroups">
+                    <VisualStateGroupList>
+                        <VisualStateGroup x:Name="CommonStates">
+                            <VisualState x:Name="Normal" />
+                            <VisualState x:Name="Selected">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="Orange" />
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateGroupList>
+                </Setter>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <StackLayout Margin="0" BackgroundColor="Black">
-        <Button x:Name="RequestPlaces" 
-                    Text="Call Api" FontSize="27" TextColor="Orange" 
+        
+        <Button x:Name="RequestPlaces"
+                    Text="Call Api" FontSize="27" TextColor="Orange"
                     BorderColor="White"
                     Clicked="RequestPlaces_Clicked"
                     />
@@ -17,70 +35,38 @@
                         SelectionMode="Multiple"
                         SelectionChanged="LabelClicked">
             <CollectionView.ItemsLayout>
-                <GridItemsLayout Orientation="Vertical" 
+                <GridItemsLayout Orientation="Vertical"
                                  Span="1" />
             </CollectionView.ItemsLayout>
             <CollectionView.ItemTemplate>
                 <DataTemplate>
-                    <Frame BackgroundColor="#6e6e6c" BorderColor="#6e6e6c" CornerRadius="13" >
-                        <!--<Frame.GestureRecognizers>
-                            <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="LabelClicked" />
-                        </Frame.GestureRecognizers>-->
-                    <Grid >
-                        <Grid.RowDefinitions>                           
-                            <RowDefinition Height="60" />
-                            <RowDefinition Height="60" />
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="*" />
-                        </Grid.ColumnDefinitions>
-                        <!--<Grid.GestureRecognizers>
-                            <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="LabelClicked" />
-                        </Grid.GestureRecognizers>-->
-                        <Image x:Name="name" Grid.RowSpan="2"
+                    <Frame BackgroundColor="#6E6E6C" BorderColor="#6E6E6C" CornerRadius="13" >
+                        <Grid >
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="60" />
+                                <RowDefinition Height="60" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Image x:Name="name" Grid.RowSpan="2"
                                Source="{Binding image_url}"
                                Aspect="AspectFill"
                                HeightRequest="100"
                                WidthRequest="100" />
-                        <Label Grid.Column="1"
+                            <Label Grid.Column="1"
                                Grid.ColumnSpan="1"
                                Text="{Binding name}"
                                FontAttributes="Bold" />
-                               <!--LineBreakMode="TailTruncation" />-->
-                        <Label Grid.Row="1"
+                            <Label Grid.Row="1"
                                Grid.Column="1"
-                               Text="{Binding rating, StringFormat='{0:N} Stars'}"                               
+                               Text="{Binding rating, StringFormat='{0:N} Stars'}"
                                FontAttributes="Italic"
                                VerticalTextAlignment="End"
                                />
-                        <!--<Image x:Name="Unfavorite" Grid.RowSpan="1"
-                               Grid.Row="1"
-                               Grid.Column="1"
-                               Source="unfavorite.png"
-                               HorizontalOptions="Center"
-                               Aspect="AspectFit"
-                               MinimumHeightRequest="20"
-                               MinimumWidthRequest="20">
-                            <Image.GestureRecognizers>
-                                <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="LabelClicked" />
-                            </Image.GestureRecognizers>
-                        </Image>
-                        <Image x:Name="Favorite" Grid.RowSpan="1"
-                               Grid.Row="1"
-                               Grid.Column="1"
-                               Source="favorite.png"
-                               HorizontalOptions="Center"
-                               Aspect="AspectFit"
-                               HeightRequest="20"
-                               WidthRequest="20"
-                               IsVisible="false">
-                            <Image.GestureRecognizers>
-                                <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="LabelClicked" />
-                            </Image.GestureRecognizers>
-                        </Image>-->
-                    </Grid>
-                        </Frame>
+                        </Grid>
+                    </Frame>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
