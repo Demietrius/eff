@@ -12,20 +12,10 @@ namespace eff.Views
             InitializeComponent();
         }
 
+        protected async void AddUser(object sender, EventArgs e)
+        {
+            var user = Btn_addmore.Text;
 
-        /*public async Task CompleteItemAsync(User user)
-{
-try
-{
- item.Complete = true;
- await client.ReplaceDocumentAsync(UriFactory.CreateDocumentUri(databaseId, collectionId, item.Id), item);
-
- Items.Remove(item);
-
-}
-catch (Exception e)
-{
- Console.Error.WriteLine(@"ERROR {0}", e.Message);
-}*/
+        }
     }
 }
