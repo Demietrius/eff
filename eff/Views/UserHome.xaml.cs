@@ -18,6 +18,16 @@ namespace eff.Views
 
             ////////////////////////////////////////
             //Lbl_user.SetBinding(Label.TextProperty,new Binding(user.Username));
+        }
+        public UserHome(User user)
+        {
+            InitializeComponent();
+            Application.Current.Properties["IsLoggedIn"] = Boolean.TrueString;
+            ////////////////////////////////testing
+            //var user = new User() { Username = "testing" };
+
+            ////////////////////////////////////////
+            //Lbl_user.SetBinding(Label.TextProperty,new Binding(user.Username));
 
         }
 

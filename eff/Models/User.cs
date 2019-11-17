@@ -3,9 +3,8 @@ using Newtonsoft.Json;
 
 namespace eff.Models
 {
-    class User
+    public class User
     {
-           
         [JsonProperty(PropertyName = "id")]
         public string Id { get; set; }
 

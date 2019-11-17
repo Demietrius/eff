@@ -36,10 +36,10 @@ namespace eff.Views
             var user = await userManger.Login(tempUser);
             if (user != null)
             {
-                var userHome = new UserHome();
+               /* var userHome = new UserHome(user);*/
                 /*AppSettings.AddOrUpdateValue("userid", tempUser.Id);
                 AppSettings.GetValueOrDefault("userid", tempUser.Id);*/
-                await Navigation.PushAsync(new UserHome());
+                await Navigation.PushAsync(new UserHome(user));
             }
             else
                 Error(user);
