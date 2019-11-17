@@ -9,14 +9,16 @@ namespace eff.Views
 {
     public partial class CreateLobby : ContentPage
     {
+        User User;
         RoomManager RoomManager;
         UserManager userManager;
-        public CreateLobby()
+        public CreateLobby(User User)
         {
             InitializeComponent();
             SetAndroid();
             RoomManager = RoomManager.DefaultManager;
             userManager = UserManager.DefaultManager;
+            this.User = User;
         }
 
         private void SetAndroid()
@@ -46,8 +48,7 @@ namespace eff.Views
 
            await RoomManager.InsertRoom(Room);
 
-
-
         }
+
     }
 }

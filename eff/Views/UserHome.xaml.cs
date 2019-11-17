@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using eff.Models;
 using eff.Views;
 
+
 using Xamarin.Forms;
 
 namespace eff.Views
 {
     public partial class UserHome : ContentPage
     {
+        User User;
         public UserHome()
         {
             InitializeComponent();
@@ -23,6 +25,7 @@ namespace eff.Views
         {
             InitializeComponent();
             Application.Current.Properties["IsLoggedIn"] = Boolean.TrueString;
+            this.User = user;
             ////////////////////////////////testing
             //var user = new User() { Username = "testing" };
 
@@ -34,15 +37,14 @@ namespace eff.Views
         
         private async void OnJoinClicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new GetPlaces());
-         //   await Navigation.PushAsync(new GuestPage());
+            await Navigation.PushAsync(new GetPlaces(User));
         }
 
        
 
         private async void OnCreateLobbyClicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new CreateLobby());
+            await Navigation.PushAsync(new CreateLobby(User));
            
         }
 

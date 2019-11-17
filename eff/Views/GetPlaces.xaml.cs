@@ -23,7 +23,7 @@ namespace eff.Views
 		public ObservableCollection<Place> Places { get; } = new ObservableCollection<Place>();
 		public int LikeCount { get; set; }
 		public int NumberOfPlaces { get; set; }
-		public GetPlaces()
+		public GetPlaces(User user)
 		{
 			InitializeComponent();
 			PlacesView.ItemsSource = Places;

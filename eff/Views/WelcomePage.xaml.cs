@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using eff.Models;
 
 namespace eff.Views
 {
@@ -27,7 +28,7 @@ namespace eff.Views
         }
         private async void OnNearbyRestaurantsClicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new GetPlaces());
+            await Navigation.PushAsync(new GetPlaces(new User()));
         }
     }
 }
