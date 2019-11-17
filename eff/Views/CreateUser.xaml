@@ -48,7 +48,7 @@
         </StackLayout>
 
         <Button x:Name="Btn_Login" Text="sign up" BackgroundColor="Orange" TextColor="Black" Clicked="InsertUser"
-                WidthRequest="120" FontSize="20"  HorizontalOptions="Center" VerticalOptions="Center" CornerRadius="13"
+                WidthRequest="130" FontSize="20"  HorizontalOptions="Center" VerticalOptions="Center" CornerRadius="13"
               RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,
                     Property=Width,
                     Factor=1}"

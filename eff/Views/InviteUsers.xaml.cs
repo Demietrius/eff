@@ -11,5 +11,11 @@ namespace eff.Views
         {
             InitializeComponent();
         }
+
+        protected async void AddUser(object sender, EventArgs e)
+        {
+            var user = Btn_addmore.Text;
+
+        }
     }
 }

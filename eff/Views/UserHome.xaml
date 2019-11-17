@@ -64,7 +64,7 @@
             <Button x:Name="Btn_ManageGroups" Text="manage groups" TextColor="Black"
                     FontSize="20" BackgroundColor="Orange" CornerRadius="13"/>
             <Button x:Name="Btn_NearMe" Text="near me" TextColor="Black" Clicked="OnNearbyClicked"
-                    FontSize="20" BackgroundColor="Orange" CornerRadius="13"/>
+                    FontSize="20" BackgroundColor="DarkTurquoise" CornerRadius="13" />
             <Label Text="" HeightRequest="65"/>
         </StackLayout>
 

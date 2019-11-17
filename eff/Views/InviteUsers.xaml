@@ -5,9 +5,9 @@
              BackgroundColor="DimGray">
 
     <StackLayout HorizontalOptions="Center" VerticalOptions="Center" Padding="10" >
+        <!--<Label x:Name="Lbl_names" Text="{Binding name}" />-->
         <Label x:Name="Lbl_invite" Text="enter a user to invite" FontAttributes="Bold" FontSize="22" TextColor="Orange"/>
         <Entry x:Name="Entry_invite" Placeholder="user" />
-        <Button x:Name="Btn_addmore" Text="add another user" TextColor="Orange"/>
-        
+        <Button x:Name="Btn_addmore" Text="add another user" TextColor="Orange" Clicked="AddUser"/>       
     </StackLayout>
 </ContentPage>
