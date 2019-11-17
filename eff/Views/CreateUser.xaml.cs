@@ -29,30 +29,24 @@ namespace eff.Views
         {
 
            
-            var user = new User { Username = Entry_Username.Text, Password = Entry_Password.Text};
+            var TempUser = new User { Username = Entry_Username.Text, Password = Entry_Password.Text};
 
 
-            var Userlist = await userManger.GetUserByEmail(user.Username);
+            var Userlist = await userManger.GetUserByEmail(TempUser.Username);
             if (Userlist.Count == 0)
             {
-
-
-
-
                 if (CheckEmail(Entry_Username.Text) == true)
                 {
                     if (CheckPassword(Entry_Password.Text, Entry2_Password.Text) == true)
                     {
                         using (MD5 md5Hash = MD5.Create())
                         {
-                            user.Password = GetMd5Hash(md5Hash, user.Password);
-                            
+                            TempUser.Password = GetMd5Hash(md5Hash, TempUser.Password);
                         }
 
-                        await AddItem(user);
-                        var userHome = new UserHome();
-                        userHome.BindingContext = user;
-                        await Navigation.PushAsync(new UserHome());
+                        var NewUser = await AddItem(TempUser);
+
+                        await Navigation.PushAsync(new UserHome(NewUser));
                     }
                     else
                     {
@@ -85,9 +79,11 @@ namespace eff.Views
             }
         }
          
-        async Task AddItem(User user)
+        async Task<User> AddItem(User NewUser)
         {
-            await userManger.InsertUser(user);
+            await userManger.InsertUser( NewUser);
+                var user = await userManger.Login(NewUser);
+            return  user;
             /*   user.ItemsSource = await userManger.GetTodoItemsAsync();*/
         }
 
