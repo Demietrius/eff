@@ -21,7 +21,7 @@ namespace eff.Views
 	public partial class GetPlaces : ContentPage
 	{
         YelpManager yelpManager;
-        public GetPlaces()
+        public GetPlaces(User user)
 		{
 			InitializeComponent();
             yelpManager = YelpManager.DefaultManager;
@@ -35,8 +35,9 @@ namespace eff.Views
             var location = yelpManager.GetUserLocationAsync();
             String latitude = location.Result.Item1;
             String longitude = location.Result.Item2;
+            int radius = 1610;
 
-            var searchString = yelpManager.GenerateYelpSearchString(latitude, longitude);
+            var searchString = yelpManager.GenerateYelpSearchString(latitude, longitude, radius);
 
             JObject joResponse = yelpManager.YelpWebRequest(searchString);
 

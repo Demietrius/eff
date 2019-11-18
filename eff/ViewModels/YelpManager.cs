@@ -39,15 +39,18 @@ namespace eff.ViewModels
 
         public async Task<Tuple<string, string>> GetUserLocationAsync()
         {
-            var request = new GeolocationRequest(GeolocationAccuracy.High);
+            //More accurate/recent, may take some time for a response
+            var request = new GeolocationRequest(GeolocationAccuracy.High,TimeSpan.FromSeconds(10));
             var location = await Geolocation.GetLocationAsync(request);
+
+            //faster, will return null if there is no cached location
+            //var location = await Geolocation.GetLastKnownLocationAsync();
             return new Tuple<string, string>(location.Latitude.ToString(), location.Longitude.ToString());
         }
 
-        public string GenerateYelpSearchString(String latitude, String longitude)
+        public string GenerateYelpSearchString(String latitude, String longitude, int radius)
         {
             String categories = "Restaurant";
-            int radius = 1610;
             //documentation https://www.yelp.com/developers/documentation/v3/business_search
             //radius is measured in meters, max is 40,000(~25 miles)
             //1610 meters = 1 mile
@@ -80,8 +83,12 @@ namespace eff.ViewModels
             {
                 string b = (string)bus.SelectToken("name");
                 string c = (string)bus.SelectToken("image_url");
+                if (c.Length < 2)
+                {
+                    c = "filler.jpg";
+                }
                 string d = (string)bus.SelectToken("rating");
-                Places.Add(new Place { name = b, image_url = c, rating = d, Isliked = false });
+                Places.Add(new Place { name = b, image_url = c, rating = d });
             }
             NumberOfPlaces = Places.Count;
         }
