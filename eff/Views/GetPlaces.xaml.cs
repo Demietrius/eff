@@ -30,11 +30,12 @@ namespace eff.Views
             yelpManager.NumberOfPlaces = 0;
         }
 
-        protected void RequestPlaces_Clicked(object sender, EventArgs e)
+        protected async void RequestPlaces_ClickedAsync(object sender, EventArgs e)
         {
-            var location = yelpManager.GetUserLocationAsync();
-            String latitude = location.Result.Item1;
-            String longitude = location.Result.Item2;
+            String location = await yelpManager.GetUserLocationAsync();
+            var strlist = location.Split(',');
+            String latitude = strlist[0];
+            String longitude = strlist[1];
             int radius = 1610;
 
             var searchString = yelpManager.GenerateYelpSearchString(latitude, longitude, radius);

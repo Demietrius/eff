@@ -37,7 +37,7 @@ namespace eff.ViewModels
             }
         }
 
-        public async Task<Tuple<string, string>> GetUserLocationAsync()
+        public async Task<string> GetUserLocationAsync()
         {
             //More accurate/recent, may take some time for a response
             var request = new GeolocationRequest(GeolocationAccuracy.High,TimeSpan.FromSeconds(10));
@@ -45,7 +45,9 @@ namespace eff.ViewModels
 
             //faster, will return null if there is no cached location
             //var location = await Geolocation.GetLastKnownLocationAsync();
-            return new Tuple<string, string>(location.Latitude.ToString(), location.Longitude.ToString());
+            var latstr = location.Latitude.ToString();
+            var lonstr = location.Longitude.ToString();
+            return  latstr + ',' + lonstr;
         }
 
         public string GenerateYelpSearchString(String latitude, String longitude, int radius)
