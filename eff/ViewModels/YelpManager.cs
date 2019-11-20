@@ -50,7 +50,7 @@ namespace eff.ViewModels
             return  latstr + ',' + lonstr;
         }
 
-        public string GenerateYelpSearchString(String latitude, String longitude, int radius)
+        public string GenerateYelpSearchString(String latitude, String longitude, int radius, int max_results)
         {
             String categories = "Restaurant";
             String price = "1, 2, 3, 4";
@@ -63,13 +63,14 @@ namespace eff.ViewModels
                 "&longitude=" + longitude +
                 "&categories=" + categories +
                 "&radius=" + radius +
+                "&limit=" + max_results +
                 "&price=" + price +
                 "&open_now=" + true;
 
             return placesSearchString;
         }
 
-        public string GenerateYelpSearchString(String zip_code, int radius)
+        public string GenerateYelpSearchString(String zip_code, int radius, int max_results)
         {
             String categories = "Restaurant";
             String price = "1, 2, 3, 4";
@@ -81,6 +82,7 @@ namespace eff.ViewModels
                 "?location=" + zip_code +
                 "&categories=" + categories +
                 "&radius=" + radius +
+                "&limit=" + max_results +
                 "&price=" + price +
                 "&open_now=" + true;
 

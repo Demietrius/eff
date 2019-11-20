@@ -32,8 +32,9 @@ namespace eff.Views
             String latitude = strlist[0];
             String longitude = strlist[1];
             int radius = 1610;
+            int maxresults = 20;
 
-            var searchString = yelpManager.GenerateYelpSearchString(latitude, longitude, radius);
+            var searchString = yelpManager.GenerateYelpSearchString(latitude, longitude, radius, maxresults);
 
             JObject joResponse = yelpManager.YelpWebRequest(searchString);
 
