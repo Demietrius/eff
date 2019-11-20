@@ -53,6 +53,7 @@ namespace eff.ViewModels
         public string GenerateYelpSearchString(String latitude, String longitude, int radius)
         {
             String categories = "Restaurant";
+            String price = "1, 2, 3, 4";
             //documentation https://www.yelp.com/developers/documentation/v3/business_search
             //radius is measured in meters, max is 40,000(~25 miles)
             //1610 meters = 1 mile
@@ -61,7 +62,27 @@ namespace eff.ViewModels
                 "?latitude=" + latitude +
                 "&longitude=" + longitude +
                 "&categories=" + categories +
-                "&radius=" + radius;
+                "&radius=" + radius +
+                "&price=" + price +
+                "&open_now=" + true;
+
+            return placesSearchString;
+        }
+
+        public string GenerateYelpSearchString(String zip_code, int radius)
+        {
+            String categories = "Restaurant";
+            String price = "1, 2, 3, 4";
+            //documentation https://www.yelp.com/developers/documentation/v3/business_search
+            //radius is measured in meters, max is 40,000(~25 miles)
+            //1610 meters = 1 mile
+            //Yelp api key : FxutAF1Xi3y_LjzpSKaV9aijfwKwcLLOs8APnHCcPu8FhZyKHvxPvS9_Fe_hx5jmcuPWr1nvBg6LJGiaiBp4YFi-uWVBAo-mqgNKD22bP0EdhsCdmOrveY6XX1myXXYx
+            string placesSearchString = "https://api.yelp.com/v3/businesses/search" +
+                "?location=" + zip_code +
+                "&categories=" + categories +
+                "&radius=" + radius +
+                "&price=" + price +
+                "&open_now=" + true;
 
             return placesSearchString;
         }
