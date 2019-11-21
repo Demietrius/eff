@@ -7,7 +7,8 @@ namespace eff.Models
     class Rooms
     {
         public string RoomName { get; set; }
-        public string id { get; set; }
+        public string ID { get; set; }
+        public string PIN { get; set; }
         public string RoomNumber { get; set; }
         public string Date { get; set; }
         public string GroupId { get; set; }

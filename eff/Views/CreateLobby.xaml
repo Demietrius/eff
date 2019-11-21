@@ -1,5 +1,14 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="eff.Views.CreateLobby">
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="eff.Views.CreateLobby"
+             NavigationPage.HasNavigationBar="True"
+             NavigationPage.HasBackButton="True"
+             >
+
+    <NavigationPage.TitleView>
+         <Label Text="eff  " TextColor="Orange" FontSize="28" HorizontalOptions="End"/>
+    </NavigationPage.TitleView>
 
     <RelativeLayout Padding="0" HorizontalOptions="Center" VerticalOptions="Center">
 
@@ -11,7 +20,17 @@
             RelativeLayout.HeightConstraint= "{ConstraintExpression Type=RelativeToParent, Property=Height}"
             />
 
-        <Label  HorizontalOptions="Center" VerticalOptions="Center" Text="create lobby" FontSize="32" TextColor="Orange" 
+        <ScrollView HorizontalOptions="Center" VerticalOptions="Center"
+                    RelativeLayout.WidthConstraint=
+                 "{ConstraintExpression Type=RelativeToParent,
+                                        Property=Width,
+                                        Factor=1}"
+             RelativeLayout.HeightConstraint=
+                 "{ConstraintExpression Type=RelativeToParent,
+                                        Property=Height,
+                                        Factor=1}">
+        
+        <!--<Label  HorizontalOptions="Center" VerticalOptions="Center" Text="create lobby" FontSize="32" TextColor="Orange" 
                      RelativeLayout.WidthConstraint=
                  "{ConstraintExpression Type=RelativeToParent,
                                         Property=Width,
@@ -19,8 +38,9 @@
              RelativeLayout.HeightConstraint=
                  "{ConstraintExpression Type=RelativeToParent,
                                         Property=Height,
-                                        Factor=.2}"/>
+                                        Factor=.2}"/>-->
         
+
         <StackLayout Orientation="Vertical" HorizontalOptions="Center" VerticalOptions="Center" Padding="10" WidthRequest="230"
                      RelativeLayout.WidthConstraint=
                  "{ConstraintExpression Type=RelativeToParent,
@@ -31,7 +51,8 @@
                                         Property=Height,
                                         Factor=1}">
            
-           
+            <Label  HorizontalOptions="Center" Text="create lobby" FontSize="32" TextColor="Orange" />
+
             <Label HeightRequest="40"/>
              <StackLayout Padding="8">
                  <Label x:Name="Lbl_RoomName" Text="room  name" TextColor="Orange" FontAttributes="Bold" FontSize="22"/>
@@ -105,9 +126,9 @@
 
             <Label Text="" HeightRequest="30"/>
             <Button Text="submit" TextColor="Black" FontSize="20" BackgroundColor="Orange"
-                   Clicked="Submit" FontAttributes="Bold" CornerRadius="13" />
+                   Clicked="Submit" FontAttributes="Bold" CornerRadius="13"/>
         </StackLayout>
-        
+        </ScrollView>
 </RelativeLayout>
     
 </ContentPage>

@@ -74,10 +74,10 @@ namespace eff.Views
 		protected void LabelClicked(object sender, SelectionChangedEventArgs e)
 		{
 			var test = e.CurrentSelection;
-			
-			if (!CheckLikes())
-				error();
 
+            if (!CheckLikes())
+				error();
+           
 			LikeCount++;
 			
 		} 
@@ -91,6 +91,11 @@ namespace eff.Views
 			else
 				return false;
 		}
+
+        protected void submitClicked(object sender, EventArgs e)
+        {
+
+        }
 
 	}
 }

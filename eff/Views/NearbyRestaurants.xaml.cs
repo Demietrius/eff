@@ -29,11 +29,8 @@ namespace eff.Views
 
         protected async void RequestPlaces_Clicked(object sender, EventArgs e)
         {
-<<<<<<< Updated upstream
-            yelpManager.RequestPlaces_Clicked();
-            
-   
-=======
+            yelpManager.RequestPlaces_Clicked();  
+
             var locator = CrossGeolocator.Current;
             locator.DesiredAccuracy = 50;
             var position = await locator.GetPositionAsync(TimeSpan.FromSeconds(1000), null, true);
@@ -73,9 +70,7 @@ namespace eff.Views
                 string b = (string)bus.SelectToken("name");
                 Places.Add(new Place { name = b });
             }
->>>>>>> Stashed changes
         }
-
 
     }
 
