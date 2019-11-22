@@ -31,14 +31,14 @@
                                         Factor=1}"
             >
             <Label x:Name="Lbl_Username" Text="username" TextColor="Orange" FontSize="20"/>
-            <Entry x:Name="Entry_Username" Placeholder="username" PlaceholderColor="Gray"/>
+            <Entry x:Name="Entry_Username" Placeholder="username" PlaceholderColor="Gray" Keyboard="Email" ReturnType="Next" IsTextPredictionEnabled="True"/>
             <Label x:Name="Lbl_Password" Text="password" TextColor="Orange" FontSize="20"/>
             <Entry IsPassword="True" x:Name="Entry_Password" Placeholder="password" PlaceholderColor="Gray"/>
             <Label Text="" HeightRequest="155"/>
 
         </StackLayout>
 
-            <Button x:Name="Btn_Login" Text="login" TextColor="Black"
+            <Button x:Name="Btn_Login" Text="login" TextColor="Black" CornerRadius="13"
                     Clicked="Login" FontSize="20" BackgroundColor="Orange" WidthRequest="120"
                      RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent,
                         Property=Width,
@@ -61,7 +61,7 @@
                     Constant=-50}"
                  />
               
-        <Button Text="sign up" BackgroundColor="Orange" TextColor="Black"
+        <Button Text="sign up" BackgroundColor="Orange" TextColor="Black" CornerRadius="13"
                 WidthRequest="120" FontSize="20" Clicked="OnSignUpClicked"
               RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent,
                     Property=Width,

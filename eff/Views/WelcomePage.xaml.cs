@@ -1,4 +1,5 @@
 ﻿using System;
+using eff.Views;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,6 +7,7 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using eff.Models;
 
 namespace eff.Views
 {
@@ -14,7 +16,7 @@ namespace eff.Views
     {
         public WelcomePage()
         {
-            InitializeComponent();
+            InitializeComponent();           
         }
         private async void OnLoginClicked(object sender, EventArgs e)
         {
@@ -26,7 +28,7 @@ namespace eff.Views
         }
         private async void OnNearbyRestaurantsClicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new NearbyRestaurants());
+            await Navigation.PushAsync(new GetPlaces(new User()));
         }
     }
 }

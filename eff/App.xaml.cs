@@ -13,7 +13,15 @@ namespace eff
             InitializeComponent();
 
             //DependencyService.Register<MockDataStore>();
-            MainPage = new NavigationPage(new WelcomePage());
+            bool isLoggedIn = Current.Properties.ContainsKey("IsLoggedIn") ? Convert.ToBoolean(Current.Properties["IsLoggedIn"]) : false;
+            if (!isLoggedIn)
+            {
+                MainPage = new NavigationPage(new WelcomePage());
+            }
+            else
+            {
+                MainPage = new NavigationPage(new UserHome());
+            }
          }
 
         protected override void OnStart()
