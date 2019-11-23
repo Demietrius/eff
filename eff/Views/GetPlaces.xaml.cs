@@ -23,6 +23,7 @@ namespace eff.Views
 		public ObservableCollection<Place> Places { get; } = new ObservableCollection<Place>();
 		public int LikeCount { get; set; }
 		public int NumberOfPlaces { get; set; }
+		public List<String> LikedPlaces{ get; set; }
 		public GetPlaces(User user)
 		{
 			InitializeComponent();
@@ -65,24 +66,38 @@ namespace eff.Views
 				string b = (string)bus.SelectToken("name");
 				string c = (string)bus.SelectToken("image_url");
 				string d = (string)bus.SelectToken("rating");
-				Places.Add(new Place { name = b, image_url = c, rating = d, Isliked = false});
+                string f = (string)bus.SelectToken("id");
+				Places.Add(new Place { name = b, image_url = c, rating = d, Isliked = false, id=f});
 			}
-            NumberOfPlaces = Places.Count;
+			NumberOfPlaces = Places.Count;
 		   
 		}
 
 		protected void LabelClicked(object sender, SelectionChangedEventArgs e)
 		{
-			var test = e.CurrentSelection;
-			
-			if (!CheckLikes())
-				error();
+            Place tempid = e.CurrentSelection[e.CurrentSelection.Count()-1] as Place;
+            if (CheckLikes() || LikedPlaces.Contains(tempid.id))
+            {
 
-			LikeCount++;
-			
+
+                LikedPlaces = new List<string>(); ;
+                {
+                    for (int index = 0; index < (int)e.CurrentSelection.Count(); index++)
+                    {
+                        Place TempPlace = e.CurrentSelection[index] as Place;
+                        LikedPlaces.Add(TempPlace.id.ToString());
+                    }
+                }
+
+                LikeCount = LikedPlaces.Count();
+            }
+            else
+                errorAsync();
 		} 
 
-		private void error() { }
+		private async Task errorAsync() {
+            await DisplayAlert("Alert", "You have liked too many dumb ass", "OK");
+        }
 
 		private bool CheckLikes()
 		{
