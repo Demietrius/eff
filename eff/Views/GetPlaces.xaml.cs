@@ -25,9 +25,9 @@ namespace eff.Views
 		public int LikeCount { get; set; }
 		public int NumberOfPlaces { get; set; }
 		public List<String> LikedPlaces{ get; set; }
-		public GetPlaces(User user)
-	{
+
         YelpManager yelpManager;
+
         public GetPlaces(User user)
 		{
 			InitializeComponent();
@@ -53,18 +53,20 @@ namespace eff.Views
             yelpManager.ParseJObjectResponse(joResponse);
 
         }
+
         protected void LabelClicked(object sender, SelectionChangedEventArgs e)
         {
             var test = e.CurrentSelection;
 
             if (!yelpManager.CheckLikes())
                 yelpManager.error();
+        }
 
 		private async Task errorAsync() {
             await DisplayAlert("Alert", "You have liked too many dumb ass", "OK");
         }
 
-        }
+        
 
         protected void submitClicked(object sender, EventArgs e)
         {
