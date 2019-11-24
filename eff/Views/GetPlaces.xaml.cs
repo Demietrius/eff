@@ -26,52 +26,76 @@ namespace eff.Views
 		public int NumberOfPlaces { get; set; }
 		public List<String> LikedPlaces{ get; set; }
 
-        YelpManager yelpManager;
+		YelpManager yelpManager;
 
-        public GetPlaces(User user)
+		public GetPlaces(User user)
 		{
 			InitializeComponent();
-            yelpManager = YelpManager.DefaultManager;
-            PlacesView.ItemsSource = yelpManager.Places;
-            yelpManager.LikeCount = 0;
-            yelpManager.NumberOfPlaces = 0;
-        }
+			yelpManager = YelpManager.DefaultManager;
+			PlacesView.ItemsSource = yelpManager.Places;
+			yelpManager.LikeCount = 0;
+			yelpManager.NumberOfPlaces = 0;
+            LikedPlaces = new List<string>();
+		}
 
-        protected async void RequestPlaces_ClickedAsync(object sender, EventArgs e)
-        {
-            String location = await yelpManager.GetUserLocationAsync();
-            var strlist = location.Split(',');
-            String latitude = strlist[0];
-            String longitude = strlist[1];
-            int radius = 1610;
-            int maxresults = 20;
+		protected async void RequestPlaces_ClickedAsync(object sender, EventArgs e)
+		{
+			String location = await yelpManager.GetUserLocationAsync();
+			var strlist = location.Split(',');
+			String latitude = strlist[0];
+			String longitude = strlist[1];
+			int radius = 1610;
+			int maxresults = 20;
 
-            var searchString = yelpManager.GenerateYelpSearchString(latitude, longitude, radius, maxresults);
+			var searchString = yelpManager.GenerateYelpSearchString(latitude, longitude, radius, maxresults);
 
-            JObject joResponse = yelpManager.YelpWebRequest(searchString);
+			JObject joResponse = yelpManager.YelpWebRequest(searchString);
 
-            yelpManager.ParseJObjectResponse(joResponse);
+			yelpManager.ParseJObjectResponse(joResponse);
+            
 
-        }
+		}
 
-        protected void LabelClicked(object sender, SelectionChangedEventArgs e)
-        {
-            var test = e.CurrentSelection;
+		protected void LabelClicked(object sender, SelectionChangedEventArgs e)
+		{
+			Place tempid = e.CurrentSelection[e.CurrentSelection.Count() - 1] as Place;
+			if (CheckLikes() || LikedPlaces.Contains(tempid.id))
+			{
 
-            if (!yelpManager.CheckLikes())
-                yelpManager.error();
-        }
 
-		private async Task errorAsync() {
-            await DisplayAlert("Alert", "You have liked too many dumb ass", "OK");
-        }
+				LikedPlaces = new List<string>(); ;
+				{
+					for (int index = 0; index < (int)e.CurrentSelection.Count(); index++)
+					{
+						Place TempPlace = e.CurrentSelection[index] as Place;
+						LikedPlaces.Add(TempPlace.id.ToString());
+					}
+				}
 
-        
+				LikeCount = LikedPlaces.Count();
+			}
+			else
+				errorAsync();
+		}
 
-        protected void submitClicked(object sender, EventArgs e)
-        {
+		private async Task errorAsync()
+		{
+			await DisplayAlert("Alert", "You have liked too many dumb ass", "OK");
+		}
 
-        }
+
+		private bool CheckLikes()
+		{
+			if (LikeCount < (int)(0.30 * NumberOfPlaces))
+				return true;
+			else
+				return false;
+		}
+
+		protected void submitClicked(object sender, EventArgs e)
+		{
+
+		}
 
 	}
 }
