@@ -44,11 +44,26 @@ namespace eff.Views
                 Distance = Pkr_NumPlaces.ToString(),
                 NumberOfResturants = Pkr_NumPlaces.ToString(),
                 Price = Pkr_Price.ToString(),
+                ID = generateId(),
+                PIN = generatePIN()
                 };
 
            await RoomManager.InsertRoom(Room);
+            await Navigation.PushAsync(new initiateGame());
 
         }
+         private string generateId()
+        {
+            Random generator = new Random();
+            String r = generator.Next(010000, 999999).ToString("D6");
+            return r;
+        }
 
+        private string generatePIN()
+        {
+            Random generator = new Random();
+            String r = generator.Next(0000, 9999).ToString("D4");
+            return r;
+        }
     }
 }

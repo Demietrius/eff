@@ -19,6 +19,13 @@ namespace eff.Views
    
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class GetPlaces : ContentPage
+	{        
+		
+		public ObservableCollection<Place> Places { get; } = new ObservableCollection<Place>();
+		public int LikeCount { get; set; }
+		public int NumberOfPlaces { get; set; }
+		public List<String> LikedPlaces{ get; set; }
+		public GetPlaces(User user)
 	{
         YelpManager yelpManager;
         public GetPlaces(User user)
@@ -53,9 +60,16 @@ namespace eff.Views
             if (!yelpManager.CheckLikes())
                 yelpManager.error();
 
-            yelpManager.LikeCount++;
+		private async Task errorAsync() {
+            await DisplayAlert("Alert", "You have liked too many dumb ass", "OK");
+        }
 
         }
 
-    }
+        protected void submitClicked(object sender, EventArgs e)
+        {
+
+        }
+
+	}
 }

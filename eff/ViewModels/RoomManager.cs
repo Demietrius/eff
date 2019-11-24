@@ -48,7 +48,7 @@ namespace eff.ViewModels
             {
                 // The query excludes completed TodoItems
                 var query = room.CreateDocumentQuery<Rooms>(collectionLink, new FeedOptions { MaxItemCount = -1 })
-                      .Where(room => room.id.Equals(RoomId))
+                      .Where(room => room.ID.Equals(RoomId))
                       .AsDocumentQuery();
 
                 Rooms = new List<Rooms>();
@@ -73,7 +73,7 @@ namespace eff.ViewModels
             try
             {
                 var result = await room.CreateDocumentAsync(collectionLink, NewRoom);
-                NewRoom.id = result.Resource.Id;
+                NewRoom.ID = result.Resource.Id;
                 Rooms.Add(NewRoom);
             }
             catch (Exception e)
