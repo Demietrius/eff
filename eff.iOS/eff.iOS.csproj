@@ -133,6 +133,7 @@
     <BundleResource Include="Resources\favorite.png" />
     <BundleResource Include="Resources\unfavorite.png" />
     <BundleResource Include="Resources\initiateGame.jpg" />
+    <BundleResource Include="Resources\initiateBackground.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />

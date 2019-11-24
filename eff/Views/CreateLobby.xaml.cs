@@ -38,7 +38,7 @@ namespace eff.Views
 
         private async void Submit(object sender, EventArgs e)
         {
-            var Room = new Rooms() {
+            var room = new Rooms() {
                 RoomName = Entry_RoomName.Text,
                 City = Entry_City.Text,
                 Distance = Pkr_NumPlaces.ToString(),
@@ -48,10 +48,12 @@ namespace eff.Views
                 PIN = generatePIN()
                 };
 
-           await RoomManager.InsertRoom(Room);
-            await Navigation.PushAsync(new initiateGame());
-
+            var startPage = new initiateGame();
+            startPage.BindingContext = room;
+            await RoomManager.InsertRoom(room);
+            await Navigation.PushAsync(startPage);
         }
+
          private string generateId()
         {
             Random generator = new Random();

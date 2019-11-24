@@ -7,6 +7,7 @@ namespace eff.Models
     class Rooms
     {
         public string RoomName { get; set; }
+        public string GameStarted { get; set; }
         public string ID { get; set; }
         public string PIN { get; set; }
         public string RoomNumber { get; set; }
@@ -20,7 +21,6 @@ namespace eff.Models
         public string TypeOfFood { get; set; }
         public string UserId { get; set; }
         public List<string> ListOfUsers { get; set; }
-
 
     }
 }
