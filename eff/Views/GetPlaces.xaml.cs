@@ -107,5 +107,10 @@ namespace eff.Views
 				return false;
 		}
 
+        protected void submitClicked(object sender, EventArgs e)
+        {
+
+        }
+
 	}
 }
