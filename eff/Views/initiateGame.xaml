@@ -13,11 +13,11 @@
 
         <Label x:Name="Lbl_GuestID" Text="game ID:" FontSize="25" TextColor="White" VerticalOptions="Center" HorizontalOptions="Center"
                 RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,
-                    Property=Width,
+                    Property=Width,  
                     Factor=1}"
                 RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent,
                     Property=Height,
-                    Factor=0.2}"
+                    Factor=0.2}" 
                     />
 
             <Label x:Name="Lbl_GuestIDdisplay"  TextColor="Orange" CharacterSpacing="3"  FontSize="30" Text="{Binding ID}" HorizontalOptions="Center" VerticalOptions="Center"
