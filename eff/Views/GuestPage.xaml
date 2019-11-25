@@ -11,7 +11,7 @@
 
     <RelativeLayout Padding="0" HorizontalOptions="Center" VerticalOptions="Center">
          <Image
-            x:Name="Img_Welcome"
+            x:Name="Img_Welcome" 
             Aspect="AspectFill"
             Source="guestBackground.jpg"
             RelativeLayout.WidthConstraint= "{ConstraintExpression Type=RelativeToParent, Property=Width}"

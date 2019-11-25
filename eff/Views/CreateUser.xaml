@@ -30,10 +30,13 @@
                                         Property=Height,
                                         Factor=1}"
             >
-            <Label Text="" HeightRequest="30"/>
+            <Label Text="" HeightRequest="0"/>
+
+            <Label x:Name="Lbl_userName" Text="username" TextColor="Orange" FontSize="20"/>
+            <Entry x:Name="Entry_Username" Placeholder="username" PlaceholderColor="Gray" Keyboard="Email" ReturnType="Next" />
 
             <Label x:Name="Lbl_email" Text="email" TextColor="Orange" FontSize="20"/>
-            <Entry x:Name="Entry_Username" Placeholder="username" PlaceholderColor="Gray" Keyboard="Email" ReturnType="Next" TextColor="White"/>
+            <Entry x:Name="Entry_email" Placeholder="username" PlaceholderColor="Gray" Keyboard="Email" ReturnType="Next" />
 
             <Label x:Name="Lbl_Password" Text="password" TextColor="Orange" FontSize="20"/>
             <Entry x:Name="Entry_Password" Placeholder="password" PlaceholderColor="Gray" ReturnType="Next"
@@ -66,6 +69,24 @@
                     Factor=1.85}"/>
 
         <Label x:Name="Lbl_emailError" Text="*Invalid email"
+               TextColor="Orange" WidthRequest="270" HorizontalOptions="Center" VerticalOptions="Center" IsVisible="false"
+               RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,
+                    Property=Width,
+                    Factor=1}"
+                    RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent,
+                    Property=Height,
+                    Factor=1.75}"/>
+
+        <Label x:Name="Lbl_usernameError" Text="*Invalid username. It should be 1-30 characters or numbers"
+               TextColor="Orange" WidthRequest="270" HorizontalOptions="Center" VerticalOptions="Center" IsVisible="false"
+               RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,
+                    Property=Width,
+                    Factor=1}"
+                    RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent,
+                    Property=Height,
+                    Factor=1.75}"/>
+
+        <Label x:Name="Lbl_blankform" Text="*Make sure to fill out every form"
                TextColor="Orange" WidthRequest="270" HorizontalOptions="Center" VerticalOptions="Center" IsVisible="false"
                RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,
                     Property=Width,

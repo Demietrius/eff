@@ -17,7 +17,7 @@ namespace eff.Views
         }
 
         protected async void startGameClicked()
-        {
+        { 
 
         }
     }
