@@ -6478,10 +6478,13 @@ namespace eff.Droid
 			public const int UserHomeBackground = 2131165509;
 			
 			// aapt resource value: 0x7F070146
-			public const int welcomeBackground = 2131165510;
+			public const int waitingBackgound = 2131165510;
 			
 			// aapt resource value: 0x7F070147
-			public const int xamarin_logo = 2131165511;
+			public const int welcomeBackground = 2131165511;
+			
+			// aapt resource value: 0x7F070148
+			public const int xamarin_logo = 2131165512;
 			
 			static Drawable()
 			{
