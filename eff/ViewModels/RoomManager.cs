@@ -65,6 +65,22 @@ namespace eff.ViewModels
             return Rooms;
         }
 
+        public async Task<List<User>> JoindUsers(int RoomId)
+        {
+            try
+            {
+                var Rooms = await GetById(RoomId);
+                List<User> users = Rooms[0].ListOfUsers;
+                return users;
+            }
+            catch (Exception e)
+            {
+                Console.Error.WriteLine(@"ERROR {0}", e.Message);
+                return null;
+            }
+           
+        }
+
 
 
 

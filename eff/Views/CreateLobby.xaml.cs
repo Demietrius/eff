@@ -48,7 +48,7 @@ namespace eff.Views
                 PIN = generatePIN()
                 };
 
-           await RoomManager.InsertRoom(Room);
+            await RoomManager.InsertRoom(Room);
             await Navigation.PushAsync(new initiateGame());
 
         }
