@@ -57,6 +57,9 @@ namespace eff.Views
 
 		protected void LabelClicked(object sender, SelectionChangedEventArgs e)
 		{
+            if (e.CurrentSelection.Count() == 0)
+                return;
+
 			Place tempid = e.CurrentSelection[e.CurrentSelection.Count() - 1] as Place;
 			if (CheckLikes() || LikedPlaces.Contains(tempid.id))
 			{
