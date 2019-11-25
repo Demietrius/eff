@@ -27,16 +27,32 @@ namespace eff.Views
 
         public async void InsertUser(object sender, EventArgs e)
         {
-
-           
-            var TempUser = new User { Username = Entry_Username.Text, Password = Entry_Password.Text};
-
-
-            var Userlist = await userManger.GetUserByEmail(TempUser.Username);
-            if (Userlist.Count == 0)
+            if (Entry_Username != null && Entry_email != null && Entry_Password != null && Entry2_Password != null)
             {
-                if (CheckEmail(Entry_Username.Text) == true)
+
+                var TempUser = new User { Email = Entry_email.Text, Password = Entry_Password.Text, Username = Entry_Username.Text };
+
+                var Userlist = await userManger.GetUserByEmail(TempUser.Email);
+                if (Userlist.Count == 0)
                 {
+                    if (CheckUsername(Entry_Username.Text) == true)
+                    {
+                    }
+                    else
+                    {
+                        warning("user");
+                        return;
+                    }
+
+                    if (CheckEmail(Entry_email.Text) == true)
+                    { }
+                    else
+                    {
+                        warning("email");
+                        return;
+                    }
+
+
                     if (CheckPassword(Entry_Password.Text, Entry2_Password.Text) == true)
                     {
                         using (MD5 md5Hash = MD5.Create())
@@ -51,31 +67,75 @@ namespace eff.Views
                     else
                     {
                         //make a warning appear on view showing that passwords do not match
-                        warrning("password");
+                        warning("password");
+                        return;
                     }
-                }else
-                {
-                    warrning("user");
-                }
-            }else
-                warrning("user");
 
+
+
+
+                    //if (CheckEmail(Entry_email.Text) == true)
+                    //{
+                    //    if (CheckPassword(Entry_Password.Text, Entry2_Password.Text) == true)
+                    //    {
+                    //        using (MD5 md5Hash = MD5.Create())
+                    //        {
+                    //            TempUser.Password = GetMd5Hash(md5Hash, TempUser.Password);
+                    //        }
+
+                    //        var NewUser = await AddItem(TempUser);
+
+                    //        await Navigation.PushAsync(new UserHome(NewUser));
+                    //    }
+                    //    else
+                    //    {
+                    //        //make a warning appear on view showing that passwords do not match
+                    //        warning("password");
+                    //    }
+                    //}
+                    //else
+                    //{
+                    //    warning("email");
+                    //}
+                    //}
+                    //    else
+                    //    {
+                    //        warning("user");
+                    //    }
+                }
+            }
+            else
+            {
+                warning("blank");
+            }
+                
         }
 
 
-        private void warrning(string type) {
+        private void warning(string type) {
             //make a warning appear on view showing that passwords do not match
             if (type.Equals("password"))
             {
                 Entry_Password.Text = "";
                 Entry2_Password.Text = "";
                 Lbl_passwordError.IsVisible = true;
-            } else if (type.Equals("user"))
+            } else if (type.Equals("email"))
             {
-                Entry_Username.Text="";
+                Entry_email.Text="";
+                //Entry_Password.Text = "";
+                //Entry2_Password.Text = "";
+                Lbl_passwordError.IsVisible = true;
+            } else if(type.Equals("user"))
+            {
+                Entry_Username.Text = "";
+                Lbl_usernameError.IsVisible = true;
+            }else if (type.Equals("blank"))
+            {
+                Entry_Username.Text = "";
                 Entry_Password.Text = "";
                 Entry2_Password.Text = "";
-                Lbl_passwordError.IsVisible = true;
+                Entry_email.Text = "";
+                Lbl_blankform.IsVisible = true;
             }
         }
          
@@ -121,6 +181,23 @@ namespace eff.Views
             {
                 return false;
             }
+        }
+
+        private Boolean CheckUsername(String username)
+        {
+            Regex pattern = new Regex(@"[a-zA-Z0-9]{1,30}");
+            Match match = pattern.Match(username);
+            if (match.Success)
+            {
+                Lbl_usernameError.IsVisible = false;
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
+            //private Boolean CheckFilled()
         }
 
 

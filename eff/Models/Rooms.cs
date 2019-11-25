@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Newtonsoft.Json;
 
 namespace eff.Models
 {
     class Rooms
     {
         public string RoomName { get; set; }
+        [JsonProperty(PropertyName = "id")]
         public string ID { get; set; }
         public string PIN { get; set; }
         public string RoomNumber { get; set; }

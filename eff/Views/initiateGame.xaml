@@ -20,7 +20,7 @@
                     Factor=0.2}" 
                     />
 
-            <Label x:Name="Lbl_GuestIDdisplay"  TextColor="Orange" CharacterSpacing="3"  FontSize="30" Text="{Binding ID}" HorizontalOptions="Center" VerticalOptions="Center"
+            <Label x:Name="Lbl_GuestIDdisplay"  TextColor="Orange" CharacterSpacing="3"  FontSize="30" Text="{Binding RoomNumber}" HorizontalOptions="Center" VerticalOptions="Center"
                 RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,
                     Property=Width,
                     Factor=1}"
@@ -29,7 +29,7 @@
                     Factor=.33}"
                    />
 
-        <Label x:Name="Lbl_GuestPIN" Text="game PIN:" FontSize="25" TextColor="White"
+        <Label x:Name="Lbl_GuestPIN" Text="game PIN:" FontSize="25" TextColor="White" 
                VerticalOptions="Center" HorizontalOptions="Center"
                 RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,
                     Property=Width,

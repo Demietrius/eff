@@ -9,6 +9,9 @@ namespace eff.Models
         [JsonProperty(PropertyName = "id")]
         public string Id { get; set; }
 
+        [JsonProperty(PropertyName = "emai")]
+        public string Email { get; set; }
+
         [JsonProperty(PropertyName = "username")]
         public string Username { get; set; }
 

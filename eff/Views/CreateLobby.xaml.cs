@@ -44,12 +44,14 @@ namespace eff.Views
                 Distance = Pkr_NumPlaces.ToString(),
                 NumberOfResturants = Pkr_NumPlaces.ToString(),
                 Price = Pkr_Price.ToString(),
-                ID = generateId(),
+                RoomNumber = generateId(),
                 PIN = generatePIN()
                 };
 
-           await RoomManager.InsertRoom(Room);
-            await Navigation.PushAsync(new initiateGame());
+            await RoomManager.InsertRoom(Room);
+            var newGame = new initiateGame();
+            newGame.BindingContext = Room;
+            await Navigation.PushAsync(newGame);
 
         }
          private string generateId()
