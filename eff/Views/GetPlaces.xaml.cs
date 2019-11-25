@@ -34,7 +34,7 @@ namespace eff.Views
 			PlacesView.ItemsSource = yelpManager.Places;
 			yelpManager.LikeCount = 0;
 			yelpManager.NumberOfPlaces = 0;
-            LikedPlaces = new List<string>();
+			LikedPlaces = new List<string>();
 		}
 
 		protected async void RequestPlaces_ClickedAsync(object sender, EventArgs e)
@@ -51,31 +51,32 @@ namespace eff.Views
 			JObject joResponse = yelpManager.YelpWebRequest(searchString);
 
 			yelpManager.ParseJObjectResponse(joResponse);
-            
+			
 
 		}
 
 		protected void LabelClicked(object sender, SelectionChangedEventArgs e)
 		{
-            if (e.CurrentSelection.Count() == 0)
-                return;
+			if (e.CurrentSelection.Count() == 0)
+				return;
 
 			Place tempid = e.CurrentSelection[e.CurrentSelection.Count() - 1] as Place;
-			if (CheckLikes() || LikedPlaces.Contains(tempid.id))
-			{
-				LikedPlaces = new List<string>(); ;
-				{
-					for (int index = 0; index < (int)e.CurrentSelection.Count(); index++)
-					{
-						Place TempPlace = e.CurrentSelection[index] as Place;
-						LikedPlaces.Add(TempPlace.id.ToString());
-					}
-				}
-				LikeCount = LikedPlaces.Count();
-			}
-			else
-				errorAsync();
-		}
+            if (CheckLikes() || LikedPlaces.Contains(tempid.id))
+            {
+
+
+                LikedPlaces = new List<string>(); ;
+                {
+                    for (int index = 0; index < (int)e.CurrentSelection.Count(); index++)
+                    {
+                        Place TempPlace = e.CurrentSelection[index] as Place;
+                        LikedPlaces.Add(TempPlace.id.ToString());
+                    }
+                }
+                LikeCount = LikedPlaces.Count();
+            }else
+                errorAsync();
+        }
 
 		private async Task errorAsync()
 		{
