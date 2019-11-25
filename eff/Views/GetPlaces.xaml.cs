@@ -23,7 +23,6 @@ namespace eff.Views
 		
 		public ObservableCollection<Place> Places { get; } = new ObservableCollection<Place>();
 		public int LikeCount { get; set; }
-		public int NumberOfPlaces { get; set; }
 		public List<String> LikedPlaces{ get; set; }
 
 		YelpManager yelpManager;
@@ -61,8 +60,6 @@ namespace eff.Views
 			Place tempid = e.CurrentSelection[e.CurrentSelection.Count() - 1] as Place;
 			if (CheckLikes() || LikedPlaces.Contains(tempid.id))
 			{
-
-
 				LikedPlaces = new List<string>(); ;
 				{
 					for (int index = 0; index < (int)e.CurrentSelection.Count(); index++)
@@ -71,7 +68,6 @@ namespace eff.Views
 						LikedPlaces.Add(TempPlace.id.ToString());
 					}
 				}
-
 				LikeCount = LikedPlaces.Count();
 			}
 			else
@@ -86,7 +82,7 @@ namespace eff.Views
 
 		private bool CheckLikes()
 		{
-			if (LikeCount < (int)(0.30 * NumberOfPlaces))
+			if (LikeCount < (int)(0.30 * yelpManager.NumberOfPlaces))
 				return true;
 			else
 				return false;
