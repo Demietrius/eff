@@ -24,7 +24,7 @@ namespace eff.Views
         }
         private async void OnGuestClicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new GuestPage());
+           // await Navigation.PushAsync(new GuestPage());
         }
         private async void OnNearbyRestaurantsClicked(object sender, EventArgs e)
         {

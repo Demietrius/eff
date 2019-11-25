@@ -26,6 +26,8 @@ namespace eff.Views
 		public List<String> LikedPlaces{ get; set; }
 
 		YelpManager yelpManager;
+        //TODO: Remove Roommanger
+        RoomManager RoomManager;
 
 		public GetPlaces(User user)
 		{
@@ -35,9 +37,12 @@ namespace eff.Views
 			yelpManager.LikeCount = 0;
 			yelpManager.NumberOfPlaces = 0;
 			LikedPlaces = new List<string>();
-		}
+            //TODO: removes Roommanger
+            RoomManager = RoomManager.DefaultManager;
 
-		protected async void RequestPlaces_ClickedAsync(object sender, EventArgs e)
+        }
+
+        protected async void RequestPlaces_ClickedAsync(object sender, EventArgs e)
 		{
 			String location = await yelpManager.GetUserLocationAsync();
 			var strlist = location.Split(',');
@@ -61,22 +66,22 @@ namespace eff.Views
 				return;
 
 			Place tempid = e.CurrentSelection[e.CurrentSelection.Count() - 1] as Place;
-            if (CheckLikes() || LikedPlaces.Contains(tempid.id))
-            {
+			if (CheckLikes() || LikedPlaces.Contains(tempid.id))
+			{
 
 
-                LikedPlaces = new List<string>(); ;
-                {
-                    for (int index = 0; index < (int)e.CurrentSelection.Count(); index++)
-                    {
-                        Place TempPlace = e.CurrentSelection[index] as Place;
-                        LikedPlaces.Add(TempPlace.id.ToString());
-                    }
-                }
-                LikeCount = LikedPlaces.Count();
-            }else
-                errorAsync();
-        }
+				LikedPlaces = new List<string>(); ;
+				{
+					for (int index = 0; index < (int)e.CurrentSelection.Count(); index++)
+					{
+						Place TempPlace = e.CurrentSelection[index] as Place;
+						LikedPlaces.Add(TempPlace.id.ToString());
+					}
+				}
+				LikeCount = LikedPlaces.Count();
+			}else
+				errorAsync();
+		}
 
 		private async Task errorAsync()
 		{
@@ -92,10 +97,12 @@ namespace eff.Views
 				return false;
 		}
 
-		protected void submitClicked(object sender, EventArgs e)
-		{
+        private async void submitClicked(object sender, EventArgs e)
+        {
+            
 
-		}
+
+        }
 
 	}
 }

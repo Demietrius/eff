@@ -36,7 +36,7 @@ namespace eff.Views
             }
         }
 
-        private async void Submit(object sender, EventArgs e)
+        public async void Submit(object sender, EventArgs e)
         {
             var Room = new Rooms() {
                 RoomName = Entry_RoomName.Text,
@@ -49,9 +49,11 @@ namespace eff.Views
                 };
 
             await RoomManager.InsertRoom(Room);
-            var newGame = new initiateGame();
-            newGame.BindingContext = Room;
-            await Navigation.PushAsync(newGame);
+            /*            var newGame = new initiateGame();
+                        newGame.BindingContext = Room;
+                        await Navigation.PushAsync(newGame);*/
+
+            await Navigation.PushAsync(new initiateGame(Room));
 
         }
          private string generateId()

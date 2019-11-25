@@ -55,7 +55,17 @@
                     Factor=1.15}"
                     />
 
-            <Button x:Name="Btn_join" Text="join" TextColor="Black" FontSize="25" CornerRadius="13"
+        <Entry  x:Name="Entry_pin" Placeholder="pin number" ClearButtonVisibility="WhileEditing" Keyboard="Numeric" 
+                    PlaceholderColor="Gray" HorizontalOptions="Center" VerticalOptions="Center" TextColor="White" HorizontalTextAlignment="Center"
+                RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,
+                    Property=Width,
+                    Factor=1}"
+                RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent,
+                    Property=Height,
+                    Factor=1.15}"
+                    />
+
+        <Button x:Name="Btn_join" Text="join" TextColor="Black" FontSize="25" CornerRadius="13"
                     BackgroundColor="Orange" WidthRequest="120" HorizontalOptions="Center" VerticalOptions="Center"
                 RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,
                     Property=Width,

@@ -26,18 +26,12 @@ namespace eff.Views
             InitializeComponent();
             Application.Current.Properties["IsLoggedIn"] = Boolean.TrueString;
             this.User = user;
-            ////////////////////////////////testing
-            //var user = new User() { Username = "testing" };
-
-            ////////////////////////////////////////
-            //Lbl_user.SetBinding(Label.TextProperty,new Binding(user.Username));
-
         }
 
         
         private async void OnJoinClicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new GetPlaces(User));
+            await Navigation.PushAsync(new GuestPage(User));
         }
 
        

@@ -103,18 +103,11 @@ catch (Exception e)
 
         public async Task<User> InsertUser(User NewUser)
         {
-
-     
-
                 try
             {
-              
-
                 var result = await user.CreateDocumentAsync(collectionLink, NewUser);
                 NewUser.Id = result.Resource.Id;
                 users.Add(NewUser);
-
-
             }
             catch (Exception e)
             {
@@ -128,7 +121,6 @@ catch (Exception e)
         {
             try
             {
-
                 var query = user.CreateDocumentQuery<User>(collectionLink, new FeedOptions { EnableCrossPartitionQuery = true, MaxItemCount = -1 })
                        .Where(user => user.Username == tempUser.Username && user.Password == tempUser.Password)
                        .AsDocumentQuery();
