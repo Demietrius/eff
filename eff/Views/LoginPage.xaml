@@ -28,8 +28,8 @@
              RelativeLayout.HeightConstraint=
                  "{ConstraintExpression Type=RelativeToParent,
                                         Property=Height,
-                                        Factor=1}"
-            >
+                                        Factor=1}">
+
             <Label x:Name="Lbl_Username" Text="username" TextColor="Orange" FontSize="20"/>
             <Entry x:Name="Entry_Username" Placeholder="username" PlaceholderColor="Gray" Keyboard="Email" ReturnType="Next" IsTextPredictionEnabled="True"/>
             <Label x:Name="Lbl_Password" Text="password" TextColor="Orange" FontSize="20"/>

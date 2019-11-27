@@ -11,8 +11,8 @@ namespace eff.Views
         {
             InitializeComponent();
             if ((bool)(Application.Current.Properties["IsLoggedIn"] = true)) {
-                Lbl_GuestID.IsVisible = false; 
-                Lbl_GuestIDdisplay.IsVisible = false;
+                Lbl_tempName.IsVisible = false; 
+                Entry_tempName.IsVisible = false;
             }
         }
 
