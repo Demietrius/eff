@@ -29,7 +29,7 @@ namespace eff.Views
                 List<User> list = new List<User>();
                 list.Add(user);
 
-                var Room = await RoomManager.JoinRoom(Entry_Lobby.Text, Entry_pin.Text);
+                var Room = await RoomManager.JoinRoom(Entry_Lobby.Text, Entry_PIN.Text);
 
                 await RoomManager.JoindUsers(user,Room[0]);
             }

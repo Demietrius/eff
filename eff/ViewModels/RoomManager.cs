@@ -158,7 +158,7 @@ namespace eff.ViewModels
             }
             catch (Exception e)
             {
-                Console.Error.WriteLine(@"ERROR {0}", e.Message);
+                Console.Error.WriteLine(@"ERROR fuckfuckfuckfuck {0}", e.Message);
             }
         }
     

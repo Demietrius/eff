@@ -50,7 +50,7 @@
                    />
 
             <Button x:Name="Btn_SubmitStart" Text="start" TextColor="Black" BackgroundColor="Orange" HorizontalOptions="Center" VerticalOptions="Center"
-                    WidthRequest="180" CornerRadius="13" FontSize="25" 
+                    WidthRequest="180" CornerRadius="13" FontSize="25" Clicked="startGameClicked"
                 RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,
                     Property=Width,
                     Factor=1}"
