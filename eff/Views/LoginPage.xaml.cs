@@ -20,6 +20,11 @@ namespace eff.Views
         {
             InitializeComponent();
             userManger = UserManager.DefaultManager;
+            if (Device.RuntimePlatform == Device.Android)
+            {
+                Entry_Username.TextColor = Color.White;
+                Entry_Password.TextColor = Color.White;
+            }
         }
         private async void Login(object sender, EventArgs e)
         {

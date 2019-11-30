@@ -43,10 +43,9 @@
                      RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,
                         Property=Width,
                         Factor=1}"
-                RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent,
+                RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent,
                         Property=Height,
-                        Factor=0.58,
-                        Constant=-50}"/>
+                        Factor=1.15}"/>
 
 
           <Label Text="or" TextColor="Orange" FontSize="23" HorizontalOptions="Center" VerticalOptions="Center"

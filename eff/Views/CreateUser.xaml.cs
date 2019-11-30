@@ -18,9 +18,16 @@ namespace eff.Views
         StringBuilder sBuilder;
         public CreateUser()
         {
+           
             InitializeComponent();
             userManger = UserManager.DefaultManager;
             sBuilder = new StringBuilder();
+            if (Device.RuntimePlatform == Device.Android)
+            {
+                Entry_Username.TextColor = Color.White;
+                Entry_email.TextColor = Color.White;
+                Entry_Password.TextColor = Color.White;
+            }
         }
 
       
