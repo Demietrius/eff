@@ -19,7 +19,7 @@
             RelativeLayout.HeightConstraint= "{ConstraintExpression Type=RelativeToParent, Property=Height}"/>
 
         <StackLayout Orientation="Vertical" VerticalOptions="Center"
-                     HorizontalOptions="Center"  Spacing="15" WidthRequest="270"
+                     HorizontalOptions="Center"  Spacing="15" WidthRequest="280"
                      
                      RelativeLayout.WidthConstraint=
                  "{ConstraintExpression Type=RelativeToParent,
@@ -30,21 +30,29 @@
                                         Property=Height,
                                         Factor=1}"
             >
-            <Label Text="" HeightRequest="0"/>
+            <!--<Label Text="" HeightRequest="0"/>-->
 
-            <Label x:Name="Lbl_userName" Text="username" TextColor="Orange" FontSize="20"/>
-            <Entry x:Name="Entry_Username" Placeholder="username" PlaceholderColor="Gray" Keyboard="Email" ReturnType="Next" />
+            <StackLayout Padding="8">
+                <Label x:Name="Lbl_userName" Text="username" TextColor="Orange" FontSize="20"/>
+                <Entry x:Name="Entry_Username" Placeholder="username" PlaceholderColor="Gray" Keyboard="Email" ReturnType="Next" />
+            </StackLayout>
 
-            <Label x:Name="Lbl_email" Text="email" TextColor="Orange" FontSize="20"/>
-            <Entry x:Name="Entry_email" Placeholder="username" PlaceholderColor="Gray" Keyboard="Email" ReturnType="Next" />
+            <StackLayout Padding="8">
+                <Label x:Name="Lbl_email" Text="email" TextColor="Orange" FontSize="20"/>
+                <Entry x:Name="Entry_email" Placeholder="username" PlaceholderColor="Gray" Keyboard="Email" ReturnType="Next" />
+            </StackLayout>
 
-            <Label x:Name="Lbl_Password" Text="password" TextColor="Orange" FontSize="20"/>
-            <Entry x:Name="Entry_Password" Placeholder="password" PlaceholderColor="Gray" ReturnType="Next"
-                   IsPassword="True" MaxLength="50" ClearButtonVisibility="WhileEditing" />
+            <StackLayout Padding="8">
+                <Label x:Name="Lbl_Password" Text="password" TextColor="Orange" FontSize="20"/>
+                <Entry x:Name="Entry_Password" Placeholder="password" PlaceholderColor="Gray" ReturnType="Next"
+                       IsPassword="True" MaxLength="50" ClearButtonVisibility="WhileEditing" />
+            </StackLayout>
 
-            <Label x:Name="Lbl_ConfirmPassword" Text="confirm password" TextColor="Orange" FontSize="20"/>
-            <Entry x:Name="Entry2_Password" Placeholder="confirm password" ReturnType="Send"
-                   PlaceholderColor="Gray" IsPassword="True" MaxLength="50" ClearButtonVisibility="WhileEditing"/>
+            <StackLayout Padding="8">
+                <Label x:Name="Lbl_ConfirmPassword" Text="confirm password" TextColor="Orange" FontSize="20"/>
+                <Entry x:Name="Entry2_Password" Placeholder="confirm password" ReturnType="Send"
+                       PlaceholderColor="Gray" IsPassword="True" MaxLength="50" ClearButtonVisibility="WhileEditing"/>
+             </StackLayout>
 
             <Label Text="" HeightRequest="120"/>
             
