@@ -13,9 +13,9 @@ namespace eff.ViewModels
         static RoomManager defaultInstance = new RoomManager();
 
 
-        const string accountURL = @"https://effdatabase.documents.azure.com:443/";
-        const string accountKey = @"0LhL8FvWxysH8SLdx0GUlD2OLlghxX1jJcYAPVceYBgi32ocmNwvbQJHJlthaSy5eBKEH6uXIwTyrEEFChDWJA==";
-        const string databaseId = @"user";
+        const string accountURL = @"https://effdb.documents.azure.com:443/";
+        const string accountKey = @"zh7XHYblEgYk66t9ytPuYgJTBZJ7wOoCDIq1nQPrP6nUxPGwwfIVH1N3etlEgrMJpIMLU34B7Un8qFuXIJAt5w==";
+        const string databaseId = @"eff";
         const string collectionId = @"Room";
 
         private Uri collectionLink = UriFactory.CreateDocumentCollectionUri(databaseId, collectionId);
