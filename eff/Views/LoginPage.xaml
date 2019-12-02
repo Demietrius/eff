@@ -28,8 +28,8 @@
              RelativeLayout.HeightConstraint=
                  "{ConstraintExpression Type=RelativeToParent,
                                         Property=Height,
-                                        Factor=1}"
-            >
+                                        Factor=1}">
+
             <Label x:Name="Lbl_Username" Text="username" TextColor="Orange" FontSize="20"/>
             <Entry x:Name="Entry_Username" Placeholder="username" PlaceholderColor="Gray" Keyboard="Email" ReturnType="Next" IsTextPredictionEnabled="True"/>
             <Label x:Name="Lbl_Password" Text="password" TextColor="Orange" FontSize="20"/>
@@ -43,10 +43,9 @@
                      RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,
                         Property=Width,
                         Factor=1}"
-                RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent,
+                RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent,
                         Property=Height,
-                        Factor=0.58,
-                        Constant=-50}"/>
+                        Factor=1.15}"/>
 
 
           <Label Text="or" TextColor="Orange" FontSize="23" HorizontalOptions="Center" VerticalOptions="Center"
