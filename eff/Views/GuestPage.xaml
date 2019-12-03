@@ -17,7 +17,7 @@
             RelativeLayout.WidthConstraint= "{ConstraintExpression Type=RelativeToParent, Property=Width}"
             RelativeLayout.HeightConstraint= "{ConstraintExpression Type=RelativeToParent, Property=Height}"/>
     
-             <!--<Label x:Name="Lbl_GuestID" Text="guest id" FontSize="22" TextColor="Orange" VerticalOptions="Center" HorizontalOptions="Center"
+             <Label x:Name="Lbl_GuestID" Text="guest id" FontSize="22" TextColor="Orange" VerticalOptions="Center" HorizontalOptions="Center"
                 RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,
                     Property=Width,
                     Factor=1}"
@@ -26,14 +26,14 @@
                     Factor=0.25}"
                     />
 
-            <Label x:Name="Lbl_GuestIDdisplay"  TextColor="White" FontSize="25" Text="{Binding}"
+        <Label x:Name="Lbl_GuestIDdisplay"  TextColor="White" FontSize="25" Text="{Binding}"
                 RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,
                     Property=Width,
                     Factor=1}"
                 RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent,
                     Property=Height,
                     Factor=.28}"
-                   />-->
+                   />
         <Label x:Name="Lbl_tempName" Text="enter a name" TextColor="Orange" FontSize="22"
                    HorizontalOptions="Center" VerticalOptions="Center"
                 RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,

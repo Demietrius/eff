@@ -48,14 +48,6 @@ namespace eff.Views
         }
 
 
-     /*   private static ISettings AppSettings =>CrossSettings.Current;
-
-        public static string UserName
-        {
-            get => AppSettings.GetValueOrDefault(nameof(UserName), string.Empty);
-            set => AppSettings.AddOrUpdateValue(nameof(UserName), value);
-        }*/
-
 
         private async void OnSignUpClicked(object sender, EventArgs e)
         {

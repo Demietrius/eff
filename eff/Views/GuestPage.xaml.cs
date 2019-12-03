@@ -24,6 +24,12 @@ namespace eff.Views
             }
         }
 
+        public GuestPage()
+        {
+            InitializeComponent();
+            RoomManager = RoomManager.DefaultManager;
+        }
+
             private async void Join(object sender, EventArgs e)
             {
                 List<User> list = new List<User>();

@@ -148,8 +148,8 @@ namespace eff.ViewModels
         }
 
 
-                public async Task StartGame(Rooms Room)
-        {
+       public async Task StartGame(Rooms Room)
+       {
             try
             {
                 Room.StartGame = true;

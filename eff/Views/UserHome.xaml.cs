@@ -14,15 +14,7 @@ namespace eff.Views
     {
         User User;
         UserManager UserManager;
-        public UserHome(string id)
-        {
-            InitializeComponent();
-            UserManager = UserManager.DefaultManager;
 
-            var user = GetUser(id);
-
-            
-        }
         public UserHome(User user)
         {
             InitializeComponent();
@@ -32,10 +24,28 @@ namespace eff.Views
 
         }
 
-        private async Task<List<User>> GetUser(string id)
+
+        public  UserHome(string id)
+        {
+            Initialization = InitializeAsync(id);
+            UserManager = UserManager.DefaultManager;
+            InitializeComponent();
+
+
+        }
+
+
+        public Task Initialization { get; private set; }
+        private async Task InitializeAsync(string id)
+        {
+            var user = await GetUser(id);
+            this.User = user;
+        }
+
+        private async Task<User> GetUser(string id)
         {
            var user = await UserManager.GetUserById(id);
-            return user;
+            return user[0];
         }
 
 
