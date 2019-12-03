@@ -2,21 +2,24 @@
 using System.Collections.Generic;
 using eff.ViewModels;
 using Xamarin.Forms;
+using eff.Models;
 
 namespace eff.Views
 {
     public partial class initiateGame : ContentPage
     {
-        RoomManager room;
+        RoomManager RoomManager;
+        Rooms room;
         
-        public initiateGame()
+        public initiateGame(Rooms room)
         {
             InitializeComponent();
-            room = RoomManager.DefaultManager;
+            this.room = room;
+            RoomManager = RoomManager.DefaultManager;
             
         }
 
-        protected async void startGameClicked()
+        protected async void StartGameClicked(object sender, EventArgs e)
         { 
 
         }
