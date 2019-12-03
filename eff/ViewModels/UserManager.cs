@@ -74,13 +74,14 @@ namespace eff.ViewModels
 
         public List<User> Clients { get; private set; }
 
+
         public async Task<List<User>> GetUserByEmail(string Email)
         {
             try
             {
 
                 var query = user.CreateDocumentQuery<User>(collectionLink, new FeedOptions { EnableCrossPartitionQuery = true, MaxItemCount = -1 })
-                       .Where(user => user.Username == Email)
+                       .Where(user => user.Email == Email)
                        .AsDocumentQuery();
 
                 Clients = new List<User>();
@@ -122,7 +123,7 @@ catch (Exception e)
             try
             {
                 var query = user.CreateDocumentQuery<User>(collectionLink, new FeedOptions { EnableCrossPartitionQuery = true, MaxItemCount = -1 })
-                       .Where(user => user.Username == tempUser.Username && user.Password == tempUser.Password)
+                       .Where(user => user.Email == tempUser.Email && user.Password == tempUser.Password)
                        .AsDocumentQuery();
 
                 Clients = new List<User>();

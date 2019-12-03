@@ -17,7 +17,7 @@
             RelativeLayout.WidthConstraint= "{ConstraintExpression Type=RelativeToParent, Property=Width}"
             RelativeLayout.HeightConstraint= "{ConstraintExpression Type=RelativeToParent, Property=Height}"/>
     
-             <Label x:Name="Lbl_GuestID" Text="guest id" FontSize="22" TextColor="Orange" VerticalOptions="Center" HorizontalOptions="Center"
+            <Label x:Name="Lbl_GuestID" Text="guest id" FontSize="22" TextColor="Orange" VerticalOptions="Center" HorizontalOptions="Center"
                 RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,
                     Property=Width,
                     Factor=1}"
@@ -26,7 +26,7 @@
                     Factor=0.25}"
                     />
 
-        <Label x:Name="Lbl_GuestIDdisplay"  TextColor="White" FontSize="25" Text="{Binding}"
+            <Label x:Name="Lbl_GuestIDdisplay"  TextColor="White" FontSize="25" Text="{Binding}"
                 RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,
                     Property=Width,
                     Factor=1}"
@@ -84,7 +84,7 @@
                     Factor=1.2}"
                    />
 
-        <Entry  x:Name="Entry_PIN" Placeholder="PIN" ClearButtonVisibility="WhileEditing" Keyboard="Numeric" WidthRequest="120"
+            <Entry  x:Name="Entry_PIN" Placeholder="PIN" ClearButtonVisibility="WhileEditing" Keyboard="Numeric" WidthRequest="120"
                     PlaceholderColor="Gray" HorizontalOptions="Center" VerticalOptions="Center" TextColor="White" HorizontalTextAlignment="Center"
                 RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,
                     Property=Width,
@@ -94,7 +94,7 @@
                     Factor=1.3}"
                     />
 
-        <Button x:Name="Btn_join" Text="join" TextColor="Black" FontSize="25" CornerRadius="13"
+            <Button x:Name="Btn_join" Text="join" TextColor="Black" FontSize="25" CornerRadius="13"
                     BackgroundColor="Orange" WidthRequest="120" HorizontalOptions="Center" VerticalOptions="Center"
                 RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,
                     Property=Width,
