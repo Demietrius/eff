@@ -137,10 +137,9 @@ catch (Exception e)
                 while (query.HasMoreResults)
                 {
                     Clients.AddRange(await query.ExecuteNextAsync<User>());
-
                 }
 
-                if (Clients.Count > 1)
+                if (Clients.Count > 1 || Clients.Count==0)
                     return null;
 
             }

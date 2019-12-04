@@ -14,7 +14,9 @@ namespace eff.Views
         public UserHome()
         {
             InitializeComponent();
+            
             Application.Current.Properties["IsLoggedIn"] = Boolean.TrueString;
+            Application.Current.Properties["ID"] = User.Email.ToString();
             ////////////////////////////////testing
             //var user = new User() { Username = "testing" };
 
@@ -26,6 +28,7 @@ namespace eff.Views
             InitializeComponent();
             Application.Current.Properties["IsLoggedIn"] = Boolean.TrueString;
             this.User = user;
+            Application.Current.Properties["ID"] = User.Email.ToString();
             ////////////////////////////////testing
             //var user = new User() { Username = "testing" };
 
