@@ -29,9 +29,7 @@ namespace eff.Views
         private async void OnGuestClicked(object sender, EventArgs e)
         {
             User TempUser = new User() { IsGuest = true };
-            var user = await userManger.InsertUser(TempUser);
-
-           await Navigation.PushAsync(new GuestPage(user));
+            await Navigation.PushAsync(new GuestPage(TempUser));
         }
         private async void OnNearbyRestaurantsClicked(object sender, EventArgs e)
         {

@@ -42,7 +42,7 @@ namespace eff.Views
             {
                 RoomName = Entry_RoomName.Text,
                 City = Entry_City.Text,
-                Distance = convertDistance(Pkr_NumPlaces.SelectedItem.ToString()),
+                Distance = convertDistance(Pkr_Distance.SelectedItem.ToString()),
                 NumberOfResturants = Pkr_NumPlaces.ToString(),
                 Price = convertPrice(Pkr_Price.SelectedItem.ToString()),
                 RoomNumber = generateId(),
@@ -88,13 +88,13 @@ namespace eff.Views
             //multiply this by the number of miles desired
             int miles_to_meters = 1610;
             int index = milesString.LastIndexOf(" ");
-            int milesInt = 1;
+            int milesInt;
             //gets the "3" out of "3 miles" (or any other number)
-          /*  if (!Int32.TryParse(milesString.Substring(0, index), out milesInt))
+          if (!Int32.TryParse(milesString.Substring(0, index), out milesInt))
             {
                 //if tryparse fails, defaults to 1 mile instead of crashing
                 milesInt = 1;
-            }*/
+            }
             return (milesInt * miles_to_meters).ToString();
         }
     }
