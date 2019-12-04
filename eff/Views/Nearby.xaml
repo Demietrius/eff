@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="eff.Views.Nearby"
+             Title="near you">
+
+    
+    <StackLayout Margin="0" BackgroundColor="Black">
+        <CollectionView x:Name="ViewPlaces"  ItemsSource="{Binding Places} ">
+            <CollectionView.ItemsLayout>
+                <GridItemsLayout Orientation="Vertical" 
+                                 Span="1" />
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame BackgroundColor="#6e6e6c" BorderColor="Black" CornerRadius="13" >
+                    <Grid >
+                        <Grid.RowDefinitions>                           
+                            <RowDefinition Height="60" />
+                            <RowDefinition Height="60" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        
+                        <Image x:Name="name" Grid.RowSpan="2"
+                               Source="{Binding image_url}"
+                               Aspect="AspectFill"
+                               HeightRequest="100"
+                               WidthRequest="100" />
+                        <Label Grid.Column="1"
+                               Grid.ColumnSpan="1"
+                               Text="{Binding name}"
+                               FontAttributes="Bold" />
+                               
+                        <Label Grid.Row="1"
+                               Grid.Column="1"
+                               Text="{Binding rating, StringFormat='{0:N} Stars'}"                               
+                               FontAttributes="Italic"
+                               VerticalTextAlignment="End"
+                               />
+                        
+                       
+                    </Grid>
+                        </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </StackLayout>
+</ContentPage>
+
+

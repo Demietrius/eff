@@ -19,7 +19,7 @@
             RelativeLayout.HeightConstraint= "{ConstraintExpression Type=RelativeToParent, Property=Height}"/>
 
         <StackLayout Orientation="Vertical" VerticalOptions="Center"
-                     HorizontalOptions="Center"  Spacing="15" WidthRequest="270"
+                     HorizontalOptions="Center"  Spacing="15" WidthRequest="280"
                      
                      RelativeLayout.WidthConstraint=
                  "{ConstraintExpression Type=RelativeToParent,
@@ -30,26 +30,77 @@
                                         Property=Height,
                                         Factor=1}"
             >
-                    
-            <Label x:Name="Lbl_email" Text="email" TextColor="Orange" FontSize="20"/>
-            <Entry x:Name="Entry_Username" Placeholder="username" PlaceholderColor="Gray" />
-            <Label x:Name="Lbl_Password" Text="password" TextColor="Orange" FontSize="20"/>
-            <Entry x:Name="Entry_Password" Placeholder="password" PlaceholderColor="Gray" IsPassword="True"/>
-            <Label x:Name="Lbl_ConfirmPassword" Text="confirm password" TextColor="Orange" FontSize="20"/>
-            <Entry x:Name="Entry2_Password" Placeholder="confirm password" PlaceholderColor="Gray" IsPassword="True"/>
-            <Label Text="" HeightRequest="120" MinimumHeightRequest="120"/>
+            <!--<Label Text="" HeightRequest="0"/>-->
+
+            <StackLayout Padding="8">
+                <Label x:Name="Lbl_userName" Text="username" TextColor="Orange" FontSize="20"/>
+                <Entry x:Name="Entry_Username" Placeholder="username" PlaceholderColor="Gray" Keyboard="Email" ReturnType="Next" />
+            </StackLayout>
+
+            <StackLayout Padding="8">
+                <Label x:Name="Lbl_email" Text="email" TextColor="Orange" FontSize="20"/>
+                <Entry x:Name="Entry_email" Placeholder="username" PlaceholderColor="Gray" Keyboard="Email" ReturnType="Next" />
+            </StackLayout>
+
+            <StackLayout Padding="8">
+                <Label x:Name="Lbl_Password" Text="password" TextColor="Orange" FontSize="20"/>
+                <Entry x:Name="Entry_Password" Placeholder="password" PlaceholderColor="Gray" ReturnType="Next"
+                       IsPassword="True" MaxLength="50" ClearButtonVisibility="WhileEditing" />
+            </StackLayout>
+
+            <StackLayout Padding="8">
+                <Label x:Name="Lbl_ConfirmPassword" Text="confirm password" TextColor="Orange" FontSize="20"/>
+                <Entry x:Name="Entry2_Password" Placeholder="confirm password" ReturnType="Send"
+                       PlaceholderColor="Gray" IsPassword="True" MaxLength="50" ClearButtonVisibility="WhileEditing"/>
+             </StackLayout>
+
+            <Label Text="" HeightRequest="120"/>
             
         </StackLayout>
 
         <Button x:Name="Btn_Login" Text="sign up" BackgroundColor="Orange" TextColor="Black" Clicked="InsertUser"
-                WidthRequest="120" FontSize="20" 
-              RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent,
+                WidthRequest="130" FontSize="20"  HorizontalOptions="Center" VerticalOptions="Center" CornerRadius="13"
+              RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,
                     Property=Width,
-                    Factor=.49,
-                    Constant=-50}"
-                RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent,
+                    Factor=1}"
+                RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent,
                     Property=Height,
-                    Factor=0.65,
-                    Constant=-50}"/>
+                    Factor=1.5}"/>
+
+        <Label x:Name="Lbl_passwordError" Text="*Make sure your password is at least 6 characters and that both passwords are the same"
+               TextColor="Orange" WidthRequest="270" HorizontalOptions="Center" VerticalOptions="Center" IsVisible="false"
+               RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,
+                    Property=Width,
+                    Factor=1}"
+                    RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent,
+                    Property=Height,
+                    Factor=1.85}"/>
+
+        <Label x:Name="Lbl_emailError" Text="*Invalid email"
+               TextColor="Orange" WidthRequest="270" HorizontalOptions="Center" VerticalOptions="Center" IsVisible="false"
+               RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,
+                    Property=Width,
+                    Factor=1}"
+                    RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent,
+                    Property=Height,
+                    Factor=1.75}"/>
+
+        <Label x:Name="Lbl_usernameError" Text="*Invalid username. It should be 1-30 characters or numbers"
+               TextColor="Orange" WidthRequest="270" HorizontalOptions="Center" VerticalOptions="Center" IsVisible="false"
+               RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,
+                    Property=Width,
+                    Factor=1}"
+                    RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent,
+                    Property=Height,
+                    Factor=1.75}"/>
+
+        <Label x:Name="Lbl_blankform" Text="*Make sure to fill out every form"
+               TextColor="Orange" WidthRequest="270" HorizontalOptions="Center" VerticalOptions="Center" IsVisible="false"
+               RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,
+                    Property=Width,
+                    Factor=1}"
+                    RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent,
+                    Property=Height,
+                    Factor=1.75}"/>
 </RelativeLayout>
 </ContentPage>

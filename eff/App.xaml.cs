@@ -2,19 +2,34 @@
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using eff.Views;
+using eff.Models;
+using eff.ViewModels;
 
 namespace eff
 {
     public partial class App : Application
     {
+        UserManager userManager;
 
         public App()
         {
             InitializeComponent();
 
+            userManager = UserManager.DefaultManager;
             //DependencyService.Register<MockDataStore>();
-            MainPage = new NavigationPage(new WelcomePage());
+            bool isLoggedIn = Current.Properties.ContainsKey("IsLoggedIn") ? Convert.ToBoolean(Current.Properties["IsLoggedIn"]) : false;
+            string id = Current.Properties.ContainsKey("UserId") ? Convert.ToString(Current.Properties["UserId"]) : null;
+
+            if (!isLoggedIn)
+            {
+                MainPage = new NavigationPage(new WelcomePage());
+            }
+            else
+            {
+                MainPage = new NavigationPage(new UserHome(id));
+            }
          }
+
 
         protected override void OnStart()
         {

@@ -7,6 +7,8 @@ using eff.Models;
 using System.Security.Cryptography;
 using eff.ViewModels;
 using System.Text;
+using Plugin.Settings.Abstractions;
+using Plugin.Settings;
 
 namespace eff.Views
 {
@@ -18,6 +20,11 @@ namespace eff.Views
         {
             InitializeComponent();
             userManger = UserManager.DefaultManager;
+            if (Device.RuntimePlatform == Device.Android)
+            {
+                Entry_Username.TextColor = Color.White;
+                Entry_Password.TextColor = Color.White;
+            }
         }
         private async void Login(object sender, EventArgs e)
         {
@@ -34,12 +41,13 @@ namespace eff.Views
             var user = await userManger.Login(tempUser);
             if (user != null)
             {
-                var userHome = new UserHome();
-                await Navigation.PushAsync(new UserHome());
+                await Navigation.PushAsync(new UserHome(user));
             }
             else
                 Error(user);
         }
+
+
 
         private async void OnSignUpClicked(object sender, EventArgs e)
         {

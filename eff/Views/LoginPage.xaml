@@ -28,49 +28,43 @@
              RelativeLayout.HeightConstraint=
                  "{ConstraintExpression Type=RelativeToParent,
                                         Property=Height,
-                                        Factor=1}"
-            >
+                                        Factor=1}">
+
             <Label x:Name="Lbl_Username" Text="username" TextColor="Orange" FontSize="20"/>
-            <Entry x:Name="Entry_Username" Placeholder="username" PlaceholderColor="Gray"/>
+            <Entry x:Name="Entry_Username" Placeholder="username" PlaceholderColor="Gray" Keyboard="Email" ReturnType="Next" IsTextPredictionEnabled="True"/>
             <Label x:Name="Lbl_Password" Text="password" TextColor="Orange" FontSize="20"/>
             <Entry IsPassword="True" x:Name="Entry_Password" Placeholder="password" PlaceholderColor="Gray"/>
             <Label Text="" HeightRequest="155"/>
 
         </StackLayout>
 
-            <Button x:Name="Btn_Login" Text="login" TextColor="Black"
-                    Clicked="Login" FontSize="20" BackgroundColor="Orange" WidthRequest="120"
-                     RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent,
+            <Button x:Name="Btn_Login" Text="login" TextColor="Black" CornerRadius="13" VerticalOptions="Center"
+                    Clicked="Login" FontSize="20" BackgroundColor="Orange" WidthRequest="120" HorizontalOptions="Center"
+                     RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,
                         Property=Width,
-                        Factor=.49,
-                        Constant=-50}"
-                RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent,
+                        Factor=1}"
+                RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent,
                         Property=Height,
-                        Factor=0.58,
-                        Constant=-50}"/>
+                        Factor=1.15}"/>
 
 
-          <Label Text="or" TextColor="Orange" FontSize="23"
-              RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent,
+          <Label Text="or" TextColor="Orange" FontSize="23" HorizontalOptions="Center" VerticalOptions="Center"
+              RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,
                     Property=Width,
-                    Factor=.61,
-                    Constant=-50}"
-                RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent,
+                    Factor=1}"
+                RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent,
                     Property=Height,
-                    Factor=0.86,
-                    Constant=-50}"
+                    Factor=1.6}"
                  />
               
-        <Button Text="sign up" BackgroundColor="Orange" TextColor="Black"
-                WidthRequest="120" FontSize="20" Clicked="OnSignUpClicked"
-              RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent,
+        <Button Text="sign up" BackgroundColor="Orange" TextColor="Black" CornerRadius="13"
+                WidthRequest="120" FontSize="20" Clicked="OnSignUpClicked" HorizontalOptions="Center" VerticalOptions="Center"
+              RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,
                     Property=Width,
-                    Factor=.49,
-                    Constant=-50}"
-                RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent,
+                    Factor=1}"
+                RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent,
                     Property=Height,
-                    Factor=0.93,
-                    Constant=-50}"/>
+                    Factor=1.75}"/>
     </RelativeLayout>
 
 </ContentPage>
