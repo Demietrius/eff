@@ -48,12 +48,12 @@ namespace eff.ViewModels
 
 
 
-        public async Task<List<User>> GetUserById(int UserId)
+        public async Task<List<User>> GetUserById(string UserId)
         {
             try
             {
                 // The query excludes completed TodoItems
-                var query = user.CreateDocumentQuery<User>(collectionLink, new FeedOptions { MaxItemCount = -1 })
+                var query = user.CreateDocumentQuery<User>(collectionLink, new FeedOptions { EnableCrossPartitionQuery = true, MaxItemCount = -1 })
                       .Where(user => user.Id.Equals(UserId))
                       .AsDocumentQuery();
 
@@ -103,18 +103,11 @@ catch (Exception e)
 
         public async Task<User> InsertUser(User NewUser)
         {
-
-     
-
                 try
             {
-              
-
                 var result = await user.CreateDocumentAsync(collectionLink, NewUser);
                 NewUser.Id = result.Resource.Id;
                 users.Add(NewUser);
-
-
             }
             catch (Exception e)
             {
@@ -128,7 +121,6 @@ catch (Exception e)
         {
             try
             {
-
                 var query = user.CreateDocumentQuery<User>(collectionLink, new FeedOptions { EnableCrossPartitionQuery = true, MaxItemCount = -1 })
                        .Where(user => user.Username == tempUser.Username && user.Password == tempUser.Password)
                        .AsDocumentQuery();

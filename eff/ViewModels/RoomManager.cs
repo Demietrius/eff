@@ -27,6 +27,8 @@ namespace eff.ViewModels
             room = new DocumentClient(new System.Uri(accountURL), accountKey);
         }
 
+
+
         public static RoomManager DefaultManager
         {
             get
@@ -39,7 +41,9 @@ namespace eff.ViewModels
             }
         }
 
+
         public List<Rooms> Rooms { get; private set; }
+
 
 
         public async Task<List<Rooms>> GetById(int RoomId)
@@ -67,6 +71,23 @@ namespace eff.ViewModels
 
 
 
+        public async Task<List<User>> JoindUsers(int RoomId)
+        {
+            try
+            {
+                var Rooms = await GetById(RoomId);
+                List<User> users = Rooms[0].ListOfUsers;
+                return users;
+            }
+            catch (Exception e)
+            {
+                Console.Error.WriteLine(@"ERROR {0}", e.Message);
+                return null;
+            }
+        }
+
+
+
 
         public async Task<Rooms> InsertRoom(Rooms NewRoom)
         {
@@ -83,6 +104,64 @@ namespace eff.ViewModels
             return NewRoom;
         }
 
+
+
+        public async Task<List<Rooms>> JoinRoom(string RoomNumber, string pin)
+        {
+            try
+            {
+                // The query excludes completed TodoItems
+                var query = room.CreateDocumentQuery<Rooms>(collectionLink, new FeedOptions { MaxItemCount = -1 })
+                      .Where(room => room.RoomNumber.Equals(RoomNumber) && room.PIN.Equals(pin))
+                      .AsDocumentQuery();
+
+                Rooms = new List<Rooms>();
+                while (query.HasMoreResults)
+                {
+                    Rooms.AddRange(await query.ExecuteNextAsync<Rooms>());
+                }
+            }
+            catch (Exception e)
+            {
+                Console.Error.WriteLine(@"ERROR {0}", e.Message);
+                return null;
+            }
+            return Rooms;   
+        }
+
+
+
+        public async Task JoindUsers(User user, Rooms JoinedRoom)
+        {
+            try
+            {
+                var TempUser = new User() { Username = user.Username, Email = user.Email, Id = user.Id };
+                JoinedRoom.ListOfUsers.Add(user);
+
+                await room.ReplaceDocumentAsync(UriFactory.CreateDocumentUri(databaseId, collectionId, JoinedRoom.ID), JoinedRoom);
+
+            }
+            catch (Exception e)
+            {
+                Console.Error.WriteLine(@"ERROR {0}", e.Message);
+            }
+        }
+
+
+                public async Task StartGame(Rooms Room)
+        {
+            try
+            {
+                Room.StartGame = true;
+                await room.ReplaceDocumentAsync(UriFactory.CreateDocumentUri(databaseId, collectionId, Room.ID), Room);
+
+            }
+            catch (Exception e)
+            {
+                Console.Error.WriteLine(@"ERROR fuckfuckfuckfuck {0}", e.Message);
+            }
+        }
+    
 
 
     }

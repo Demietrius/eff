@@ -108,12 +108,13 @@ namespace eff.ViewModels
             {
                 string b = (string)bus.SelectToken("name");
                 string c = (string)bus.SelectToken("image_url");
+                string d = (string)bus.SelectToken("id");
                 if (c.Length < 2)
                 {
                     c = "filler.jpg";
                 }
-                string d = (string)bus.SelectToken("rating");
-                Places.Add(new Place { name = b, image_url = c, rating = d });
+                string e = (string)bus.SelectToken("rating");
+                Places.Add(new Place { name = b, image_url = c, id = d, rating = e });
             }
             NumberOfPlaces = Places.Count;
         }

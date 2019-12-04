@@ -12,7 +12,7 @@ namespace eff.Views
         User User;
         RoomManager RoomManager;
         UserManager userManager;
-        public CreateLobby(User User)
+        public CreateLobby(User User) 
         {
             InitializeComponent();
             SetAndroid();
@@ -36,7 +36,7 @@ namespace eff.Views
             }
         }
 
-        private async void Submit(object sender, EventArgs e)
+        public async void Submit(object sender, EventArgs e)
         {
             var Room = new Rooms() {
                 RoomName = Entry_RoomName.Text,
@@ -44,12 +44,16 @@ namespace eff.Views
                 Distance = Pkr_NumPlaces.ToString(),
                 NumberOfResturants = Pkr_NumPlaces.ToString(),
                 Price = Pkr_Price.ToString(),
-                ID = generateId(),
+                RoomNumber = generateId(),
                 PIN = generatePIN()
                 };
 
-           await RoomManager.InsertRoom(Room);
-            await Navigation.PushAsync(new initiateGame());
+            await RoomManager.InsertRoom(Room);
+            /*            var newGame = new initiateGame();
+                        newGame.BindingContext = Room;
+                        await Navigation.PushAsync(newGame);*/
+
+            await Navigation.PushAsync(new initiateGame(Room));
 
         }
          private string generateId()

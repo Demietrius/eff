@@ -7,26 +7,57 @@
              >
     <RelativeLayout Padding="0" HorizontalOptions="Center" VerticalOptions="Center">
         <Image Aspect="AspectFill"
-            Source="initiateGame.jpg"
+            Source="initiateBackground.jpg"
             RelativeLayout.WidthConstraint= "{ConstraintExpression Type=RelativeToParent, Property=Width}"
             RelativeLayout.HeightConstraint= "{ConstraintExpression Type=RelativeToParent, Property=Height}"/>
 
-        <Label x:Name="Lbl_GuestID" Text="game ID:" FontSize="25" TextColor="Black" VerticalOptions="Center" HorizontalOptions="Center"
+        <Label x:Name="Lbl_GuestID" Text="game ID:" FontSize="25" TextColor="White" VerticalOptions="Center" HorizontalOptions="Center"
                 RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,
-                    Property=Width,
+                    Property=Width,  
                     Factor=1}"
                 RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent,
                     Property=Height,
-                    Factor=0.25}"
+                    Factor=0.2}" 
                     />
 
-            <Label x:Name="Lbl_GuestIDdisplay"  TextColor="Black" FontAttributes="Italic" FontSize="25" Text="{Binding gameID}"
+            <Label x:Name="Lbl_GuestIDdisplay"  TextColor="Orange" CharacterSpacing="3"  FontSize="30" Text="{Binding RoomNumber}" HorizontalOptions="Center" VerticalOptions="Center"
                 RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,
                     Property=Width,
                     Factor=1}"
                 RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent,
                     Property=Height,
-                    Factor=.28}"
+                    Factor=.33}"
                    />
+
+        <Label x:Name="Lbl_GuestPIN" Text="game PIN:" FontSize="25" TextColor="White" 
+               VerticalOptions="Center" HorizontalOptions="Center"
+                RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,
+                    Property=Width,
+                    Factor=1}"
+                RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent,
+                    Property=Height,
+                    Factor=0.5}"
+                    />
+
+            <Label x:Name="Lbl_GuestPINdisplay"  TextColor="Orange" CharacterSpacing="3"
+                   FontSize="30" Text="{Binding PIN}" HorizontalOptions="Center" VerticalOptions="Center"
+                RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,
+                    Property=Width,
+                    Factor=1}"
+                RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent,
+                    Property=Height,
+                    Factor=.63}"
+                   />
+
+            <Button x:Name="Btn_SubmitStart" Text="start" TextColor="Black" BackgroundColor="Orange" HorizontalOptions="Center" VerticalOptions="Center"
+                    WidthRequest="180" CornerRadius="13" FontSize="25" Clicked="startGameClicked"
+                RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,
+                    Property=Width,
+                    Factor=1}"
+                RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent,
+                    Property=Height,
+                    Factor=1.8}"
+                />
+
     </RelativeLayout>
 </ContentPage>

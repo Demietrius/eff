@@ -5,39 +5,43 @@ using eff.Views;
 
 
 using Xamarin.Forms;
+using eff.ViewModels;
+using System.Threading.Tasks;
 
 namespace eff.Views
 {
     public partial class UserHome : ContentPage
     {
         User User;
-        public UserHome()
+        UserManager UserManager;
+        public UserHome(string id)
         {
             InitializeComponent();
-            Application.Current.Properties["IsLoggedIn"] = Boolean.TrueString;
-            ////////////////////////////////testing
-            //var user = new User() { Username = "testing" };
+            UserManager = UserManager.DefaultManager;
 
-            ////////////////////////////////////////
-            //Lbl_user.SetBinding(Label.TextProperty,new Binding(user.Username));
+            var user = GetUser(id);
+
+            
         }
         public UserHome(User user)
         {
             InitializeComponent();
-            Application.Current.Properties["IsLoggedIn"] = Boolean.TrueString;
             this.User = user;
-            ////////////////////////////////testing
-            //var user = new User() { Username = "testing" };
-
-            ////////////////////////////////////////
-            //Lbl_user.SetBinding(Label.TextProperty,new Binding(user.Username));
+            Application.Current.Properties["IsLoggedIn"] = Boolean.TrueString;
+            Application.Current.Properties["UserId"] = user.Id;
 
         }
 
-        
+        private async Task<List<User>> GetUser(string id)
+        {
+           var user = await UserManager.GetUserById(id);
+            return user;
+        }
+
+
         private async void OnJoinClicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new GetPlaces(User));
+            await Navigation.PushAsync(new GuestPage(User));
         }
 
        

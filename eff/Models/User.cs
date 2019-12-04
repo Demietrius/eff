@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Newtonsoft.Json;
 
 namespace eff.Models
@@ -8,6 +9,9 @@ namespace eff.Models
         [JsonProperty(PropertyName = "id")]
         public string Id { get; set; }
 
+        [JsonProperty(PropertyName = "email")]
+        public string Email { get; set; }
+
         [JsonProperty(PropertyName = "username")]
         public string Username { get; set; }
 
@@ -16,6 +20,9 @@ namespace eff.Models
 
         [JsonProperty(PropertyName = "text")]
         public string Text { get; set; }
+
+        [JsonProperty(PropertyName = "ResturantIds")]
+        public List<string> ResturantIds { get; set; }
         /*
                 [JsonProperty(PropertyName = "filters")]
                 public string Filters { get; set; }
