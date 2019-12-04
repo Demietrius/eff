@@ -43,7 +43,7 @@ namespace eff.Views
                 City = Entry_City.Text,
                 Distance = Pkr_NumPlaces.ToString(),
                 NumberOfResturants = Pkr_NumPlaces.ToString(),
-                Price = Pkr_Price.ToString(),
+                Price = convertPrice(Pkr_Price.ToString()),
                 RoomNumber = generateId(),
                 PIN = generatePIN()
                 };
@@ -66,6 +66,21 @@ namespace eff.Views
             Random generator = new Random();
             String r = generator.Next(0000, 9999).ToString("D4");
             return r;
+        }
+
+        private string convertPrice(string priceString)
+        {
+            switch(priceString)
+            {
+                case "low":
+                    return "2";
+                case "medium":
+                    return "3";
+                case "high":
+                    return "4";
+                default:
+                    return "4";
+            }
         }
     }
 }
