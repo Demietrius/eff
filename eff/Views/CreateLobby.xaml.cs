@@ -43,7 +43,7 @@ namespace eff.Views
                 City = Entry_City.Text,
                 Distance = Pkr_NumPlaces.ToString(),
                 NumberOfResturants = Pkr_NumPlaces.ToString(),
-                Price = convertPrice(Pkr_Price.ToString()),
+                Price = convertPrice(Pkr_Price.SelectedItem.ToString()),
                 RoomNumber = generateId(),
                 PIN = generatePIN()
                 };
