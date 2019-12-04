@@ -20,27 +20,16 @@ namespace eff.Views
             InitializeComponent();
             this.User = user;
             Application.Current.Properties["IsLoggedIn"] = Boolean.TrueString;
-            Application.Current.Properties["UserId"] = user.Id;
+            Application.Current.Properties["id"] = user.Id;
 
         }
 
-
-        public  UserHome(string id)
+        public UserHome(string id)
         {
-            Initialization = InitializeAsync(id);
-            UserManager = UserManager.DefaultManager;
+           var user =  GetUser(id);
             InitializeComponent();
-
-
         }
 
-
-        public Task Initialization { get; private set; }
-        private async Task InitializeAsync(string id)
-        {
-            var user = await GetUser(id);
-            this.User = user;
-        }
 
         private async Task<User> GetUser(string id)
         {

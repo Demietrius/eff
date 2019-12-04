@@ -19,9 +19,9 @@ namespace eff.Views
             
         }
 
-        protected async void startGameClicked(object sender, EventArgs e)
+        protected async void StartGameClicked(object sender, EventArgs e)
         {
-          await RoomManager.StartGame(Room);
+         // await RoomManager.StartGame(Room);
 
         }
     }
