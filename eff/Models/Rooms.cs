@@ -5,7 +5,7 @@ using Newtonsoft.Json;
 
 namespace eff.Models
 {
-    class Rooms
+    public class Rooms
     {
         public string RoomName { get; set; }
         [JsonProperty(PropertyName = "id")]

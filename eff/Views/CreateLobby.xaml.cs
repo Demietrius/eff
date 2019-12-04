@@ -49,7 +49,7 @@ namespace eff.Views
                 };
 
             await RoomManager.InsertRoom(Room);
-            var newGame = new initiateGame();
+            var newGame = new initiateGame(Room);
             newGame.BindingContext = Room;
             await Navigation.PushAsync(newGame);
 
@@ -70,7 +70,7 @@ namespace eff.Views
 
         private string convertPrice(string priceString)
         {
-            switch(priceString)
+            switch(priceString.ToLower())
             {
                 case "low":
                     return "2";

@@ -88,6 +88,7 @@ namespace eff.ViewModels
         {
             try
             {
+                Rooms = new List<Rooms>();
                 var result = await room.CreateDocumentAsync(collectionLink, NewRoom);
                 NewRoom.ID = result.Resource.Id;
                 Rooms.Add(NewRoom);

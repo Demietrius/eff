@@ -16,24 +16,17 @@ namespace eff.Views
             InitializeComponent();
             
             Application.Current.Properties["IsLoggedIn"] = Boolean.TrueString;
-            Application.Current.Properties["ID"] = User.Email.ToString();
-            ////////////////////////////////testing
-            //var user = new User() { Username = "testing" };
-
-            ////////////////////////////////////////
-            //Lbl_user.SetBinding(Label.TextProperty,new Binding(user.Username));
+          /*  Application.Current.Properties["ID"] = User.Email.ToString();*/
+          
         }
         public UserHome(User user)
         {
             InitializeComponent();
-            Application.Current.Properties["IsLoggedIn"] = Boolean.TrueString;
             this.User = user;
-            Application.Current.Properties["ID"] = User.Email.ToString();
-            ////////////////////////////////testing
-            //var user = new User() { Username = "testing" };
 
-            ////////////////////////////////////////
-            //Lbl_user.SetBinding(Label.TextProperty,new Binding(user.Username));
+            Application.Current.Properties["IsLoggedIn"] = Boolean.TrueString;
+            Application.Current.Properties["ID"] = User.Email.ToString();
+     
 
         }
 
