@@ -65,6 +65,16 @@
                 RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent,
                     Property=Height,
                     Factor=1.75}"/>
+
+          <Label x:Name="Lbl_loginError" Text="*username or password is incorrect" TextColor="Orange" FontSize="18" HorizontalOptions="Center" VerticalOptions="Center"
+                 IsVisible="false"
+                RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,
+                    Property=Width,
+                    Factor=1}"
+                RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent,
+                    Property=Height,
+                    Factor=1.85}"
+                 />
     </RelativeLayout>
 
 </ContentPage>

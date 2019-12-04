@@ -36,24 +36,22 @@ namespace eff.Views
             }
         }
 
-        public async void Submit(object sender, EventArgs e)
+        private async void Submit(object sender, EventArgs e)
         {
             var Room = new Rooms() {
                 RoomName = Entry_RoomName.Text,
                 City = Entry_City.Text,
                 Distance = Pkr_NumPlaces.ToString(),
                 NumberOfResturants = Pkr_NumPlaces.ToString(),
-                Price = Pkr_Price.ToString(),
+                Price = convertPrice(Pkr_Price.ToString()),
                 RoomNumber = generateId(),
                 PIN = generatePIN()
                 };
 
             await RoomManager.InsertRoom(Room);
-            /*            var newGame = new initiateGame();
-                        newGame.BindingContext = Room;
-                        await Navigation.PushAsync(newGame);*/
-
-            await Navigation.PushAsync(new initiateGame(Room));
+            var newGame = new initiateGame(Room);
+            newGame.BindingContext = Room;
+            await Navigation.PushAsync(newGame);
 
         }
          private string generateId()
@@ -68,6 +66,21 @@ namespace eff.Views
             Random generator = new Random();
             String r = generator.Next(0000, 9999).ToString("D4");
             return r;
+        }
+
+        private string convertPrice(string priceString)
+        {
+            switch(priceString.ToLower())
+            {
+                case "low":
+                    return "2";
+                case "medium":
+                    return "3";
+                case "high":
+                    return "4";
+                default:
+                    return "4";
+            }
         }
     }
 }

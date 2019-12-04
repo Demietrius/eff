@@ -50,10 +50,22 @@ namespace eff.ViewModels
             return  latstr + ',' + lonstr;
         }
 
-        public string GenerateYelpSearchString(String latitude, String longitude, int radius, int max_results)
+        public string GenerateYelpSearchString(String latitude, String longitude, int radius, int max_results, int price)
         {
             String categories = "Restaurant";
-            String price = "1, 2, 3, 4";
+            String pricestring = "";
+
+            for (int i = 1; i <= price; i++)
+            {
+                if (i < price)
+                {
+                    pricestring += i + ", ";
+                }
+                else
+                {
+                    pricestring += i;
+                }
+            }
             //documentation https://www.yelp.com/developers/documentation/v3/business_search
             //radius is measured in meters, max is 40,000(~25 miles)
             //1610 meters = 1 mile
@@ -64,16 +76,28 @@ namespace eff.ViewModels
                 "&categories=" + categories +
                 "&radius=" + radius +
                 "&limit=" + max_results +
-                "&price=" + price +
+                "&price=" + pricestring +
                 "&open_now=" + true;
 
             return placesSearchString;
         }
 
-        public string GenerateYelpSearchString(String zip_code, int radius, int max_results)
+        public string GenerateYelpSearchString(String zip_code, int radius, int max_results, int price)
         {
             String categories = "Restaurant";
-            String price = "1, 2, 3, 4";
+            String pricestring = "";
+            
+            for(int i = 1; i <= price; i++)
+            {
+                if(i < price)
+                {
+                    pricestring += i + ", ";
+                }
+                else
+                {
+                    pricestring += i;
+                }
+            }
             //documentation https://www.yelp.com/developers/documentation/v3/business_search
             //radius is measured in meters, max is 40,000(~25 miles)
             //1610 meters = 1 mile
@@ -83,7 +107,7 @@ namespace eff.ViewModels
                 "&categories=" + categories +
                 "&radius=" + radius +
                 "&limit=" + max_results +
-                "&price=" + price +
+                "&price=" + pricestring +
                 "&open_now=" + true;
 
             return placesSearchString;

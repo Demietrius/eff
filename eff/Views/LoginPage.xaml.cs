@@ -29,7 +29,7 @@ namespace eff.Views
         private async void Login(object sender, EventArgs e)
         {
 
-            var tempUser = new User { Username = Entry_Username.Text.ToLower(), Password = Entry_Password.Text};
+            var tempUser = new User { Email = Entry_Username.Text.ToLower(), Password = Entry_Password.Text};
             // hashing password
             using (MD5 md5Hash = MD5.Create())
             {
@@ -44,7 +44,7 @@ namespace eff.Views
                 await Navigation.PushAsync(new UserHome(user));
             }
             else
-                Error(user);
+                Error();
         }
 
 
@@ -56,9 +56,9 @@ namespace eff.Views
 
 
 
-        private void Error(User user)
+        private void Error()
         {
-
+            Lbl_loginError.IsVisible = true;
         }
 
        
