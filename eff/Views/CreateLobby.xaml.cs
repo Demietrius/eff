@@ -50,7 +50,7 @@ namespace eff.Views
             };
 
             await RoomManager.InsertRoom(Room);
-            var newGame = new initiateGame(Room);
+            var newGame = new initiateGame(Room, User);
             newGame.BindingContext = Room;
             await Navigation.PushAsync(newGame);
 

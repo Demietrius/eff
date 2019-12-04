@@ -193,7 +193,16 @@ namespace eff.ViewModels
             return Rooms[0];
         }
 
+        public async Task<List<User>> GetUsersInRoom(Rooms Room)
+        {
+            List<User> User = new List<User>();
+            Room = await JoinRoom(Room.RoomNumber, Room.PIN);
 
-
+            User = Room.ListOfUsers;
+            return User;
+            
+        }
     }
+
+
 }

@@ -10,20 +10,23 @@ namespace eff.Views
     {
         RoomManager RoomManager;
         Rooms Room;
+        User user;
 
-        public initiateGame(Rooms Room)
+        public initiateGame(Rooms Room, User user)
         {
             InitializeComponent();
             string id = Application.Current.Properties["UserId"].ToString();
             Console.WriteLine(id);
             RoomManager = RoomManager.DefaultManager;
             this.Room = Room;
+            this.user = user;
             
         }
 
         protected async void StartGameClicked(object sender, EventArgs e)
         {
-         await RoomManager.StartGame(Room);
+            await RoomManager.StartGame(Room);
+            await Navigation.PushAsync(new GetPlaces(user, Room));
 
         }
     }

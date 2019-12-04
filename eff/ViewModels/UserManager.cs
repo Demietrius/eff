@@ -75,6 +75,7 @@ namespace eff.ViewModels
         public List<User> Clients { get; private set; }
 
 
+
         public async Task<List<User>> GetUserByEmail(string Email)
         {
             try
@@ -102,6 +103,7 @@ catch (Exception e)
         }
 
 
+
         public async Task<User> InsertUser(User NewUser)
         {
                 try
@@ -116,6 +118,7 @@ catch (Exception e)
             }
             return NewUser;
         }
+
 
 
         public async Task<User> Login(User tempUser)
@@ -146,6 +149,7 @@ catch (Exception e)
             return Clients[0];
         }
 
+    
         /*public async Task CompleteItemAsync(User user)
         {
             try
