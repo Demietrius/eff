@@ -158,7 +158,9 @@ namespace eff.ViewModels
        {
             try
             {
+                DateTime Now = DateTime.Now;
                 Room.StartGame = true;
+                Room.Date = Now.ToString();
                 await room.ReplaceDocumentAsync(UriFactory.CreateDocumentUri(databaseId, collectionId, Room.ID), Room);
 
             }

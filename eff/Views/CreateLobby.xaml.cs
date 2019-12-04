@@ -38,15 +38,16 @@ namespace eff.Views
 
         private async void Submit(object sender, EventArgs e)
         {
-            var Room = new Rooms() {
+            var Room = new Rooms()
+            {
                 RoomName = Entry_RoomName.Text,
                 City = Entry_City.Text,
-                Distance = Pkr_NumPlaces.ToString(),
+                Distance = convertDistance(Pkr_NumPlaces.SelectedItem.ToString()),
                 NumberOfResturants = Pkr_NumPlaces.ToString(),
-                Price = convertPrice(Pkr_Price.ToString()),
+                Price = convertPrice(Pkr_Price.SelectedItem.ToString()),
                 RoomNumber = generateId(),
                 PIN = generatePIN()
-                };
+            };
 
             await RoomManager.InsertRoom(Room);
             var newGame = new initiateGame(Room);
@@ -70,7 +71,7 @@ namespace eff.Views
 
         private string convertPrice(string priceString)
         {
-            switch(priceString.ToLower())
+            switch (priceString.ToLower())
             {
                 case "low":
                     return "2";
@@ -81,6 +82,20 @@ namespace eff.Views
                 default:
                     return "4";
             }
+        }
+        private string convertDistance(string milesString)
+        {
+            //multiply this by the number of miles desired
+            int miles_to_meters = 1610;
+            int index = milesString.LastIndexOf(" ");
+            int milesInt = 1;
+            //gets the "3" out of "3 miles" (or any other number)
+          /*  if (!Int32.TryParse(milesString.Substring(0, index), out milesInt))
+            {
+                //if tryparse fails, defaults to 1 mile instead of crashing
+                milesInt = 1;
+            }*/
+            return (milesInt * miles_to_meters).ToString();
         }
     }
 }
