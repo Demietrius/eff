@@ -24,6 +24,9 @@ namespace eff.Models
         [JsonProperty(PropertyName = "ResturantIds")]
         public List<string> ResturantIds { get; set; }
         public bool IsGuest { get; set; } = false;
+
+        [JsonProperty(PropertyName = "IsHost")]
+        public Boolean IsHost { get; set; } = false;
         /*
                 [JsonProperty(PropertyName = "filters")]
                 public string Filters { get; set; }
