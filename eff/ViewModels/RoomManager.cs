@@ -176,7 +176,7 @@ namespace eff.ViewModels
             {
                 // The query excludes completed TodoItems
                 var query = room.CreateDocumentQuery<Rooms>(collectionLink, new FeedOptions { EnableCrossPartitionQuery = true, MaxItemCount = -1 })
-                      .Where(room => room.ID == room.ID)
+                      .Where(room => room.RoomNumber == room.RoomNumber)
                       .AsDocumentQuery();
 
                 Rooms = new List<Rooms>();

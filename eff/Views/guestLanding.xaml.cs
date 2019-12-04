@@ -31,10 +31,10 @@ namespace eff.Views
         {
             while (Room.StartGame == false)
             {
-                Rooms isStarted = await RoomManager.GetGameStatus(Room);
-                if(isStarted.StartGame == true)
+                Room = await RoomManager.JoinRoom(Room.RoomNumber, Room.PIN);
+                if(Room.StartGame == true)
                     await Navigation.PushAsync(new GetPlaces(user, Room));
-                System.Threading.Thread.Sleep(10000);
+                System.Threading.Thread.Sleep(1000);
             }
         }
     }
