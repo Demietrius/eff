@@ -29,7 +29,7 @@ namespace eff.Views
         //TODO: Remove Roommanger
         RoomManager RoomManager;
 
-		public GetPlaces(User user)
+		public GetPlaces(User user, Rooms Room)
 		{
 			InitializeComponent();
 			yelpManager = YelpManager.DefaultManager;

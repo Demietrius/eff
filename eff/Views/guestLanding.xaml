@@ -1,10 +1,13 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="eff.Views.roundWaiting" BackgroundColor="Black">
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="eff.Views.guestLanding"
+             BackgroundColor="Black">
+    <RelativeLayout Padding="0" HorizontalOptions="Center" VerticalOptions="Center">
 
-     <RelativeLayout Padding="0" HorizontalOptions="Center" VerticalOptions="Center">
-        
         <StackLayout HorizontalOptions="Center" VerticalOptions="Center" Padding="30"
                       RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,
                     Property=Width,
@@ -13,12 +16,13 @@
                     Property=Height,
                     Factor=1}">
 
-             <Label HorizontalTextAlignment="Center" Text="'Wow' - Owen Wilson" TextColor="Orange"/>
-            <Label HorizontalTextAlignment="Center" Text="Little Fockers (2010)" TextColor="Orange"/>
+            <Label HorizontalTextAlignment="Center" Text="'Wow' - Owen Wilson" TextColor="Orange"/>
+            <Label HorizontalTextAlignment="Center" Text="Shanghai Knights (2003)" FontAttributes="Italic" TextColor="Orange"/>
+            
 
         </StackLayout>
 
-          <Button BackgroundColor="Orange" Text="refresh" TextColor="Black" CornerRadius="13"
+        <Button BackgroundColor="Orange" Text="nice" TextColor="Black" CornerRadius="13"
                  HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="120"
                   RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,
                     Property=Width,
@@ -26,7 +30,6 @@
                 RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent,
                     Property=Height,
                     Factor=1.5}"/>
-         
-    </RelativeLayout>
 
+    </RelativeLayout>
 </ContentPage>

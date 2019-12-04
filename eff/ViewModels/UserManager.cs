@@ -133,7 +133,7 @@ catch (Exception e)
 
                 }
 
-                if (Clients.Count > 1)
+                if (Clients.Count > 1 || Clients.Count == 0)
                     return null;
 
             }

@@ -46,13 +46,13 @@ namespace eff.ViewModels
 
 
 
-        public async Task<List<Rooms>> GetById(int RoomId)
+        public async Task<Rooms> GetById(string RoomNumber)
         {
             try
             {
                 // The query excludes completed TodoItems
                 var query = room.CreateDocumentQuery<Rooms>(collectionLink, new FeedOptions { MaxItemCount = -1 })
-                      .Where(room => room.ID.Equals(RoomId))
+                      .Where(room => room.RoomNumber ==RoomNumber)
                       .AsDocumentQuery();
 
                 Rooms = new List<Rooms>();
@@ -66,17 +66,17 @@ namespace eff.ViewModels
                 Console.Error.WriteLine(@"ERROR {0}", e.Message);
                 return null;
             }
-            return Rooms;
+            return Rooms[0];
         }
 
 
 
-        public async Task<List<User>> JoindUsers(int RoomId)
+        public async Task<List<User>> JoindUsers(string RoomId)
         {
             try
             {
                 var Rooms = await GetById(RoomId);
-                List<User> users = Rooms[0].ListOfUsers;
+                List<User> users = Rooms.ListOfUsers;
                 return users;
             }
             catch (Exception e)
@@ -106,13 +106,13 @@ namespace eff.ViewModels
 
 
 
-        public async Task<List<Rooms>> JoinRoom(string RoomNumber, string pin)
+        public async Task<Rooms> JoinRoom(string RoomNumber, string pin)
         {
             try
             {
                 // The query excludes completed TodoItems
-                var query = room.CreateDocumentQuery<Rooms>(collectionLink, new FeedOptions { MaxItemCount = -1 })
-                      .Where(room => room.RoomNumber.Equals(RoomNumber) && room.PIN.Equals(pin))
+                var query = room.CreateDocumentQuery<Rooms>(collectionLink, new FeedOptions { EnableCrossPartitionQuery = true, MaxItemCount = -1 })
+                      .Where(room => room.RoomNumber == RoomNumber && room.PIN == pin)
                       .AsDocumentQuery();
 
                 Rooms = new List<Rooms>();
@@ -126,7 +126,7 @@ namespace eff.ViewModels
                 Console.Error.WriteLine(@"ERROR {0}", e.Message);
                 return null;
             }
-            return Rooms;   
+            return Rooms[0];   
         }
 
 
@@ -135,10 +135,15 @@ namespace eff.ViewModels
         {
             try
             {
-                var TempUser = new User() { Username = user.Username, Email = user.Email, Id = user.Id };
-                JoinedRoom.ListOfUsers.Add(user);
+                var TempRoom = await JoinRoom(JoinedRoom.RoomNumber, JoinedRoom.PIN);
+                User TempUser = new User() { Username = user.Username, Email = user.Email, Id = user.Id };
 
-                await room.ReplaceDocumentAsync(UriFactory.CreateDocumentUri(databaseId, collectionId, JoinedRoom.ID), JoinedRoom);
+                if (TempRoom.ListOfUsers == null)
+                    TempRoom.ListOfUsers = new List<User>() { TempUser };
+                else
+                    TempRoom.ListOfUsers.Add(TempUser);
+
+                await room.ReplaceDocumentAsync(UriFactory.CreateDocumentUri(databaseId, collectionId, TempRoom.ID), TempRoom);
 
             }
             catch (Exception e)
@@ -161,7 +166,30 @@ namespace eff.ViewModels
                 Console.Error.WriteLine(@"ERROR fuckfuckfuckfuck {0}", e.Message);
             }
         }
-    
+
+        public async Task<Rooms> GetGameStatus(Rooms Room)
+        {
+            try
+            {
+                // The query excludes completed TodoItems
+                var query = room.CreateDocumentQuery<Rooms>(collectionLink, new FeedOptions { EnableCrossPartitionQuery = true, MaxItemCount = -1 })
+                      .Where(room => room.ID == room.ID)
+                      .AsDocumentQuery();
+
+                Rooms = new List<Rooms>();
+                while (query.HasMoreResults)
+                {
+                    Rooms.AddRange(await query.ExecuteNextAsync<Rooms>());
+                }
+            }
+            catch (Exception e)
+            {
+                Console.Error.WriteLine(@"ERROR {0}", e.Message);
+                return null;
+            }
+            return Rooms[0];
+        }
+
 
 
     }

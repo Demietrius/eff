@@ -21,7 +21,7 @@ namespace eff.Views
 
         protected async void StartGameClicked(object sender, EventArgs e)
         {
-         // await RoomManager.StartGame(Room);
+         await RoomManager.StartGame(Room);
 
         }
     }
