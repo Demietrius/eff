@@ -15,8 +15,7 @@ namespace eff.Views
         public initiateGame(Rooms Room, User user)
         {
             InitializeComponent();
-            string id = Application.Current.Properties["UserId"].ToString();
-            Console.WriteLine(id);
+         
             RoomManager = RoomManager.DefaultManager;
             this.Room = Room;
             this.user = user;

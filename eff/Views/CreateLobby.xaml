@@ -60,8 +60,8 @@
              </StackLayout>
 
             <StackLayout Padding="8">
-                <Label x:Name="Lbl_City" Text="city name" TextColor="Orange" FontAttributes="Bold" FontSize="22"/>
-                <Entry x:Name="Entry_City" Placeholder="city" />
+                <Label x:Name="Lbl_City" Text="zip code" TextColor="Orange" FontAttributes="Bold" FontSize="22"/>
+                <Entry x:Name="Entry_City" Placeholder="zip" Keyboard="Numeric"/>
             </StackLayout>
 
             <StackLayout Padding="8">

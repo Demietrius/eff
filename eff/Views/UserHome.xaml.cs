@@ -18,6 +18,7 @@ namespace eff.Views
         public UserHome(User user)
         {
             InitializeComponent();
+           
             this.User = user;
             Application.Current.Properties["IsLoggedIn"] = Boolean.TrueString;
             Application.Current.Properties["id"] = user.Id;

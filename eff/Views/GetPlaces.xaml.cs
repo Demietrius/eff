@@ -90,7 +90,7 @@ namespace eff.Views
 
 		private async Task errorAsync()
 		{
-			await DisplayAlert("Alert", "You have liked too many dumb ass", "OK");
+			await DisplayAlert("whoa, there", "You have used your max amount of likes", "dang");
 		}
 
 
