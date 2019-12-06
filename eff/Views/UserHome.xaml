@@ -19,7 +19,7 @@
                 BackgroundColor="Black" HorizontalOptions="Center" VerticalOptions="Center" CornerRadius="13" BorderColor="Orange"
                RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,
                     Property=Width,
-                    Factor=.25}"
+                    Factor=1.7}"
                 RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent,
                     Property=Height,
                     Factor=.18}"
@@ -61,8 +61,8 @@
                     FontSize="20" BackgroundColor="Orange" CornerRadius="13" Clicked="OnJoinClicked"/>
             <Button x:Name="Btn_CreateLobby" Text="create lobby" TextColor="Black" 
                     FontSize="20" BackgroundColor="Orange" CornerRadius="13" Clicked="OnCreateLobbyClicked"/>
-            <Button x:Name="Btn_ManageGroups" Text="manage groups" TextColor="Black"
-                    FontSize="20" BackgroundColor="Orange" CornerRadius="13"/>
+            <!--<Button x:Name="Btn_ManageGroups" Text="manage groups" TextColor="Black"
+                    FontSize="20" BackgroundColor="Orange" CornerRadius="13"/>-->
             <Button x:Name="Btn_NearMe" Text="near me" TextColor="Black" Clicked="OnNearbyClicked"
                     FontSize="20" BackgroundColor="DarkTurquoise" CornerRadius="13" />
             <Label Text="" HeightRequest="65"/>
