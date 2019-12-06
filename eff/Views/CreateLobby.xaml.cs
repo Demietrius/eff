@@ -38,8 +38,7 @@ namespace eff.Views
 
         private async void Submit(object sender, EventArgs e)
         {
-            var Room = new Rooms()
-            {
+            var Room = new Rooms() {
                 RoomName = Entry_RoomName.Text,
                 City = Entry_City.Text,
                 Distance = convertDistance(Pkr_Distance.SelectedItem.ToString()),
@@ -47,10 +46,10 @@ namespace eff.Views
                 Price = convertPrice(Pkr_Price.SelectedItem.ToString()),
                 RoomNumber = generateId(),
                 PIN = generatePIN()
-            };
+                };
 
             await RoomManager.InsertRoom(Room);
-            var newGame = new initiateGame(Room, User);
+            var newGame = new initiateGame(Room);
             newGame.BindingContext = Room;
             await Navigation.PushAsync(newGame);
 
@@ -71,7 +70,7 @@ namespace eff.Views
 
         private string convertPrice(string priceString)
         {
-            switch (priceString.ToLower())
+            switch(priceString.ToLower())
             {
                 case "low":
                     return "2";
@@ -83,6 +82,7 @@ namespace eff.Views
                     return "4";
             }
         }
+
         private string convertDistance(string milesString)
         {
             //multiply this by the number of miles desired
@@ -90,7 +90,7 @@ namespace eff.Views
             int index = milesString.LastIndexOf(" ");
             int milesInt;
             //gets the "3" out of "3 miles" (or any other number)
-          if (!Int32.TryParse(milesString.Substring(0, index), out milesInt))
+            if (!Int32.TryParse(milesString.Substring(0, index), out milesInt))
             {
                 //if tryparse fails, defaults to 1 mile instead of crashing
                 milesInt = 1;
