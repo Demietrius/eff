@@ -42,7 +42,7 @@ namespace eff.Views
                 RoomName = Entry_RoomName.Text,
                 City = Entry_City.Text,
                 Distance = convertDistance(Pkr_Distance.SelectedItem.ToString()),
-                NumberOfResturants = Pkr_NumPlaces.ToString(),
+                NumberOfResturants = convertMaxRestaurants(Pkr_NumPlaces.SelectedItem.ToString()),
                 Price = convertPrice(Pkr_Price.SelectedItem.ToString()),
                 RoomNumber = generateId(),
                 PIN = generatePIN()
@@ -66,6 +66,23 @@ namespace eff.Views
             Random generator = new Random();
             String r = generator.Next(0000, 9999).ToString("D4");
             return r;
+        }
+
+        private string convertMaxRestaurants(string maxString)
+        {
+            switch(maxString.ToLower())
+            {
+                case "5":
+                    return "5";
+                case "10":
+                    return "10";
+                case "15":
+                    return "15";
+                case "max":
+                    return "50";
+                default:
+                    return "50";
+            }
         }
 
         private string convertPrice(string priceString)

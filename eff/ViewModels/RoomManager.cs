@@ -159,6 +159,7 @@ namespace eff.ViewModels
             try
             {
                 DateTime Now = DateTime.Now;
+                Now = Now.AddMinutes(3.0); // Round time = 3 minutes
                 Room.StartGame = true;
                 Room.Date = Now.ToString();
                 await room.ReplaceDocumentAsync(UriFactory.CreateDocumentUri(databaseId, collectionId, Room.ID), Room);
