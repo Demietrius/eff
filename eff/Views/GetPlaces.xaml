@@ -30,7 +30,7 @@
         <Button x:Name="RequestPlaces"
                     Text="Call Api" FontSize="27" TextColor="Orange"
                     BorderColor="White"
-                    Clicked="RequestPlaces_ClickedAsync"
+                   
                     />
         <CollectionView x:Name="PlacesView"  ItemsSource="{Binding Places} "
                         SelectionMode="Multiple"

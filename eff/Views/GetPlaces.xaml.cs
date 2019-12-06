@@ -40,13 +40,15 @@ namespace eff.Views
 			LikedPlaces = new List<string>();
 			RoomManager = RoomManager.DefaultManager;
             this.Room = Room;
-
-
-		}
+            RequestPlaces_ClickedAsync();
 
 
 
-		protected async void RequestPlaces_ClickedAsync(object sender, EventArgs e)
+        }
+
+
+
+		protected async void RequestPlaces_ClickedAsync()
 		{
 			String location = await yelpManager.GetUserLocationAsync();
 			var strlist = location.Split(',');
