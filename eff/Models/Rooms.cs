@@ -22,6 +22,7 @@ namespace eff.Models
         public string TypeOfFood { get; set; }
         public string UserId { get; set; }
         public List<User> ListOfUsers { get; set; }
+        public List<string> ListOfResturants { get; set; }
         public bool StartGame { get; set; }
 
 

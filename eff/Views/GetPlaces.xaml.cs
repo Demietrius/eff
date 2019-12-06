@@ -24,10 +24,11 @@ namespace eff.Views
 		public ObservableCollection<Place> Places { get; } = new ObservableCollection<Place>();
 		public int LikeCount { get; set; }
 		public List<String> LikedPlaces{ get; set; }
+       
 
 		YelpManager yelpManager;
-        //TODO: Remove Roommanger
-        RoomManager RoomManager;
+		RoomManager RoomManager;
+        Rooms Room;
 
 		public GetPlaces(User user, Rooms Room)
 		{
@@ -37,12 +38,15 @@ namespace eff.Views
 			yelpManager.LikeCount = 0;
 			yelpManager.NumberOfPlaces = 0;
 			LikedPlaces = new List<string>();
-            //TODO: removes Roommanger
-            RoomManager = RoomManager.DefaultManager;
+			RoomManager = RoomManager.DefaultManager;
+            this.Room = Room;
 
-        }
 
-        protected async void RequestPlaces_ClickedAsync(object sender, EventArgs e)
+		}
+
+
+
+		protected async void RequestPlaces_ClickedAsync(object sender, EventArgs e)
 		{
 			String location = await yelpManager.GetUserLocationAsync();
 			var strlist = location.Split(',');
@@ -50,7 +54,7 @@ namespace eff.Views
 			String longitude = strlist[1];
 			int radius = 1610;
 			int maxresults = 20;
-            int price = 4;
+			int price = 4;
 
 			var searchString = yelpManager.GenerateYelpSearchString(latitude, longitude, radius, maxresults, price);
 
@@ -69,8 +73,6 @@ namespace eff.Views
 			Place tempid = e.CurrentSelection[e.CurrentSelection.Count() - 1] as Place;
 			if (CheckLikes() || LikedPlaces.Contains(tempid.id))
 			{
-
-
 				LikedPlaces = new List<string>(); ;
 				{
 					for (int index = 0; index < (int)e.CurrentSelection.Count(); index++)
@@ -83,6 +85,8 @@ namespace eff.Views
 			}else
 				errorAsync();
 		}
+
+
 
 		private async Task errorAsync()
 		{
@@ -98,12 +102,11 @@ namespace eff.Views
 				return false;
 		}
 
-        private async void submitClicked(object sender, EventArgs e)
-        {
-            
+		private async void submitClicked(object sender, EventArgs e)
+		{
+           bool resturantsAdded =  await RoomManager.AddResturants(Room, LikedPlaces);
 
-
-        }
+		}
 
 	}
 }

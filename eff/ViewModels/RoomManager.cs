@@ -107,6 +107,32 @@ namespace eff.ViewModels
 
 
 
+        internal async Task<bool> AddResturants(Rooms Room, List<string> likedPlaces)
+        {
+
+            try
+            {
+                var TempRoom = await JoinRoom(Room.RoomNumber, Room.PIN);
+
+                if (likedPlaces == null)
+                             return false;
+
+                if (TempRoom.ListOfResturants == null)
+                    TempRoom.ListOfResturants = likedPlaces;
+                else
+                    TempRoom.ListOfResturants.AddRange(likedPlaces);
+                Console.WriteLine(TempRoom);
+
+                await room.ReplaceDocumentAsync(UriFactory.CreateDocumentUri(databaseId, collectionId, TempRoom.ID), TempRoom);
+                return true;   
+            }
+            catch (Exception e)
+            {
+                Console.Error.WriteLine(@"ERROR RoomManger AddResturants {0}", e.Message);
+                return false;
+            }
+        }
+
         public async Task<Rooms> JoinRoom(string RoomNumber, string pin)
         {
             try
@@ -121,6 +147,7 @@ namespace eff.ViewModels
                 {
                     Rooms.AddRange(await query.ExecuteNextAsync<Rooms>());
                 }
+                Console.WriteLine(Rooms);
             }
             catch (Exception e)
             {
