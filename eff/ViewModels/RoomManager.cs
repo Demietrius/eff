@@ -12,7 +12,6 @@ namespace eff.ViewModels
     {
         static RoomManager defaultInstance = new RoomManager();
 
-
         const string accountURL = @"https://effdb.documents.azure.com:443/";
         const string accountKey = @"zh7XHYblEgYk66t9ytPuYgJTBZJ7wOoCDIq1nQPrP6nUxPGwwfIVH1N3etlEgrMJpIMLU34B7Un8qFuXIJAt5w==";
         const string databaseId = @"eff";
@@ -27,8 +26,6 @@ namespace eff.ViewModels
             room = new DocumentClient(new System.Uri(accountURL), accountKey);
         }
 
-
-
         public static RoomManager DefaultManager
         {
             get
@@ -40,11 +37,10 @@ namespace eff.ViewModels
                 defaultInstance = value;
             }
         }
-
+        
 
         public List<Rooms> Rooms { get; private set; }
-
-
+        
 
         public async Task<Rooms> GetById(string RoomNumber)
         {
@@ -52,7 +48,7 @@ namespace eff.ViewModels
             {
                 // The query excludes completed TodoItems
                 var query = room.CreateDocumentQuery<Rooms>(collectionLink, new FeedOptions { MaxItemCount = -1 })
-                      .Where(room => room.RoomNumber ==RoomNumber)
+                      .Where(room => room.RoomNumber == RoomNumber)
                       .AsDocumentQuery();
 
                 Rooms = new List<Rooms>();
@@ -70,7 +66,6 @@ namespace eff.ViewModels
         }
 
 
-
         public async Task<List<User>> JoindUsers(string RoomId)
         {
             try
@@ -85,8 +80,6 @@ namespace eff.ViewModels
                 return null;
             }
         }
-
-
 
 
         public async Task<Rooms> InsertRoom(Rooms NewRoom)
@@ -106,7 +99,6 @@ namespace eff.ViewModels
         }
 
 
-
         internal async Task<bool> AddResturants(Rooms Room, List<string> likedPlaces)
         {
 
@@ -115,7 +107,7 @@ namespace eff.ViewModels
                 var TempRoom = await JoinRoom(Room.RoomNumber, Room.PIN);
 
                 if (likedPlaces == null)
-                             return false;
+                    return false;
 
                 if (TempRoom.ListOfResturants == null)
                     TempRoom.ListOfResturants = likedPlaces;
@@ -124,7 +116,7 @@ namespace eff.ViewModels
                 Console.WriteLine(TempRoom);
 
                 await room.ReplaceDocumentAsync(UriFactory.CreateDocumentUri(databaseId, collectionId, TempRoom.ID), TempRoom);
-                return true;   
+                return true;
             }
             catch (Exception e)
             {
@@ -132,6 +124,7 @@ namespace eff.ViewModels
                 return false;
             }
         }
+
 
         public async Task<Rooms> JoinRoom(string RoomNumber, string pin)
         {
@@ -154,9 +147,8 @@ namespace eff.ViewModels
                 Console.Error.WriteLine(@"ERROR {0}", e.Message);
                 return null;
             }
-            return Rooms[0];   
+            return Rooms[0];
         }
-
 
 
         public async Task JoindUsers(User user, Rooms JoinedRoom)
@@ -171,9 +163,9 @@ namespace eff.ViewModels
                 else
                     TempRoom.ListOfUsers.Add(TempUser);
 
-                await room.ReplaceDocumentAsync(UriFactory.CreateDocumentUri(databaseId, collectionId, TempRoom.ID), TempRoom);
+                await room.ReplaceDocumentAsync(UriFactory.CreateDocumentUri(databaseId, collectionId, TempRoom.ID), TempRoom); }
 
-            }
+
             catch (Exception e)
             {
                 Console.Error.WriteLine(@"ERROR {0}", e.Message);
@@ -181,33 +173,22 @@ namespace eff.ViewModels
         }
 
 
-       public async Task StartGame(Rooms Room)
-       {
-            int round = 1;
+        public async Task StartGame(Rooms Room)
+        {
             try
             {
-                if (Room.GameRound == null)
-                {
-                    DateTime Now = DateTime.Now;
-                    Room.StartGame = true;
-                    Room.Date = Now.ToString("hh:mm:ss tt");
-                    Room.GameRound = round.ToString();
-                    await room.ReplaceDocumentAsync(UriFactory.CreateDocumentUri(databaseId, collectionId, Room.ID), Room);
-                }
-                else
-                {
-                    round++;
-                    DateTime Now = DateTime.Now;
-                    Room.Date = Now.ToString("hh:mm:ss tt");
-                    Room.GameRound = round.ToString();
+                DateTime Now = DateTime.Now;
+                Room.StartGame = true;
+                Room.Date = Now.ToString();
+                await room.ReplaceDocumentAsync(UriFactory.CreateDocumentUri(databaseId, collectionId, Room.ID), Room);
 
-                }
             }
             catch (Exception e)
             {
                 Console.Error.WriteLine(@"ERROR fuckfuckfuckfuck {0}", e.Message);
             }
         }
+
 
         public async Task<Rooms> GetGameStatus(Rooms Room)
         {
@@ -232,6 +213,7 @@ namespace eff.ViewModels
             return Rooms[0];
         }
 
+
         public async Task<List<User>> GetUsersInRoom(Rooms Room)
         {
             List<User> User = new List<User>();
@@ -239,7 +221,7 @@ namespace eff.ViewModels
 
             User = Room.ListOfUsers;
             return User;
-            
+
         }
     }
 

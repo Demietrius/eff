@@ -43,9 +43,13 @@ namespace eff.Views
 			yelpManager.NumberOfPlaces = 0;
 			LikedPlaces = new List<string>();
             RoomManager = RoomManager.DefaultManager;
+            this.Room = Room;
+
             TimeSpan span = DateTime.Now.AddMinutes(.1).Subtract(DateTime.Now);
             //TimeSpan span = Convert.ToDateTime(Room.Date).Subtract(DateTime.Now);
             SecLeft = span.TotalSeconds;
+            RequestPlaces_ClickedAsync();
+
             Device.StartTimer(TimeSpan.FromSeconds(1), () =>
             {
                 minl = (int)SecLeft / 60;
