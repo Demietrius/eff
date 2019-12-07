@@ -29,6 +29,7 @@ namespace eff.Views
 		YelpManager yelpManager;
 		RoomManager RoomManager;
         Rooms Room;
+        User user;
 
 		public GetPlaces(User user, Rooms Room)
 		{
@@ -40,6 +41,7 @@ namespace eff.Views
 			LikedPlaces = new List<string>();
 			RoomManager = RoomManager.DefaultManager;
             this.Room = Room;
+            this.user = user;
             RequestPlaces_ClickedAsync();
 
 
@@ -106,7 +108,20 @@ namespace eff.Views
 
 		private async void submitClicked(object sender, EventArgs e)
 		{
-           bool resturantsAdded =  await RoomManager.AddResturants(Room, LikedPlaces);
+            string tempRound;
+            int GameRound;
+
+            bool resturantsAdded =  await RoomManager.AddResturants(Room, LikedPlaces);
+
+            Room = await RoomManager.JoinRoom(Room.RoomNumber, Room.PIN);
+
+            tempRound = Application.Current.Properties["GameRound"].ToString();
+            GameRound = System.Convert.ToInt32(tempRound);
+            GameRound++;
+            Application.Current.Resources["GameRound"] = GameRound.ToString();
+
+            await Navigation.PushAsync(new guestLanding(Room, user));
+
 
 		}
 

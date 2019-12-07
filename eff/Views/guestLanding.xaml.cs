@@ -29,13 +29,26 @@ namespace eff.Views
 
         private async Task GetGameStatusAsync()
         {
-            while (Room.StartGame == false)
+            int round;
+            while (Room.GameRound != null)
             {
-                Room = await RoomManager.JoinRoom(Room.RoomNumber, Room.PIN);
-                if(Room.StartGame == true)
+                Room = await RoomManager.JoinRoom(Room.RoomNumber, Room.PIN);  // get room
+                if (Room.StartGame == true)
                     await Navigation.PushAsync(new GetPlaces(user, Room));
                 System.Threading.Thread.Sleep(1000);
             }
+
+            while (Room.StartGame == false)
+            {
+                Room = await RoomManager.JoinRoom(Room.RoomNumber, Room.PIN);
+                string tempround = Application.Current.Properties["GameRound"].ToString();
+                if (Room.GameRound == tempround)
+                    await Navigation.PushAsync(new GetPlaces(user, Room)); // get room
+
+                System.Threading.Thread.Sleep(1000);
+            }
+
+         
         }
     }
 }

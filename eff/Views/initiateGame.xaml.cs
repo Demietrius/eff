@@ -19,9 +19,9 @@ namespace eff.Views
             RoomManager = RoomManager.DefaultManager;
             this.Room = Room;
             this.user = user;
-
-            GetUsers();
             
+            // GetUsers();
+
         }
 
         private async void GetUsers() {

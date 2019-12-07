@@ -183,13 +183,25 @@ namespace eff.ViewModels
 
        public async Task StartGame(Rooms Room)
        {
+            int round = 1;
             try
             {
-                DateTime Now = DateTime.Now;
-                Room.StartGame = true;
-                Room.Date = Now.ToString();
-                await room.ReplaceDocumentAsync(UriFactory.CreateDocumentUri(databaseId, collectionId, Room.ID), Room);
+                if (Room.GameRound == null)
+                {
+                    DateTime Now = DateTime.Now;
+                    Room.StartGame = true;
+                    Room.Date = Now.ToString("hh:mm:ss tt");
+                    Room.GameRound = round.ToString();
+                    await room.ReplaceDocumentAsync(UriFactory.CreateDocumentUri(databaseId, collectionId, Room.ID), Room);
+                }
+                else
+                {
+                    round++;
+                    DateTime Now = DateTime.Now;
+                    Room.Date = Now.ToString("hh:mm:ss tt");
+                    Room.GameRound = round.ToString();
 
+                }
             }
             catch (Exception e)
             {

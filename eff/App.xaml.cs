@@ -16,6 +16,9 @@ namespace eff
             InitializeComponent();
 
             userManager = UserManager.DefaultManager;
+
+            Current.Properties["GameRound"] = 0;
+
             //DependencyService.Register<MockDataStore>();
             bool isLoggedIn = Current.Properties.ContainsKey("IsLoggedIn") ? Convert.ToBoolean(Current.Properties["IsLoggedIn"]) : false;
             string Email = Current.Properties.ContainsKey("Email") ? Convert.ToString(Current.Properties["Email"]) : null;
