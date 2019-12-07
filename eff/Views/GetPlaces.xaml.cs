@@ -41,7 +41,7 @@ namespace eff.Views
 			yelpManager.NumberOfPlaces = 0;
 			LikedPlaces = new List<string>();
             RoomManager = RoomManager.DefaultManager;
-            TimeSpan span = DateTime.Now.AddMinutes(3.0).Subtract(DateTime.Now);
+            TimeSpan span = DateTime.Now.AddMinutes(.1).Subtract(DateTime.Now);
             //TimeSpan span = Convert.ToDateTime(Room.Date).Subtract(DateTime.Now);
             SecLeft = span.TotalSeconds;
             Device.StartTimer(TimeSpan.FromSeconds(1), () =>
@@ -50,6 +50,11 @@ namespace eff.Views
                 secl = (int)SecLeft % 60;
                 RoundTimer.Text = minl + ":" + secl;
                 SecLeft--;
+                if (SecLeft <= 0)
+                {
+                    //submitClicked();
+                    return false;
+                }
                 return true;
             });
 
