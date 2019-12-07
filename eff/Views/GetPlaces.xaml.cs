@@ -23,8 +23,11 @@ namespace eff.Views
 		
 		public ObservableCollection<Place> Places { get; } = new ObservableCollection<Place>();
 		public int LikeCount { get; set; }
-		public List<String> LikedPlaces{ get; set; }
-       
+        public double SecLeft { get; set; }
+        public int minl { get; set; }
+        public int secl { get; set; }
+        public List<String> LikedPlaces{ get; set; }
+
 
 		YelpManager yelpManager;
 		RoomManager RoomManager;
@@ -39,10 +42,23 @@ namespace eff.Views
 			yelpManager.LikeCount = 0;
 			yelpManager.NumberOfPlaces = 0;
 			LikedPlaces = new List<string>();
-			RoomManager = RoomManager.DefaultManager;
-            this.Room = Room;
-            this.user = user;
-            RequestPlaces_ClickedAsync();
+            RoomManager = RoomManager.DefaultManager;
+            TimeSpan span = DateTime.Now.AddMinutes(.1).Subtract(DateTime.Now);
+            //TimeSpan span = Convert.ToDateTime(Room.Date).Subtract(DateTime.Now);
+            SecLeft = span.TotalSeconds;
+            Device.StartTimer(TimeSpan.FromSeconds(1), () =>
+            {
+                minl = (int)SecLeft / 60;
+                secl = (int)SecLeft % 60;
+                RoundTimer.Text = minl + ":" + secl;
+                SecLeft--;
+                if (SecLeft <= 0)
+                {
+                    //submitClicked();
+                    return false;
+                }
+                return true;
+            });
 
 
 
@@ -124,6 +140,8 @@ namespace eff.Views
 
 
 		}
+
+
 
 	}
 }
