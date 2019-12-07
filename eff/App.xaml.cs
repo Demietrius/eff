@@ -18,7 +18,8 @@ namespace eff
             userManager = UserManager.DefaultManager;
             //DependencyService.Register<MockDataStore>();
             bool isLoggedIn = Current.Properties.ContainsKey("IsLoggedIn") ? Convert.ToBoolean(Current.Properties["IsLoggedIn"]) : false;
-            string id = Current.Properties.ContainsKey("UserId") ? Convert.ToString(Current.Properties["UserId"]) : null;
+            string Email = Current.Properties.ContainsKey("Email") ? Convert.ToString(Current.Properties["Email"]) : null;
+            string Password = Current.Properties.ContainsKey("Password") ? Convert.ToString(Current.Properties["Password"]) : null;
 
             if (!isLoggedIn)
             {
@@ -26,7 +27,9 @@ namespace eff
             }
             else
             {
-                MainPage = new NavigationPage(new UserHome(id));
+                User TempUser = new User() { Email = Email, Password = Password };
+                var user = userManager.Login(TempUser);
+                MainPage = new NavigationPage(new UserHome(TempUser));
             }
          }
 

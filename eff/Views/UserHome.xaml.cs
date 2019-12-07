@@ -12,54 +12,50 @@ namespace eff.Views
 {
     public partial class UserHome : ContentPage
     {
-        User User;
+        User TempUser;
         UserManager UserManager;
+        string id;
 
         public UserHome(User user)
         {
             InitializeComponent();
-           
-            this.User = user;
+
+            if (Application.Current.Properties.ContainsKey("IsLoggedIn") == true)
+            {
+                TempUser = new User() { Password = Application.Current.Properties["Password"].ToString(), Email = Application.Current.Properties["Email"].ToString() };
+
+            }
+            else
+            {
+            this.TempUser = user;
             Application.Current.Properties["IsLoggedIn"] = Boolean.TrueString;
-            Application.Current.Properties["id"] = user.Id;
-
-        }
-
-        public UserHome(string id)
-        {
-           var user =  GetUser(id);
-            InitializeComponent();
-        }
-
-
-        private async Task<User> GetUser(string id)
-        {
-           var user = await UserManager.GetUserById(id);
-            return user[0];
+            Application.Current.Properties["Email"] = user.Email;
+            Application.Current.Properties["Password"] = user.Password;
+            }
         }
 
 
         private async void OnJoinClicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new GuestPage(User));
+
+            await Navigation.PushAsync(new GuestPage(TempUser));
         }
 
-       
 
         private async void OnCreateLobbyClicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new CreateLobby(User));
-           
-        }
+            await Navigation.PushAsync(new CreateLobby(TempUser));
+        }        
 
         private async void OnNearbyClicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new Nearby());
+        await Navigation.PushAsync(new Nearby());
         }
 
         private async void Logout(object sender, EventArgs e)
         {
-            Application.Current.Properties["IsLoggedIn"] = Boolean.FalseString;
+        var user = await UserManager.GetUserById(id);
+        Application.Current.Properties["IsLoggedIn"] = Boolean.FalseString;
             await Navigation.PushAsync(new WelcomePage());
         }
     }

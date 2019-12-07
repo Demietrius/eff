@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Newtonsoft.Json;
 
 namespace eff.Models
@@ -27,17 +28,19 @@ namespace eff.Models
 
         [JsonProperty(PropertyName = "IsHost")]
         public Boolean IsHost { get; set; } = false;
+
+
         /*
-                [JsonProperty(PropertyName = "filters")]
-                public string Filters { get; set; }
+       [JsonProperty(PropertyName = "filters")]
+       public string Filters { get; set; }
 
-                [JsonProperty(PropertyName = "date")]
-                public string Date { get; set; }
+       [JsonProperty(PropertyName = "date")]
+       public string Date { get; set; }
 
-                [JsonProperty(PropertyName = "gamesPlayed")]
-                public string GamesPlayed { get; set; }
+       [JsonProperty(PropertyName = "gamesPlayed")]
+       public string GamesPlayed { get; set; }
 
-                [JsonProperty(PropertyName = "groupId")]
-                public string GroupId { get; set; }*/
+       [JsonProperty(PropertyName = "groupId")]
+       public string GroupId { get; set; }*/
     }
 }

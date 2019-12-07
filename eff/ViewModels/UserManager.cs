@@ -48,13 +48,13 @@ namespace eff.ViewModels
 
 
 
-        public async Task<List<User>> GetUserById(string UserId)
+        public async Task<User> GetUserById(string UserId)
         {
             try
             {
                 // The query excludes completed TodoItems
                 var query = user.CreateDocumentQuery<User>(collectionLink, new FeedOptions { EnableCrossPartitionQuery = true, MaxItemCount = -1 })
-                      .Where(user => user.Id.Equals(UserId))
+                      .Where(user => user.Id == UserId)
                       .AsDocumentQuery();
 
                 users = new List<User>();
@@ -68,7 +68,7 @@ namespace eff.ViewModels
                 Console.Error.WriteLine(@"ERROR {0}", e.Message);
                 return null;
             }
-            return users;
+            return users[0];
         }
 
 
