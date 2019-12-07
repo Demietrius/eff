@@ -72,7 +72,7 @@
             </CollectionView.ItemTemplate>
         </CollectionView>
         <StackLayout Orientation="Horizontal" HorizontalOptions="Fill" VerticalOptions="End" Margin="10">
-            <Label x:Name="Timer" TextColor="Orange" HorizontalOptions="StartAndExpand" VerticalOptions="Center" Padding="20"/>
+            <Label x:Name="RoundTimer" TextColor="Orange" HorizontalOptions="StartAndExpand" VerticalOptions="Center" Padding="20"/>
             <Button Text="submit" TextColor="Black" BackgroundColor="Orange" CornerRadius="13"
                     WidthRequest="190" Clicked="submitClicked" HorizontalOptions="Center"/>
             <Label Text="round" TextColor="Orange" HorizontalOptions="EndAndExpand" VerticalOptions="Center" Padding="20"/>
