@@ -26,12 +26,6 @@
     </ContentPage.Resources>
 
     <StackLayout Margin="0" BackgroundColor="Black" HorizontalOptions="Fill" VerticalOptions="FillAndExpand">
-        
-        <Button x:Name="RequestPlaces"
-                    Text="Call Api" FontSize="27" TextColor="Orange"
-                    BorderColor="White"
-                   
-                    />
         <CollectionView x:Name="PlacesView"  ItemsSource="{Binding Places} "
                         SelectionMode="Multiple"
                         SelectionChanged="LabelClicked">

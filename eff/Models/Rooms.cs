@@ -12,7 +12,9 @@ namespace eff.Models
         public string ID { get; set; }
         public string PIN { get; set; }
         public string RoomNumber { get; set; }
+        public string Hoste { get; set; }
         public string Date { get; set; }
+        public string GameRound { get; set; }
         public string GroupId { get; set; }
         public string Location { get; set; }
         public string Distance { get; set; }

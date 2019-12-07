@@ -21,17 +21,18 @@ namespace eff
             string Email = Current.Properties.ContainsKey("Email") ? Convert.ToString(Current.Properties["Email"]) : null;
             string Password = Current.Properties.ContainsKey("Password") ? Convert.ToString(Current.Properties["Password"]) : null;
 
-            if (!isLoggedIn)
-            {
-                MainPage = new NavigationPage(new WelcomePage());
-            }
-            else
+            if (isLoggedIn && Email != null && Password != null)
             {
                 User TempUser = new User() { Email = Email, Password = Password };
                 var user = userManager.Login(TempUser);
                 MainPage = new NavigationPage(new UserHome(TempUser));
             }
-         }
+            else
+            {
+                MainPage = new NavigationPage(new WelcomePage());
+
+            }
+        }
 
 
         protected override void OnStart()
