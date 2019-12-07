@@ -34,6 +34,7 @@ namespace eff.Views
 
         protected async void StartGameClicked(object sender, EventArgs e)
         {
+            user.IsHost = true;
             await RoomManager.StartGame(Room);
             await Navigation.PushAsync(new GetPlaces(user, Room));
 

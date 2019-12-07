@@ -50,7 +50,7 @@ namespace eff.Views
             SecLeft = span.TotalSeconds;
             RequestPlaces_ClickedAsync();
 
-            Device.StartTimer(TimeSpan.FromSeconds(1), () =>
+            Device.StartTimer(TimeSpan.FromSeconds(5), () =>
             {
                 minl = (int)SecLeft / 60;
                 secl = (int)SecLeft % 60;
@@ -58,7 +58,8 @@ namespace eff.Views
                 SecLeft--;
                 if (SecLeft <= 0)
                 {
-                    //submitClicked();
+                    submitClicked(null, null);
+
                     return false;
                 }
                 return true;
@@ -68,6 +69,7 @@ namespace eff.Views
 
         }
 
+       
 
 
 		protected async void RequestPlaces_ClickedAsync()
@@ -142,10 +144,6 @@ namespace eff.Views
 
             await Navigation.PushAsync(new guestLanding(Room, user));
 
-
 		}
-
-
-
 	}
 }
