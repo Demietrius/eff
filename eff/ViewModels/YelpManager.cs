@@ -82,7 +82,7 @@ namespace eff.ViewModels
             return placesSearchString;
         }
 
-        public string GenerateYelpSearchString(String zip_code, int radius, int max_results, int price)
+        public string GenerateYelpSearchString(String zip_code, string radius, string max_results, int price)
         {
             String categories = "Restaurant";
             String pricestring = "";

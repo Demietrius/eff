@@ -48,7 +48,8 @@ namespace eff.Views
             //TimeSpan span = DateTime.Now.AddMinutes(.1).Subtract(DateTime.Now);
             TimeSpan span = Convert.ToDateTime(Room.Date).Subtract(DateTime.Now);
             SecLeft = span.TotalSeconds;
-            RequestPlaces_ClickedAsync();
+            //RequestPlaces_ClickedAsync();
+            RequestPlaces(this.Room);
 
             Device.StartTimer(TimeSpan.FromSeconds(1), () =>
             {
@@ -63,13 +64,10 @@ namespace eff.Views
                 }
                 return true;
             });
-
-
-
         }
 
 
-
+        //is this being used anymore?
 		protected async void RequestPlaces_ClickedAsync()
 		{
 			String location = await yelpManager.GetUserLocationAsync();
@@ -85,11 +83,23 @@ namespace eff.Views
 			JObject joResponse = yelpManager.YelpWebRequest(searchString);
 
 			yelpManager.ParseJObjectResponse(joResponse);
-			
-
 		}
 
-		protected void LabelClicked(object sender, SelectionChangedEventArgs e)
+        protected void RequestPlaces(Rooms room)
+        {
+            String zip = room.City;
+            String maxresults = room.NumberOfResturants;
+            String radius = room.Distance;
+            Int32.TryParse(room.Price, out int price);
+
+            var searchString = yelpManager.GenerateYelpSearchString(zip, radius, maxresults, price);
+
+            JObject joResponse = yelpManager.YelpWebRequest(searchString);
+
+            yelpManager.ParseJObjectResponse(joResponse);
+        }
+
+        protected void LabelClicked(object sender, SelectionChangedEventArgs e)
 		{
 			if (e.CurrentSelection.Count() == 0)
 				return;
