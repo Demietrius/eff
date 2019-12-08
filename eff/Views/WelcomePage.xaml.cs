@@ -31,9 +31,5 @@ namespace eff.Views
             User TempUser = new User() { IsGuest = true };
             await Navigation.PushAsync(new GuestPage(TempUser));
         }
-        private async void OnNearbyRestaurantsClicked(object sender, EventArgs e)
-        {
-            await Navigation.PushAsync(new GetPlaces(new User(), new Rooms()));
-        }
     }
 }
