@@ -45,6 +45,7 @@ namespace eff
 
         protected override void OnSleep()
         {
+            
             // Handle when your app sleeps
         }
 

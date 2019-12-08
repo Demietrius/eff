@@ -17,6 +17,7 @@ namespace eff.Views
         RoomManager RoomManager;
         Rooms Room;
         User user;
+        List<string> LikedPlace;
         public guestLanding(Rooms room, User user)
         {
             InitializeComponent();
@@ -29,6 +30,10 @@ namespace eff.Views
 
         private async Task GetGameStatusAsync()
         {
+            if (user.IsHost)
+               // HostLogic();
+            InitializeComponent();
+
             int round;
             while (Room.GameRound != null)
             {
@@ -47,8 +52,20 @@ namespace eff.Views
 
                 System.Threading.Thread.Sleep(1000);
             }
-
-         
         }
+        //TODO:  tyring to make logic for the host ( user.is host is set at initiate game under the start function)  I moved the below function to HostManger in viewmodels
+/*
+        private async void HostLogic()
+        {
+            Rooms UpdatedRoom = await RoomManager.JoinRoom(Room.RoomNumber, Room.PIN);
+            LikedPlace = UpdatedRoom.ListOfResturants;
+
+            var dicationary = LikedPlace.GroupBy(str => str)
+                .ToDictionary(group => group.Key, group => group.Count());
+            Console.WriteLine(dicationary);
+
+        }*/
+       
+
     }
 }
