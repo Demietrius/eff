@@ -26,7 +26,7 @@ namespace eff.Models
         public List<User> ListOfUsers { get; set; }
         public List<string> ListOfResturants { get; set; }
         public bool StartGame { get; set; }
-
+        public string RoundTime { get; set; }
 
     }
 }

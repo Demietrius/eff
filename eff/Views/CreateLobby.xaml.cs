@@ -44,6 +44,7 @@ namespace eff.Views
                 Distance = convertDistance(Pkr_Distance.SelectedItem.ToString()),
                 NumberOfResturants = convertMaxRestaurants(Pkr_NumPlaces.SelectedItem.ToString()),
                 Price = convertPrice(Pkr_Price.SelectedItem.ToString()),
+                RoundTime = convertRoundTime(Pkr_RoundTime.SelectedItem.ToString()),
                 RoomNumber = generateId(),
                 PIN = generatePIN()
                 };
@@ -97,6 +98,22 @@ namespace eff.Views
                     return "4";
                 default:
                     return "4";
+            }
+        }
+        public string convertRoundTime(string RoundTime)
+        {
+            switch (RoundTime.ToLower())
+            {
+                case "3 minutes":
+                    return "3";
+                case "5 minutes":
+                    return "5";
+                case "10 minutes":
+                    return "10";
+                case "15 minutes":
+                    return "15";
+                default:
+                    return "3";
             }
         }
 

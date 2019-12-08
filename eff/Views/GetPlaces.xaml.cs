@@ -45,8 +45,8 @@ namespace eff.Views
             RoomManager = RoomManager.DefaultManager;
             this.Room = Room;
 
-            TimeSpan span = DateTime.Now.AddMinutes(.1).Subtract(DateTime.Now);
-            //TimeSpan span = Convert.ToDateTime(Room.Date).Subtract(DateTime.Now);
+            //TimeSpan span = DateTime.Now.AddMinutes(.1).Subtract(DateTime.Now);
+            TimeSpan span = Convert.ToDateTime(Room.Date).Subtract(DateTime.Now);
             SecLeft = span.TotalSeconds;
             RequestPlaces_ClickedAsync();
 

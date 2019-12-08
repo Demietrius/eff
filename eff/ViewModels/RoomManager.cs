@@ -177,7 +177,8 @@ namespace eff.ViewModels
         {
             try
             {
-                DateTime Now = DateTime.Now;
+                double.TryParse(Room.RoundTime, out double RoundTime);
+                DateTime Now = DateTime.Now.AddMinutes(RoundTime);
                 Room.StartGame = true;
                 Room.Date = Now.ToString();
                 await room.ReplaceDocumentAsync(UriFactory.CreateDocumentUri(databaseId, collectionId, Room.ID), Room);
