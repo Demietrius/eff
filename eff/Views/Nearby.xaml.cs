@@ -20,6 +20,7 @@ namespace eff.Views
         {
             InitializeComponent();
             yelpManager = YelpManager.DefaultManager;
+            yelpManager.Places.Clear();
             ViewPlaces.ItemsSource = yelpManager.Places;
             yelpManager.LikeCount = 0;
             yelpManager.NumberOfPlaces = 0;

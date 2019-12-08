@@ -54,7 +54,7 @@ namespace eff.Views
 
         private async void Logout(object sender, EventArgs e)
         {
-        var user = await UserManager.GetUserById(id);
+        //var user = await UserManager.GetUserById(id);
         Application.Current.Properties["IsLoggedIn"] = Boolean.FalseString;
             await Navigation.PushAsync(new WelcomePage());
         }
