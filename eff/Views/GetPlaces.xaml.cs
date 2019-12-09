@@ -91,6 +91,11 @@ namespace eff.Views
         protected void RequestPlaces(Rooms room)
         {
             String zip = room.City;
+            if(zip == null)
+            {
+                RequestPlaces_ClickedAsync();
+                return;
+            }
             String maxresults = room.NumberOfResturants;
             String radius = room.Distance;
             Int32.TryParse(room.Price, out int price);
