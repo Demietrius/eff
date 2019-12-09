@@ -52,7 +52,7 @@ namespace eff.Views
             //RequestPlaces_ClickedAsync();
             RequestPlaces(this.Room);
 
-            Device.StartTimer(TimeSpan.FromSeconds(5), () =>
+            Device.StartTimer(TimeSpan.FromSeconds(1), () =>
             {
                 minl = (int)SecLeft / 60;
                 secl = (int)SecLeft % 60;
